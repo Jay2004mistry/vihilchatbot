@@ -166,9 +166,24 @@ def answer_query(query, filepath="knowledge_base.json"):
             )
         )
         
+        import datetime
+        current_time = datetime.datetime.now().strftime("%I:%M %p")
+        hour = datetime.datetime.now().hour
+        if hour < 12:
+            greeting_context = "Good morning"
+        elif hour < 18:
+            greeting_context = "Good afternoon"
+        else:
+            greeting_context = "Good evening"
+
         # Prepare context
         context_str = json.dumps(kb, indent=2, ensure_ascii=False)
-        prompt = f"Website Context:\n{context_str}\n\nUser Question: {query}"
+        prompt = (
+            f"Current Local Time: {current_time}.\n"
+            f"When the user greets you or asks for the time, naturally respond with the appropriate real-time greeting (e.g., '{greeting_context}').\n\n"
+            f"Website Context:\n{context_str}\n\n"
+            f"User Question: {query}"
+        )
         
         response = model.generate_content(prompt)
         return response.text.strip()

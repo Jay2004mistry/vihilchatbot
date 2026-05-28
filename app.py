@@ -29,7 +29,30 @@ def api_query(request: QueryRequest):
         raise HTTPException(status_code=400, detail="Query cannot be empty.")
     try:
         ans = qa_engine.answer_query(request.query)
-        return {"answer": ans}
+        
+        # Generate base64 audio using edge-tts
+        audio_b64 = None
+        try:
+            import asyncio
+            import edge_tts
+            import base64
+            
+            clean_text = ans.replace("*", "").replace("#", "").replace("_", "")
+            
+            async def get_audio(text):
+                # en-US-AriaNeural is a clear female voice, rate increases speed
+                comm = edge_tts.Communicate(text, voice="en-US-AriaNeural", rate="+15%")
+                audio_data = b""
+                async for chunk in comm.stream():
+                    if chunk["type"] == "audio":
+                        audio_data += chunk["data"]
+                return base64.b64encode(audio_data).decode("utf-8")
+                
+            audio_b64 = asyncio.run(get_audio(clean_text))
+        except Exception as e:
+            print("TTS Error:", e)
+
+        return {"answer": ans, "audio": audio_b64}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
