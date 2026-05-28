@@ -1,0 +1,477 @@
+{
+    "metadata": {
+        "source": "https://www.vihilinfotech.com/",
+        "crawled_at": "urlopen"
+    },
+    "company": {
+        "name": "Vihil InfoTech",
+        "tagline": "Cutting Edge Technology & Cross Device Compatibility",
+        "vision": {
+            "area": "Vision of our Company",
+            "description": "At Vihil InfoTech, we believe in a systematic approach for any project be it complex or simple. We are a group of individuals with a various set of skill set varies from Digital Marketing to IoT/Robotics solutions. We have our dedicated team for your project which uses various methods such as agile Scrum & agile Kanban. We ensure top-notch quality, on-time delivery, and agility for your project."
+        },
+        "statistics": [
+            {
+                "name": "60",
+                "content": "Happy Clients"
+            },
+            {
+                "name": "60",
+                "content": "Completed Projects"
+            },
+            {
+                "name": "20+",
+                "content": "Experienced Staff"
+            },
+            {
+                "name": "4.8",
+                "content": "Ratings"
+            }
+        ],
+        "contact": {
+            "address": "207, Sky Tatva-1, Opp. Amba Ashram, College road, Nadiad, Gujarat, India. (PIN: 387001)",
+            "email": "vihil3010@gmail.com",
+            "phone": "+91 7016421339",
+            "social_links": {
+                "facebook": "https://www.facebook.com/profile.php?id=100090324282115&mibextid=ViGcVu",
+                "instagram": "https://www.instagram.com/vihilinfotech/",
+                "twitter": "https://twitter.com/VihilInfoTech",
+                "linkedin": "https://in.linkedin.com/in/vihil-infotech-5a78b5266"
+            }
+        }
+    },
+    "services": [
+        {
+            "desc1": "Transform your ideas into powerful, cross-platform mobile experiences with Vihil InfoTech. Specializing in React Native development, we create sleek and efficient applications that run seamlessly on both iOS and Android. Our expert team combines innovative design with agile development to deliver a standout user experience. From concept to deployment, we prioritize excellence, ensuring your app stands out in the competitive digital landscape. Elevate your mobile presence with Vihil InfoTech – where innovation meets efficiency.",
+            "title": "1. Mobile App Development ",
+            "id": 1
+        },
+        {
+            "desc1": "Welcome to Vihil InfoTech, your destination for cutting-edge web development powered by ReactJS and NextJS. Our expert team crafts visually stunning and high-performance websites tailored to your unique needs. With a focus on innovation and user experience, we bring your digital presence to life. Whether you're a startup or an established business, we specialize in creating dynamic and responsive web solutions. Elevate your online presence with Vihil InfoTech – where ReactJS and NextJS expertise meet excellence.",
+            "title": "2. Web Development ",
+            "id": 2
+        },
+        {
+            "desc1": "Embark on a journey of cross-platform mobile app excellence with Vihil InfoTech. Specializing in React Native development, we seamlessly bring your vision to life on both iOS and Android platforms. Our seasoned team combines innovation and efficiency to deliver sleek and feature-rich applications. Whether you're a startup with a groundbreaking idea or an enterprise seeking digital expansion, Vihil InfoTech is your trusted partner for top-notch cross-platform mobile solutions. Elevate your mobile presence – where React Native expertise meets unparalleled quality.",
+            "title": "3. Cross platform mobile app",
+            "id": 3
+        },
+        {
+            "desc1": "Step into the future of web experiences with Vihil InfoTech. As pioneers in Progressive Web App (PWA) development, we seamlessly blend web and app functionalities for a responsive and engaging user journey. Our expert team leverages cutting-edge technologies, including ReactJS and NextJS, to create high-performance PWAs tailored to your business needs. Elevate your online presence with a fast, reliable, and immersive user experience. Choose Vihil InfoTech for PWA development excellence – where innovation meets the web.",
+            "title": "4. PWA Development",
+            "id": 4
+        },
+        {
+            "desc1": "Empower your business with robust desktop applications crafted by Vihil InfoTech. Specializing in efficient development using cutting-edge technologies, such as ReactJS and Electron, we deliver powerful and intuitive desktop solutions. Our expert team ensures seamless integration and optimal performance for a superior user experience. Whether you're a startup or an established enterprise, Vihil InfoTech is your trusted partner for bespoke desktop applications. Elevate your digital capabilities – where innovation converges with desktop development excellence.",
+            "title": "5. Desktop Application Development",
+            "id": 5
+        },
+        {
+            "desc1": "Transform customer engagement with intelligent chatbot solutions from Vihil InfoTech. Specializing in Chatbot Development, we leverage state-of-the-art technologies to create conversational interfaces that enhance user interactions. Our expert team designs and implements chatbots tailored to your business needs, improving efficiency and customer satisfaction. Whether you're a startup looking to automate processes or an enterprise aiming for personalized customer support, Vihil InfoTech is your partner in driving innovation through Chatbot Development. Elevate your digital conversations – where technology meets intelligent communication.",
+            "title": "6. Chatbot Development",
+            "id": 6
+        }
+    ],
+    "what_we_do": [
+        {
+            "name": "Web Application",
+            "desc": "Platform independant business solutions for maximum availability",
+            "id": 1
+        },
+        {
+            "name": "Cross Platform Development",
+            "desc": "Interactive Apps with perfect integration of frontend and backend",
+            "id": 2
+        },
+        {
+            "name": "SEO",
+            "desc": "Let the world find you on top of others",
+            "id": 3
+        },
+        {
+            "name": "Desktop Application",
+            "desc": "Advanced autonomous technological softwares to make life simple",
+            "id": 4
+        },
+        {
+            "name": "BIG Data",
+            "desc": "Get your decision making backed by inteligent insight",
+            "id": 5
+        },
+        {
+            "name": "Cyber Security",
+            "desc": "Make your digital assets secure and protected",
+            "id": 6
+        },
+        {
+            "name": "Mobile Applications",
+            "desc": "The simplest but robust technology to accompany with you",
+            "id": 7
+        },
+        {
+            "name": "Digital Marketing",
+            "desc": "Business made easy in a digital world",
+            "id": 8
+        }
+    ],
+    "team": [
+        {
+            "name": "Bharat Desai",
+            "position": "(CEO)",
+            "desc": "Businessmen",
+            "id": 1
+        },
+        {
+            "name": "Manish Shah",
+            "position": "(CTO)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 2
+        },
+        {
+            "name": "Jay shah",
+            "position": "( Project manager and Fullstack developer)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 3
+        },
+        {
+            "name": "Heer patel",
+            "position": "(Sr. Frontend developer)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 4
+        },
+        {
+            "name": "Dhaval prajapati",
+            "position": "(Hr and Sr. QA)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 5
+        },
+        {
+            "name": "Mihir prajapati",
+            "position": "(Sr. backend developer and server handling)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 6
+        },
+        {
+            "name": "Dip pathak",
+            "position": "(Sr. frontend Developer)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 7
+        },
+        {
+            "name": "Kinjal patel",
+            "position": "(Jr. frontend developer)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 8
+        },
+        {
+            "name": "Jaydeep panchal",
+            "position": "(Jr. frontend developer)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 9
+        },
+        {
+            "name": "Shaami Rana",
+            "position": "(BDE)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 10
+        },
+        {
+            "name": "Niket patel",
+            "position": "(BA)",
+            "desc": "From automation to advanced analytics and seamless experiences",
+            "id": 11
+        }
+    ],
+    "technologies": [
+        "Android",
+        "React",
+        "ios"
+    ],
+    "tech_categories": {
+        "mobile": [
+            {
+                "desc": "React",
+                "id": 1
+            },
+            {
+                "desc": "Android",
+                "id": 2
+            },
+            {
+                "desc": "ios",
+                "id": 3
+            },
+            {
+                "desc": "React",
+                "id": 4
+            }
+        ],
+        "web_frontend": [
+            {
+                "desc": "React",
+                "id": 1
+            },
+            {
+                "desc": "Android",
+                "id": 2
+            },
+            {
+                "desc": "ios",
+                "id": 3
+            },
+            {
+                "desc": "ios",
+                "id": 4
+            },
+            {
+                "desc": "ios",
+                "id": 5
+            },
+            {
+                "desc": "ios",
+                "id": 6
+            },
+            {
+                "desc": "ios",
+                "id": 7
+            }
+        ],
+        "fullstack": [
+            {
+                "desc": "React",
+                "id": 1
+            },
+            {
+                "desc": "Android",
+                "id": 2
+            },
+            {
+                "desc": "ios",
+                "id": 3
+            },
+            {
+                "desc": "ios",
+                "id": 4
+            },
+            {
+                "desc": "ios",
+                "id": 5
+            },
+            {
+                "desc": "ios",
+                "id": 6
+            },
+            {
+                "desc": "ios",
+                "id": 7
+            },
+            {
+                "desc": "ios",
+                "id": 8
+            },
+            {
+                "desc": "ios",
+                "id": 9
+            }
+        ],
+        "backend": [
+            {
+                "desc": "React",
+                "id": 1
+            },
+            {
+                "desc": "Android",
+                "id": 2
+            },
+            {
+                "desc": "ios",
+                "id": 3
+            },
+            {
+                "desc": "ios",
+                "id": 4
+            },
+            {
+                "desc": "ios",
+                "id": 5
+            }
+        ],
+        "cross_platform": [
+            {
+                "desc": "React",
+                "id": 1
+            },
+            {
+                "desc": "Android",
+                "id": 2
+            },
+            {
+                "desc": "ios",
+                "id": 3
+            },
+            {
+                "desc": "ios",
+                "id": 4
+            }
+        ],
+        "frontend_frameworks": [
+            {
+                "desc": "React",
+                "id": 1
+            },
+            {
+                "desc": "Android",
+                "id": 2
+            },
+            {
+                "desc": "ios",
+                "id": 3
+            },
+            {
+                "desc": "ios",
+                "id": 4
+            }
+        ]
+    },
+    "process": [
+        {
+            "position": "relative",
+            "title": "01.",
+            "content": "Research",
+            "dis": "Gethering Information from all around"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative",
+            "title": "02.",
+            "content": "Plan",
+            "dis": "Effective strategies for favorable outcomes"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative",
+            "title": "03.",
+            "content": "Implements",
+            "dis": "Timely executions as per the plan"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative",
+            "title": "04.",
+            "content": "Test and Deliver",
+            "dis": "Making a successful launch"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative",
+            "title": "05.",
+            "content": "Optimize",
+            "dis": "Steadyily climbing up the Hill"
+        },
+        {
+            "position": "relative"
+        },
+        {
+            "position": "relative"
+        }
+    ],
+    "faqs": [
+        {
+            "question": "What services does Vihil InfoTech offer?",
+            "answer": "Vihil InfoTech specializes in [list of services, e.g., web development, mobile app development, IT consulting, etc.]. We provide end-to-end solutions to meet your digital needs.",
+            "id": 1
+        },
+        {
+            "question": "What technologies does your team specialize in?",
+            "answer": "Our team is proficient in a wide range of technologies, including but not limited to [list of technologies, e.g., ReactJS, React Native, Node.js, Python, etc.]. We stay updated with the latest advancements to deliver cutting-edge solutions.",
+            "id": 2
+        },
+        {
+            "question": "How experienced is your team?",
+            "answer": "Our team comprises highly experienced professionals with a proven track record in the IT industry. We bring a wealth of knowledge and expertise to every project we undertake.",
+            "id": 3
+        },
+        {
+            "question": "Can you handle both small projects and large-scale enterprise solutions?",
+            "answer": "Yes, Vihil InfoTech caters to a diverse clientele, ranging from startups to large enterprises. Our flexible approach allows us to tailor solutions to meet the unique requirements of each project.",
+            "id": 4
+        },
+        {
+            "question": "What is your development process like?",
+            "answer": "We follow an agile development methodology, ensuring transparency, collaboration, and adaptability throughout the project lifecycle. Our process includes stages like consultation, design, development, testing, deployment, and ongoing support.",
+            "id": 5
+        },
+        {
+            "question": "How do you ensure the security of the projects you undertake?",
+            "answer": "Security is a top priority for us. We implement industry best practices, conduct regular security audits, and follow stringent measures to safeguard your data and applications.",
+            "id": 6
+        },
+        {
+            "question": "Do you provide ongoing support and maintenance?",
+            "answer": "Yes, we offer post-launch support and maintenance services to ensure that your applications run smoothly. Our team is available to address any issues and implement updates as needed.",
+            "id": 7
+        },
+        {
+            "question": "What sets Vihil InfoTech apart from other IT service providers?",
+            "answer": "Vihil InfoTech stands out for its commitment to innovation, customer satisfaction, and the quality of our solutions. Our collaborative approach and focus on client success differentiate us in the industry.",
+            "id": 8
+        },
+        {
+            "question": "How can I get a quote for my project?",
+            "answer": "To get a personalized quote, simply reach out to our team through [contact details]. We'll be happy to discuss your requirements and provide a tailored proposal.",
+            "id": 9
+        },
+        {
+            "question": "Can you provide references or case studies of previous projects?",
+            "answer": "Certainly! We have a portfolio of successful projects and satisfied clients. Contact us, and we'll be happy to share relevant case studies and references.",
+            "id": 10
+        }
+    ],
+    "carousel": [
+        {
+            "name": "Cutting Edge Technology",
+            "desc": "Take the advantage of our cutting-edge solutions to increase your Return of Investment on IT.",
+            "id": 1
+        },
+        {
+            "name": "Cross Device Compatibility",
+            "desc": "Multi-device compatibility ensures that creating, viewing and providing quick and easy",
+            "id": 2
+        },
+        {
+            "name": "Tailer Mode Development",
+            "desc": "Scalable and dynamic systems with the ever-changing trends to meet your dynamic business needs",
+            "id": 3
+        },
+        {
+            "name": "Cutting Edge Technology",
+            "desc": "Take the advantage of our cutting-edge solutions to increase your Return of Investment on IT.",
+            "id": 4
+        },
+        {
+            "name": "Cross Device Compatibility",
+            "desc": "Multi-device compatibility ensures that creating, viewing and providing quick and easy",
+            "id": 5
+        }
+    ]
+}
