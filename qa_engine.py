@@ -559,7 +559,8 @@ def query_groq_api(query, kb, api_key, stream=False):
     
     headers = {
         "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
     
     body = {
@@ -923,7 +924,7 @@ def print_help():
     print(f"  {Colors.BOLD}/help{Colors.ENDC}             - Show this help menu.")
     print(f"  {Colors.BOLD}/status{Colors.ENDC}           - Display AI configurations & database stats.")
     print(f"  {Colors.BOLD}/sync{Colors.ENDC}             - Crawl & refresh local database from live website.")
-    print(f"  {Colors.BOLD}/setkey <key>{Colors.ENDC}     - Save Gemini API key to .env file for Live Mode.")
+    print(f"  {Colors.BOLD}/setkey <key>{Colors.ENDC}     - Save Gemini/Groq API key to .env file for Live Mode.")
     print(f"  {Colors.BOLD}/view <cat>{Colors.ENDC}       - View lists ('services', 'team', 'faqs', 'tech').")
     print(f"  {Colors.BOLD}/clear{Colors.ENDC}            - Clear the terminal screen.")
     print(f"  {Colors.BOLD}/exit{Colors.ENDC} or {Colors.BOLD}/quit{Colors.ENDC}    - Exit the interactive assistant.")
