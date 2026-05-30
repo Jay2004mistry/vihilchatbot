@@ -1,20 +1,20 @@
-/* Global Styling Variable System */
+/* Global Styling Variable System - DAO Design (daodesign.vn) Aesthetic */
 :root {
-    --bg-dark: #070d19;
-    --card-bg: rgba(18, 30, 49, 0.55);
-    --border-color: rgba(26, 115, 232, 0.18);
-    --border-glow: rgba(0, 230, 255, 0.3);
+    --bg-dark: #08090c; /* Pure Deep Obsidian Black */
+    --card-bg: rgba(255, 255, 255, 0.02); /* Translucent Minimalist Card */
+    --border-color: rgba(255, 255, 255, 0.08); /* Fine line boundary */
+    --border-glow: rgba(0, 255, 204, 0.15); /* Soft neon active tint */
     
-    --primary: #1a73e8;
-    --primary-glow: rgba(26, 115, 232, 0.4);
-    --secondary: #00e6ff;
-    --secondary-gradient: linear-gradient(135deg, #1a73e8 0%, #00e6ff 100%);
-    --msg-user-bg: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    --primary: #ffffff; /* Minimalist bright white */
+    --primary-glow: rgba(255, 255, 255, 0.1);
+    --secondary: #00ffcc; /* DAO Signature Neon Mint/Emerald */
+    --secondary-gradient: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+    --msg-user-bg: linear-gradient(135deg, #181920 0%, #2b2e3a 100%); /* Clean anthracite user bubble */
     
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --success: #10b981;
+    --text-primary: #ffffff;
+    --text-secondary: #8a8f98; /* Sophisticated grey */
+    --text-muted: #525866;
+    --success: #00ffbb;
 }
 
 * {
@@ -25,7 +25,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
+    background: linear-gradient(180deg, #d3dde6 0%, #152d58 50%, #060910 100%);
     color: var(--text-primary);
     overflow: hidden;
     height: 100vh;
@@ -35,30 +35,25 @@ body {
     position: relative;
 }
 
-/* Background Ambient Glows */
-.glow-orb {
+/* Background Ambient Glowing Aurora Sweep - Lucien Style */
+.aurora-sweep {
     position: absolute;
-    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 85vh;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(35, 93, 203, 0.85) 0%,
+        rgba(15, 34, 76, 0.6) 45%,
+        rgba(6, 8, 14, 0) 80%
+    );
     filter: blur(100px);
     z-index: 0;
     pointer-events: none;
-    opacity: 0.25;
-}
-
-.orb-1 {
-    width: 400px;
-    height: 400px;
-    background: #1a73e8;
-    top: -50px;
-    left: -50px;
-}
-
-.orb-2 {
-    width: 500px;
-    height: 500px;
-    background: #7c3aed;
-    bottom: -100px;
-    right: -100px;
+    opacity: 0.95;
+    transition: transform 0.25s cubic-bezier(0.1, 0.8, 0.2, 1);
 }
 
 /* Main Container Frame */
@@ -68,12 +63,12 @@ body {
     display: grid;
     grid-template-columns: 1fr 380px;
     gap: 20px;
-    background: rgba(10, 18, 36, 0.7);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    background: rgba(6, 12, 26, 0.45); /* Ethereal translucent dark royal blue glass */
+    border: 2.5px solid #000000; /* Solid bold black border */
+    border-radius: 24px; /* Curved aesthetic corner geometry */
+    backdrop-filter: blur(28px); /* Massive transparent blur filtering */
+    -webkit-backdrop-filter: blur(28px);
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7); /* Ethereal heavy backing shadows */
     overflow: hidden;
     z-index: 1;
 }
@@ -92,11 +87,10 @@ body {
    ========================================================================== */
 .chat-section {
     display: flex;
-    flex-direction: flex-direction;
-    display: flex;
     flex-direction: column;
     height: 100%;
     border-right: 1px solid var(--border-color);
+    overflow: hidden;
 }
 
 @media (max-width: 1000px) {
@@ -108,7 +102,7 @@ body {
 
 .chat-header {
     padding: 20px;
-    background: rgba(14, 25, 48, 0.8);
+    background: rgba(255, 255, 255, 0.01);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
@@ -210,6 +204,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    min-height: 0;
 }
 
 /* Custom Scrollbar styling */
@@ -311,7 +306,7 @@ body {
 /* Chat Input Form */
 .chat-input-area {
     padding: 20px;
-    background: rgba(14, 25, 48, 0.8);
+    background: rgba(255, 255, 255, 0.01);
     border-top: 1px solid var(--border-color);
     display: flex;
     gap: 12px;
@@ -320,7 +315,7 @@ body {
 
 .chat-input-area input {
     flex: 1;
-    background: rgba(7, 13, 25, 0.8);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 14px 20px;
@@ -367,7 +362,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: rgba(11, 20, 39, 0.4);
+    background: rgba(255, 255, 255, 0.01);
     overflow: hidden;
 }
 
@@ -702,4 +697,337 @@ body {
     font-size: 0.86rem;
     color: var(--text-secondary);
     line-height: 1.5;
+}
+
+/* Language Selector Styles */
+.lang-selector-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-select {
+    background: rgba(18, 30, 49, 0.55);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    height: 38px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 32px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300e6ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+}
+
+.lang-select:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 0 10px rgba(0, 230, 255, 0.15);
+    background-color: rgba(18, 30, 49, 0.75);
+    transform: translateY(-1px);
+}
+
+.lang-select:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 15px var(--border-glow);
+}
+
+.lang-select option {
+    background-color: #0d1527;
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+/* ==========================================================================
+   AWWWARDS INTERACTIVE UI ADDITIONS
+   ========================================================================== */
+
+/* Futuristic Background HUD Dot Matrix */
+.hud-pixel-grid {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(rgba(26, 115, 232, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+/* Interactive HUD Corners */
+.hud-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+.hud-corner.top-left {
+    top: 12px;
+    left: 12px;
+    border-top-color: var(--secondary);
+    border-left-color: var(--secondary);
+}
+.hud-corner.top-right {
+    top: 12px;
+    right: 12px;
+    border-top-color: var(--secondary);
+    border-right-color: var(--secondary);
+}
+.hud-corner.bottom-left {
+    bottom: 12px;
+    left: 12px;
+    border-bottom-color: var(--secondary);
+    border-left-color: var(--secondary);
+}
+.hud-corner.bottom-right {
+    bottom: 12px;
+    right: 12px;
+    border-bottom-color: var(--secondary);
+    border-right-color: var(--secondary);
+}
+
+/* Accent highlight on container hover */
+.container:hover .hud-corner {
+    opacity: 1;
+    width: 22px;
+    height: 22px;
+}
+
+/* Awwwards Dynamic Light Trails */
+.kb-card, .team-item, .stat-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.kb-card::before, .team-item::before, .stat-box::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(
+        220px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(0, 230, 255, 0.12) 0%,
+        transparent 80%
+    );
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+}
+
+.kb-card:hover::before, .team-item:hover::before, .stat-box:hover::before {
+    opacity: 1;
+}
+
+/* Ensure contents stay on top of background glow */
+.kb-card *, .team-item *, .stat-box * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Pulse Visualizer wave animation */
+.mic-wave {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mic-wave.active {
+    opacity: 1;
+}
+
+.mic-wave span {
+    width: 2.5px;
+    height: 12px;
+    background-color: #ef4444;
+    border-radius: 4px;
+    animation: bounce-wave 1.2s infinite ease-in-out;
+}
+
+.mic-wave span:nth-child(1) { animation-delay: -0.4s; }
+.mic-wave span:nth-child(2) { animation-delay: -0.2s; }
+.mic-wave span:nth-child(3) { animation-delay: -0.6s; }
+.mic-wave span:nth-child(4) { animation-delay: -0.1s; }
+
+@keyframes bounce-wave {
+    0%, 100% { transform: scaleY(0.4); background-color: #ef4444; }
+    50% { transform: scaleY(1.8); background-color: #fca5a5; }
+}
+
+/* Hide SVG icon when mic active to reveal waveform beautifully */
+.mic-btn.active svg {
+    opacity: 0;
+    transform: scale(0.6);
+}
+.mic-btn svg {
+    transition: all 0.3s ease;
+}
+
+/* Tab content slide animation */
+.tab-content-animate {
+    animation: morphIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes morphIn {
+    0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==========================================================================
+   DAO DESIGN ACCORDION & SCROLLING MARQUEE STYLES
+   ========================================================================== */
+
+/* Infinite Scrolling Tech Marquee */
+.tech-marquee-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid var(--border-color);
+    background: rgba(8, 9, 12, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+.tech-marquee-wrapper {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 25s linear infinite;
+}
+
+.tech-marquee-track {
+    display: flex;
+    gap: 32px;
+    padding-right: 32px;
+}
+
+.tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.tech-badge:hover {
+    color: var(--secondary);
+}
+
+.tech-badge::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: var(--secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--secondary);
+}
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* DAO Design Accordion Service box */
+.kb-card {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px;
+    padding: 18px 24px !important;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.kb-card:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-color: var(--secondary) !important;
+}
+
+/* Accordion Header */
+.kb-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kb-card-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.94rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    color: var(--text-primary) !important;
+    transition: color 0.3s ease;
+}
+
+.kb-card:hover .kb-card-header h3 {
+    color: var(--secondary) !important;
+}
+
+/* Plus Indicator */
+.kb-card-plus {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.kb-card:hover .kb-card-plus {
+    color: var(--secondary);
+}
+
+.kb-card.expanded .kb-card-plus {
+    transform: rotate(45deg); /* morphs + to x! */
+    color: var(--secondary);
+}
+
+/* Accordion Expandable Content */
+.kb-card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-top 0.3s ease;
+    opacity: 0;
+}
+
+.kb-card.expanded .kb-card-body {
+    max-height: 250px;
+    opacity: 1;
+    margin-top: 14px;
+}
+
+.kb-card-body p {
+    font-size: 0.82rem !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+    margin: 0;
 }

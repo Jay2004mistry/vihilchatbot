@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const tabContent = document.getElementById("tabContent");
     const tabButtons = document.querySelectorAll(".tab-btn");
     const micBtn = document.getElementById("micBtn");
+    const langSelect = document.getElementById("langSelect");
 
     let knowledgeBase = null;
     let currentTab = "services";
     let isMuted = false;
+    let currentPlayingAudio = null;
     const muteBtn = document.getElementById("muteBtn");
     const muteIcon = document.getElementById("muteIcon");
 
@@ -21,6 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isMuted) {
                 // Volume Mute Icon
                 muteIcon.innerHTML = `<path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>`;
+                if (currentPlayingAudio) {
+                    currentPlayingAudio.pause();
+                    currentPlayingAudio.currentTime = 0;
+                    currentPlayingAudio = null;
+                }
                 if ('speechSynthesis' in window) window.speechSynthesis.cancel();
             } else {
                 // Volume Up Icon
@@ -72,8 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 services.forEach(s => {
                     html += `
                         <div class="kb-card">
-                            <h3>${s.title}</h3>
-                            <p>${s.desc1}</p>
+                            <div class="kb-card-header">
+                                <h3>${s.title}</h3>
+                                <span class="kb-card-plus">+</span>
+                            </div>
+                            <div class="kb-card-body">
+                                <p>${s.desc1}</p>
+                            </div>
                         </div>
                     `;
                 });
@@ -86,8 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 whatWeDo.forEach(w => {
                     html += `
                         <div class="kb-card">
-                            <h3>${w.name}</h3>
-                            <p>${w.desc}</p>
+                            <div class="kb-card-header">
+                                <h3>${w.name}</h3>
+                                <span class="kb-card-plus">+</span>
+                            </div>
+                            <div class="kb-card-body">
+                                <p>${w.desc}</p>
+                            </div>
                         </div>
                     `;
                 });
@@ -124,8 +141,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 faqs.forEach(f => {
                     html += `
                         <div class="kb-card">
-                            <h3>Q: ${f.question}</h3>
-                            <p><strong>A:</strong> ${f.answer}</p>
+                            <div class="kb-card-header">
+                                <h3>Q: ${f.question}</h3>
+                                <span class="kb-card-plus">+</span>
+                            </div>
+                            <div class="kb-card-body">
+                                <p><strong>A:</strong> ${f.answer}</p>
+                            </div>
                         </div>
                     `;
                 });
@@ -204,6 +226,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         tabContent.innerHTML = html;
+
+        // Dynamic spring morph animation reset
+        tabContent.classList.remove("tab-content-animate");
+        void tabContent.offsetWidth; // Trigger reflow
+        tabContent.classList.add("tab-content-animate");
+
+        // Re-bind mouse tracking coords to the newly loaded tab cards
+        if (typeof trackCardsGlow === 'function') {
+            trackCardsGlow(tabContent);
+        }
     }
 
     // 3. Send Message / Query API
@@ -211,6 +243,16 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         const text = userInput.value.trim();
         if (!text) return;
+
+        // Stop any currently playing audio immediately
+        if (currentPlayingAudio) {
+            currentPlayingAudio.pause();
+            currentPlayingAudio.currentTime = 0;
+            currentPlayingAudio = null;
+        }
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
 
         // Clear input
         userInput.value = "";
@@ -223,10 +265,11 @@ document.addEventListener("DOMContentLoaded", () => {
         scrollToBottom();
 
         try {
+            const selectedLang = langSelect ? langSelect.value : "auto";
             const response = await fetch("/api/query", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query: text })
+                body: JSON.stringify({ query: text, lang: selectedLang })
             });
 
             // Remove Typing Indicator
@@ -237,18 +280,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 appendMessage(data.answer, "bot-message");
                 if (!isMuted) {
                     if (data.audio) {
-                        const audio = new Audio("data:audio/mp3;base64," + data.audio);
-                        audio.play().catch(e => {
+                        currentPlayingAudio = new Audio("data:audio/mp3;base64," + data.audio);
+                        currentPlayingAudio.play().catch(e => {
                             console.error("Audio playback failed:", e);
-                            speakText(data.answer);
+                            speakText(data.answer, data.lang);
                         });
                     } else {
-                        speakText(data.answer);
+                        speakText(data.answer, data.lang);
                     }
                 }
             } else {
                 appendMessage("Error generating answer. Please try again.", "bot-message");
-                if (!isMuted) speakText("Error generating answer. Please try again.");
+                if (!isMuted) speakText("Error generating answer. Please try again.", "en");
             }
         } catch (err) {
             typingIndicator.remove();
@@ -325,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 5. Speech Synthesis (Text-to-Speech)
-    function speakText(text) {
+    function speakText(text, lang) {
         if (isMuted) return;
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
@@ -334,14 +377,32 @@ document.addEventListener("DOMContentLoaded", () => {
             const cleanText = text.replace(/[*_#]/g, '').replace(/<[^>]+>/g, '');
             const utterance = new SpeechSynthesisUtterance(cleanText);
 
-            // Basic heuristic to pick a language tag if supported
-            if (/[\u0A80-\u0AFF]/.test(text)) {
-                utterance.lang = 'gu-IN'; // Gujarati
-            } else if (/[\u0900-\u097F]/.test(text)) {
-                utterance.lang = 'hi-IN'; // Hindi
-            } else {
-                utterance.lang = 'en-US'; // Default English
+            // Set language code
+            const simpleLang = lang ? lang.split("-")[0] : "en";
+            const voiceLangMap = {
+                "en": "en-US", "hi": "hi-IN", "gu": "gu-IN", "es": "es-ES",
+                "fr": "fr-FR", "de": "de-DE", "ja": "ja-JP", "zh": "zh-CN",
+                "ar": "ar-SA", "ru": "ru-RU", "pt": "pt-PT"
+            };
+            utterance.lang = voiceLangMap[simpleLang] || lang || 'en-US';
+
+            // Choose a voice matching the language if available
+            const voices = window.speechSynthesis.getVoices();
+            let selectedVoice = null;
+            
+            // Try to find a female voice matching the language code
+            selectedVoice = voices.find(v => v.lang.startsWith(simpleLang) && /female/i.test(v.name)) ||
+                            voices.find(v => v.lang.startsWith(simpleLang) && (v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('catherine') || v.name.toLowerCase().includes('emma') || v.name.toLowerCase().includes('swara') || v.name.toLowerCase().includes('dhwani'))) ||
+                            voices.find(v => v.lang.startsWith(simpleLang)) ||
+                            voices.find(v => /female/i.test(v.name));
+                            
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
             }
+
+            // Faster speaking rate for snappier responses
+            utterance.rate = 1.1; 
+            utterance.pitch = 1.0;
 
             window.speechSynthesis.speak(utterance);
         }
@@ -353,18 +414,22 @@ document.addEventListener("DOMContentLoaded", () => {
         if (SpeechRecognition) {
             const recognition = new SpeechRecognition();
             recognition.continuous = false;
-            // Provide hint to support mixed languages or auto-detect if possible. 
-            // Often we leave lang empty or default, or could set to something specific, but let's allow the browser default.
             recognition.interimResults = false;
+
+            const micWave = document.getElementById("micWave");
 
             recognition.onstart = function () {
                 micBtn.style.color = "#ef4444"; // Red to indicate recording
+                micBtn.classList.add("active");
+                if (micWave) micWave.classList.add("active");
             };
 
             recognition.onresult = function (event) {
                 const transcript = event.results[0][0].transcript;
                 userInput.value = transcript;
                 micBtn.style.color = "var(--text-secondary)";
+                micBtn.classList.remove("active");
+                if (micWave) micWave.classList.remove("active");
                 // Auto-submit form
                 chatForm.dispatchEvent(new Event("submit"));
             };
@@ -372,23 +437,137 @@ document.addEventListener("DOMContentLoaded", () => {
             recognition.onerror = function (event) {
                 console.error("Speech recognition error", event.error);
                 micBtn.style.color = "var(--text-secondary)";
+                micBtn.classList.remove("active");
+                if (micWave) micWave.classList.remove("active");
             };
 
             recognition.onend = function () {
                 micBtn.style.color = "var(--text-secondary)";
+                micBtn.classList.remove("active");
+                if (micWave) micWave.classList.remove("active");
             };
 
             micBtn.addEventListener("click", () => {
                 // Cancel any ongoing speech when user starts talking
+                if (currentPlayingAudio) {
+                    currentPlayingAudio.pause();
+                    currentPlayingAudio.currentTime = 0;
+                    currentPlayingAudio = null;
+                }
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
                 }
+
+                // Set active speech recognition language
+                const selectedLang = langSelect ? langSelect.value : "auto";
+                if (selectedLang && selectedLang !== "auto") {
+                    const sttLocales = {
+                        "en": "en-US",
+                        "hi": "hi-IN",
+                        "gu": "gu-IN",
+                        "es": "es-ES",
+                        "fr": "fr-FR",
+                        "de": "de-DE",
+                        "ja": "ja-JP",
+                        "zh": "zh-CN",
+                        "ar": "ar-SA",
+                        "ru": "ru-RU",
+                        "pt": "pt-PT"
+                    };
+                    recognition.lang = sttLocales[selectedLang] || selectedLang;
+                } else {
+                    recognition.lang = ""; // Default/auto
+                }
+
                 recognition.start();
             });
         } else {
             micBtn.style.display = "none";
             console.warn("Speech Recognition API not supported in this browser.");
         }
+    }
+
+    // Awwwards Interactive Mouse-Tracking Features
+    // 1. Damped Spring Ambient Aurora Sweep Tracking
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    const auroraSweep = document.querySelector('.aurora-sweep');
+
+    document.addEventListener("mousemove", (e) => {
+        // Calculate offset relative to screen center
+        targetX = (e.clientX - window.innerWidth / 2) * 0.05;
+        targetY = (e.clientY - window.innerHeight / 2) * 0.05;
+    });
+
+    // High performance spring loop for background glides
+    function animateOrbs() {
+        currentX += (targetX - currentX) * 0.04;
+        currentY += (targetY - currentY) * 0.04;
+
+        if (auroraSweep) {
+            auroraSweep.style.transform = `translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px))`;
+        }
+
+        requestAnimationFrame(animateOrbs);
+    }
+    animateOrbs();
+
+    // 2. Light Trail Mouse Tracking & Accordion Toggles
+    function trackCardsGlow(parentContainer) {
+        const updateGlowCoord = (e) => {
+            const card = e.currentTarget;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        };
+
+        const cards = parentContainer.querySelectorAll('.kb-card, .team-item, .stat-box');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', updateGlowCoord);
+            
+            // DAO Accordion Expand Listener
+            if (card.classList.contains('kb-card') && card.querySelector('.kb-card-body')) {
+                card.addEventListener('click', (e) => {
+                    const isExpanded = card.classList.contains('expanded');
+                    
+                    // Collapse siblings in the same container for clean accordion action
+                    const siblings = parentContainer.querySelectorAll('.kb-card.expanded');
+                    siblings.forEach(sib => {
+                        if (sib !== card) sib.classList.remove('expanded');
+                    });
+                    
+                    if (isExpanded) {
+                        card.classList.remove('expanded');
+                    } else {
+                        card.classList.add('expanded');
+                    }
+                });
+            }
+        });
+    }
+
+    // Call tracking initially on body cards
+    trackCardsGlow(document);
+
+    // 3. Populate Technology Marquee dynamically (DAO Style Loop)
+    const techMarquee = document.getElementById("techMarquee");
+    if (techMarquee) {
+        const technologies = [
+            "Next.js", "React.js", "Node.js", "Python", "FastAPI", "Firebase", 
+            "AWS", "HTML5/CSS3", "WordPress", "Shopify", "UI/UX Design", "Custom CMS"
+        ];
+        
+        let trackHTML = '<div class="tech-marquee-track">';
+        technologies.forEach(tech => {
+            trackHTML += `<div class="tech-badge">${tech}</div>`;
+        });
+        trackHTML += '</div>';
+        
+        techMarquee.innerHTML = trackHTML + trackHTML;
     }
 
     // Run Initial fetch
