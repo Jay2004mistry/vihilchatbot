@@ -1,575 +1,281 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // DOM Elements
     const chatForm = document.getElementById("chatForm");
     const userInput = document.getElementById("userInput");
     const chatMessages = document.getElementById("chatMessages");
     const recrawlBtn = document.getElementById("recrawlBtn");
     const scrapeOverlay = document.getElementById("scrapeOverlay");
-    const tabContent = document.getElementById("tabContent");
-    const tabButtons = document.querySelectorAll(".tab-btn");
     const micBtn = document.getElementById("micBtn");
     const langSelect = document.getElementById("langSelect");
-
-    let knowledgeBase = null;
-    let currentTab = "services";
-    let isMuted = false;
-    let currentPlayingAudio = null;
     const muteBtn = document.getElementById("muteBtn");
     const muteIcon = document.getElementById("muteIcon");
+    const clearBtn = document.getElementById("clearBtn");
+    const modeButtons = document.querySelectorAll(".mode-btn");
 
-    if (muteBtn) {
-        muteBtn.addEventListener("click", () => {
-            isMuted = !isMuted;
-            if (isMuted) {
-                // Volume Mute Icon
-                muteIcon.innerHTML = `<path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>`;
-                if (currentPlayingAudio) {
-                    currentPlayingAudio.pause();
-                    currentPlayingAudio.currentTime = 0;
-                    currentPlayingAudio = null;
-                }
-                if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-            } else {
-                // Volume Up Icon
-                muteIcon.innerHTML = `<path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89l.706.706z"/><path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>`;
-            }
-        });
-    }
+    let isMuted = false;
+    let currentPlayingAudio = null;
+    let currentMode = "type";
+    let recognition = null;
+    let isListening = false;
+    let micPermissionDenied = false;
 
-    // 1. Initial Data Fetching
-    async function fetchKnowledgeBase() {
-        try {
-            const res = await fetch("/api/data");
-            if (res.ok) {
-                knowledgeBase = await res.json();
-                renderTabContent();
-            } else {
-                tabContent.innerHTML = `<div class="loading-spinner" style="color: #ef4444;">Failed to fetch database. Please click 'Sync Website'.</div>`;
-            }
-        } catch (err) {
-            console.error("Error fetching knowledge base:", err);
-            tabContent.innerHTML = `<div class="loading-spinner" style="color: #ef4444;">Error connecting to API server.</div>`;
-        }
-    }
-
-    // 2. Tab Navigation & Rendering
-    tabButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            tabButtons.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            currentTab = btn.getAttribute("data-tab");
-            renderTabContent();
-        });
-    });
-
-    function renderTabContent() {
-        if (!knowledgeBase || Object.keys(knowledgeBase).length === 0) {
-            tabContent.innerHTML = `<div class="loading-spinner">No data loaded. Please trigger website sync.</div>`;
-            return;
+    function setMuted(nextMuted) {
+        isMuted = nextMuted;
+        if (muteIcon) {
+            muteIcon.innerHTML = isMuted
+                ? `<path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>`
+                : `<path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89l.706.706z"/><path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>`;
         }
 
-        let html = "";
-
-        if (currentTab === "services") {
-            const services = knowledgeBase.services || [];
-            const whatWeDo = knowledgeBase.what_we_do || [];
-
-            html += `<h3 style="font-family: 'Outfit'; font-size: 1rem; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">Core Development Services</h3>`;
-            if (services.length > 0) {
-                services.forEach(s => {
-                    html += `
-                        <div class="kb-card">
-                            <div class="kb-card-header">
-                                <h3>${s.title}</h3>
-                                <span class="kb-card-plus">+</span>
-                            </div>
-                            <div class="kb-card-body">
-                                <p>${s.desc1}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else {
-                html += `<p style="color: var(--text-secondary); margin-bottom: 20px;">No core services parsed.</p>`;
-            }
-
-            html += `<h3 style="font-family: 'Outfit'; font-size: 1rem; margin-top: 24px; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">Capabilities &amp; Solutions</h3>`;
-            if (whatWeDo.length > 0) {
-                whatWeDo.forEach(w => {
-                    html += `
-                        <div class="kb-card">
-                            <div class="kb-card-header">
-                                <h3>${w.name}</h3>
-                                <span class="kb-card-plus">+</span>
-                            </div>
-                            <div class="kb-card-body">
-                                <p>${w.desc}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else {
-                html += `<p style="color: var(--text-secondary);">No capability items parsed.</p>`;
-            }
-        }
-
-        else if (currentTab === "team") {
-            const team = knowledgeBase.team || [];
-            if (team.length > 0) {
-                team.forEach(m => {
-                    // Extract initials
-                    const initials = m.name.split(" ").map(n => n[0]).join("").toUpperCase().substring(0, 2);
-                    html += `
-                        <div class="team-item">
-                            <div class="team-avatar">${initials}</div>
-                            <div class="team-details">
-                                <h4>${m.name}</h4>
-                                <p style="color: var(--secondary); font-weight: 500; font-size: 0.76rem;">${m.position.replace(/\(|\)/g, "").trim()}</p>
-                                <p style="color: var(--text-secondary); font-size: 0.78rem; margin-top: 3px; line-height: 1.3;">${m.desc}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else {
-                html += `<p style="color: var(--text-secondary);">No team members found.</p>`;
-            }
-        }
-
-        else if (currentTab === "faqs") {
-            const faqs = knowledgeBase.faqs || [];
-            if (faqs.length > 0) {
-                faqs.forEach(f => {
-                    html += `
-                        <div class="kb-card">
-                            <div class="kb-card-header">
-                                <h3>Q: ${f.question}</h3>
-                                <span class="kb-card-plus">+</span>
-                            </div>
-                            <div class="kb-card-body">
-                                <p><strong>A:</strong> ${f.answer}</p>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else {
-                html += `<p style="color: var(--text-secondary);">No FAQs found.</p>`;
-            }
-        }
-
-        else if (currentTab === "contact") {
-            const company = knowledgeBase.company || {};
-            const contact = company.contact || {};
-            const stats = company.statistics || [];
-            const vision = company.vision || {};
-
-            // Render stats
-            html += `<h3 style="font-family: 'Outfit'; font-size: 1rem; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">Company Statistics</h3>`;
-            if (stats.length > 0) {
-                html += `<div class="stats-grid">`;
-                stats.forEach(s => {
-                    html += `
-                        <div class="stat-box">
-                            <div class="stat-num">${s.name}</div>
-                            <div class="stat-name">${s.content}</div>
-                        </div>
-                    `;
-                });
-                html += `</div>`;
-            }
-
-            // Render vision
-            if (vision && vision.description) {
-                html += `
-                    <div class="kb-card" style="margin-bottom: 24px;">
-                        <h3>${vision.area || "Vision of our Company"}</h3>
-                        <p>${vision.description}</p>
-                    </div>
-                `;
-            }
-
-            // Render Contact info
-            html += `<h3 style="font-family: 'Outfit'; font-size: 1rem; margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">Contact Information</h3>`;
-            html += `
-                <div class="contact-section-pane">
-                    <div class="contact-item">
-                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <p><strong>Address:</strong><br>${contact.address || "Nadiad, Gujarat, India."}</p>
-                    </div>
-                    <div class="contact-item">
-                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        <p><strong>Email:</strong><br><a href="mailto:${contact.email}" style="color: var(--secondary); text-decoration: none;">${contact.email || "vihil3010@gmail.com"}</a></p>
-                    </div>
-                    <div class="contact-item">
-                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                        <p><strong>Phone:</strong><br>${contact.phone || "+91 7016421339"}</p>
-                    </div>
-                </div>
-            `;
-
-            // Socials
-            if (contact.social_links) {
-                html += `<div class="social-links" style="margin-top: 15px;">`;
-                if (contact.social_links.facebook) {
-                    html += `<a href="${contact.social_links.facebook}" target="_blank" class="social-link" title="Facebook"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>`;
-                }
-                if (contact.social_links.instagram) {
-                    html += `<a href="${contact.social_links.instagram}" target="_blank" class="social-link" title="Instagram"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>`;
-                }
-                if (contact.social_links.twitter) {
-                    html += `<a href="${contact.social_links.twitter}" target="_blank" class="social-link" title="Twitter"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>`;
-                }
-                if (contact.social_links.linkedin) {
-                    html += `<a href="${contact.social_links.linkedin}" target="_blank" class="social-link" title="LinkedIn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>`;
-                }
-                html += `</div>`;
-            }
-        }
-
-        tabContent.innerHTML = html;
-
-        // Dynamic spring morph animation reset
-        tabContent.classList.remove("tab-content-animate");
-        void tabContent.offsetWidth; // Trigger reflow
-        tabContent.classList.add("tab-content-animate");
-
-        // Re-bind mouse tracking coords to the newly loaded tab cards
-        if (typeof trackCardsGlow === 'function') {
-            trackCardsGlow(tabContent);
-        }
-    }
-
-    // 3. Send Message / Query API
-    chatForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const text = userInput.value.trim();
-        if (!text) return;
-
-        // Stop any currently playing audio immediately
         if (currentPlayingAudio) {
             currentPlayingAudio.pause();
             currentPlayingAudio.currentTime = 0;
             currentPlayingAudio = null;
         }
-        if ('speechSynthesis' in window) {
+
+        if (isMuted && "speechSynthesis" in window) {
             window.speechSynthesis.cancel();
         }
-
-        // Clear input
-        userInput.value = "";
-
-        // Append User Message to Log
-        appendMessage(text, "user-message");
-
-        // Append Typing Indicator
-        const typingIndicator = appendTypingIndicator();
-        scrollToBottom();
-
-        try {
-            const selectedLang = langSelect ? langSelect.value : "auto";
-            const response = await fetch("/api/query", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query: text, lang: selectedLang })
-            });
-
-            // Remove Typing Indicator
-            typingIndicator.remove();
-
-            if (response.ok) {
-                const data = await response.json();
-                appendMessage(data.answer, "bot-message");
-                if (!isMuted) {
-                    if (data.audio) {
-                        currentPlayingAudio = new Audio("data:audio/mp3;base64," + data.audio);
-                        currentPlayingAudio.play().catch(e => {
-                            console.error("Audio playback failed:", e);
-                            speakText(data.answer, data.lang);
-                        });
-                    } else {
-                        speakText(data.answer, data.lang);
-                    }
-                }
-            } else {
-                appendMessage("Error generating answer. Please try again.", "bot-message");
-                if (!isMuted) speakText("Error generating answer. Please try again.", "en");
-            }
-        } catch (err) {
-            typingIndicator.remove();
-            console.error("Query Error:", err);
-            appendMessage("Failed to communicate with AI server. Please check connection.", "bot-message");
-        }
-        scrollToBottom();
-    });
+    }
 
     function appendMessage(text, className) {
-        const msgDiv = document.createElement("div");
-        msgDiv.className = `message ${className}`;
-
-        // Format text with paragraph breaks
-        const formattedText = text.replace(/\n/g, "<br>");
-
-        msgDiv.innerHTML = `
-            <div class="message-content">${formattedText}</div>
+        const message = document.createElement("div");
+        message.className = `message ${className}`;
+        message.innerHTML = `
+            <div class="message-content">${text.replace(/\n/g, "<br>")}</div>
             <div class="message-time">Just now</div>
         `;
-        chatMessages.appendChild(msgDiv);
-    }
-
-    function appendTypingIndicator() {
-        const msgDiv = document.createElement("div");
-        msgDiv.className = "message bot-message typing-indicator-msg";
-        msgDiv.innerHTML = `
-            <div class="message-content">
-                <div class="typing-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        `;
-        chatMessages.appendChild(msgDiv);
-        return msgDiv;
-    }
-
-    function scrollToBottom() {
+        chatMessages.appendChild(message);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // 4. Sync/Recrawl Button Click
-    recrawlBtn.addEventListener("click", async () => {
-        // Show scrape overlay spinner
-        scrapeOverlay.classList.add("active");
+    function appendTypingIndicator() {
+        const message = document.createElement("div");
+        message.className = "message bot-message";
+        message.innerHTML = `
+            <div class="message-content"><div class="typing-dots"><span></span><span></span><span></span></div></div>
+            <div class="message-time">Just now</div>
+        `;
+        chatMessages.appendChild(message);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return message;
+    }
 
-        try {
-            const res = await fetch("/api/scrape", {
-                method: "POST"
-            });
-
-            if (res.ok) {
-                const result = await res.json();
-                console.log(result.message);
-
-                // Fetch fresh database contents
-                await fetchKnowledgeBase();
-
-                // Add system message
-                appendMessage("Website content has been successfully crawled and updated in real-time!", "bot-message");
-            } else {
-                alert("Failed to crawl website. Backend error.");
-            }
-        } catch (err) {
-            console.error("Crawl error:", err);
-            alert("Error triggering crawl. Please make sure FastAPI app is running.");
-        } finally {
-            // Hide overlay
-            scrapeOverlay.classList.remove("active");
-            scrollToBottom();
-        }
-    });
-
-    // 5. Speech Synthesis (Text-to-Speech)
     function speakText(text, lang) {
-        if (isMuted) return;
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-
-            // Remove markdown or special characters before speaking
-            const cleanText = text.replace(/[*_#]/g, '').replace(/<[^>]+>/g, '');
-            const utterance = new SpeechSynthesisUtterance(cleanText);
-
-            // Set language code
-            const simpleLang = lang ? lang.split("-")[0] : "en";
-            const voiceLangMap = {
-                "en": "en-US", "hi": "hi-IN", "gu": "gu-IN", "es": "es-ES",
-                "fr": "fr-FR", "de": "de-DE", "ja": "ja-JP", "zh": "zh-CN",
-                "ar": "ar-SA", "ru": "ru-RU", "pt": "pt-PT"
-            };
-            utterance.lang = voiceLangMap[simpleLang] || lang || 'en-US';
-
-            // Choose a voice matching the language if available
-            const voices = window.speechSynthesis.getVoices();
-            let selectedVoice = null;
-            
-            // Try to find a female voice matching the language code
-            selectedVoice = voices.find(v => v.lang.startsWith(simpleLang) && /female/i.test(v.name)) ||
-                            voices.find(v => v.lang.startsWith(simpleLang) && (v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('catherine') || v.name.toLowerCase().includes('emma') || v.name.toLowerCase().includes('swara') || v.name.toLowerCase().includes('dhwani'))) ||
-                            voices.find(v => v.lang.startsWith(simpleLang)) ||
-                            voices.find(v => /female/i.test(v.name));
-                            
-            if (selectedVoice) {
-                utterance.voice = selectedVoice;
-            }
-
-            // Faster speaking rate for snappier responses
-            utterance.rate = 1.1; 
-            utterance.pitch = 1.0;
-
-            window.speechSynthesis.speak(utterance);
-        }
-    }
-
-    // 6. Speech Recognition (Voice Input)
-    if (micBtn) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SpeechRecognition) {
-            const recognition = new SpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
-
-            const micWave = document.getElementById("micWave");
-
-            recognition.onstart = function () {
-                micBtn.style.color = "#ef4444"; // Red to indicate recording
-                micBtn.classList.add("active");
-                if (micWave) micWave.classList.add("active");
-            };
-
-            recognition.onresult = function (event) {
-                const transcript = event.results[0][0].transcript;
-                userInput.value = transcript;
-                micBtn.style.color = "var(--text-secondary)";
-                micBtn.classList.remove("active");
-                if (micWave) micWave.classList.remove("active");
-                // Auto-submit form
-                chatForm.dispatchEvent(new Event("submit"));
-            };
-
-            recognition.onerror = function (event) {
-                console.error("Speech recognition error", event.error);
-                micBtn.style.color = "var(--text-secondary)";
-                micBtn.classList.remove("active");
-                if (micWave) micWave.classList.remove("active");
-            };
-
-            recognition.onend = function () {
-                micBtn.style.color = "var(--text-secondary)";
-                micBtn.classList.remove("active");
-                if (micWave) micWave.classList.remove("active");
-            };
-
-            micBtn.addEventListener("click", () => {
-                // Cancel any ongoing speech when user starts talking
-                if (currentPlayingAudio) {
-                    currentPlayingAudio.pause();
-                    currentPlayingAudio.currentTime = 0;
-                    currentPlayingAudio = null;
-                }
-                if ('speechSynthesis' in window) {
-                    window.speechSynthesis.cancel();
-                }
-
-                // Set active speech recognition language
-                const selectedLang = langSelect ? langSelect.value : "auto";
-                if (selectedLang && selectedLang !== "auto") {
-                    const sttLocales = {
-                        "en": "en-US",
-                        "hi": "hi-IN",
-                        "gu": "gu-IN",
-                        "es": "es-ES",
-                        "fr": "fr-FR",
-                        "de": "de-DE",
-                        "ja": "ja-JP",
-                        "zh": "zh-CN",
-                        "ar": "ar-SA",
-                        "ru": "ru-RU",
-                        "pt": "pt-PT"
-                    };
-                    recognition.lang = sttLocales[selectedLang] || selectedLang;
-                } else {
-                    recognition.lang = ""; // Default/auto
-                }
-
-                recognition.start();
-            });
-        } else {
-            micBtn.style.display = "none";
-            console.warn("Speech Recognition API not supported in this browser.");
-        }
-    }
-
-    // Awwwards Interactive Mouse-Tracking Features
-    // 1. Damped Spring Ambient Aurora Sweep Tracking
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    const auroraSweep = document.querySelector('.aurora-sweep');
-
-    document.addEventListener("mousemove", (e) => {
-        // Calculate offset relative to screen center
-        targetX = (e.clientX - window.innerWidth / 2) * 0.05;
-        targetY = (e.clientY - window.innerHeight / 2) * 0.05;
-    });
-
-    // High performance spring loop for background glides
-    function animateOrbs() {
-        currentX += (targetX - currentX) * 0.04;
-        currentY += (targetY - currentY) * 0.04;
-
-        if (auroraSweep) {
-            auroraSweep.style.transform = `translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px))`;
+        if (isMuted || !("speechSynthesis" in window)) {
+            return;
         }
 
-        requestAnimationFrame(animateOrbs);
-    }
-    animateOrbs();
-
-    // 2. Light Trail Mouse Tracking & Accordion Toggles
-    function trackCardsGlow(parentContainer) {
-        const updateGlowCoord = (e) => {
-            const card = e.currentTarget;
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text.replace(/[*_#]/g, "").replace(/<[^>]+>/g, ""));
+        const simpleLang = lang ? lang.split("-")[0] : "en";
+        const voiceMap = {
+            en: "en-US",
+            hi: "hi-IN",
+            gu: "gu-IN",
+            es: "es-ES",
+            fr: "fr-FR",
+            de: "de-DE",
+            ja: "ja-JP",
+            zh: "zh-CN",
+            ar: "ar-SA",
+            ru: "ru-RU",
+            pt: "pt-PT"
         };
 
-        const cards = parentContainer.querySelectorAll('.kb-card, .team-item, .stat-box');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', updateGlowCoord);
-            
-            // DAO Accordion Expand Listener
-            if (card.classList.contains('kb-card') && card.querySelector('.kb-card-body')) {
-                card.addEventListener('click', (e) => {
-                    const isExpanded = card.classList.contains('expanded');
-                    
-                    // Collapse siblings in the same container for clean accordion action
-                    const siblings = parentContainer.querySelectorAll('.kb-card.expanded');
-                    siblings.forEach(sib => {
-                        if (sib !== card) sib.classList.remove('expanded');
-                    });
-                    
-                    if (isExpanded) {
-                        card.classList.remove('expanded');
-                    } else {
-                        card.classList.add('expanded');
-                    }
-                });
+        utterance.lang = voiceMap[simpleLang] || "en-US";
+        utterance.rate = 1.05;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function clearConversation() {
+        chatMessages.innerHTML = "";
+        appendMessage("Hello! I am Vihil InfoTech's AI assistant. Ask about services, technologies, team, or contact details.", "bot-message");
+    }
+
+    if (muteBtn) {
+        muteBtn.addEventListener("click", () => setMuted(!isMuted));
+    }
+
+    if (clearBtn) {
+        clearBtn.addEventListener("click", clearConversation);
+    }
+
+    modeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            modeButtons.forEach((item) => item.classList.remove("active"));
+            button.classList.add("active");
+            currentMode = button.dataset.mode || "type";
+            if (currentMode === "speak" && micBtn) {
+                micBtn.click();
+            }
+        });
+    });
+
+    async function submitQuery(text) {
+        appendMessage(text, "user-message");
+        const typing = appendTypingIndicator();
+
+        try {
+            const response = await fetch("/api/query", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: text, lang: langSelect ? langSelect.value : "auto" })
+            });
+
+            typing.remove();
+
+            if (!response.ok) {
+                appendMessage("Error generating answer. Please try again.", "bot-message");
+                return;
+            }
+
+            const data = await response.json();
+            appendMessage(data.answer, "bot-message");
+
+            if (!isMuted) {
+                if (data.audio) {
+                    currentPlayingAudio = new Audio(`data:audio/mp3;base64,${data.audio}`);
+                    currentPlayingAudio.play().catch(() => speakText(data.answer, data.lang));
+                } else {
+                    speakText(data.answer, data.lang);
+                }
+            }
+        } catch (error) {
+            typing.remove();
+            appendMessage("Failed to communicate with the server. Please check that FastAPI is running.", "bot-message");
+            console.error(error);
+        }
+    }
+
+    chatForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const text = userInput.value.trim();
+        if (!text) {
+            return;
+        }
+        userInput.value = "";
+        submitQuery(text);
+    });
+
+    if (recrawlBtn) {
+        recrawlBtn.addEventListener("click", async () => {
+            scrapeOverlay.classList.add("active");
+            try {
+                const response = await fetch("/api/scrape", { method: "POST" });
+                if (!response.ok) {
+                    throw new Error("Scrape failed");
+                }
+                appendMessage("Website data refreshed successfully.", "bot-message");
+            } catch (error) {
+                appendMessage("Could not refresh the website data.", "bot-message");
+                console.error(error);
+            } finally {
+                scrapeOverlay.classList.remove("active");
             }
         });
     }
 
-    // Call tracking initially on body cards
-    trackCardsGlow(document);
+    if (micBtn && ("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
 
-    // 3. Populate Technology Marquee dynamically (DAO Style Loop)
-    const techMarquee = document.getElementById("techMarquee");
-    if (techMarquee) {
-        const technologies = [
-            "Next.js", "React.js", "Node.js", "Python", "FastAPI", "Firebase", 
-            "AWS", "HTML5/CSS3", "WordPress", "Shopify", "UI/UX Design", "Custom CMS"
-        ];
-        
-        let trackHTML = '<div class="tech-marquee-track">';
-        technologies.forEach(tech => {
-            trackHTML += `<div class="tech-badge">${tech}</div>`;
+        const basePlaceholder = userInput.placeholder;
+
+        if (navigator.permissions && navigator.permissions.query) {
+            navigator.permissions.query({ name: "microphone" }).then((status) => {
+                micPermissionDenied = status.state === "denied";
+                if (micPermissionDenied) {
+                    micBtn.title = "Microphone permission is denied in this browser";
+                    micBtn.classList.add("blocked");
+                }
+                status.onchange = () => {
+                    micPermissionDenied = status.state === "denied";
+                    micBtn.classList.toggle("blocked", micPermissionDenied);
+                };
+            }).catch(() => {});
+        }
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            userInput.value = transcript;
+            isListening = false;
+            micBtn.classList.remove("recording");
+            userInput.placeholder = basePlaceholder;
+            chatForm.requestSubmit();
+        };
+
+        recognition.onerror = (event) => {
+            isListening = false;
+            micBtn.classList.remove("recording");
+            userInput.placeholder = micPermissionDenied ? "Allow microphone permission to use Speak" : basePlaceholder;
+            if (event.error === "not-allowed" || event.error === "service-not-allowed") {
+                micBtn.classList.add("blocked");
+            }
+        };
+
+        recognition.onstart = () => {
+            isListening = true;
+            micBtn.classList.add("recording");
+            userInput.placeholder = "Listening... speak now";
+        };
+
+        recognition.onend = () => {
+            isListening = false;
+            micBtn.classList.remove("recording");
+            userInput.placeholder = basePlaceholder;
+        };
+
+        micBtn.addEventListener("click", () => {
+            if (!recognition) {
+                return;
+            }
+
+            if (micPermissionDenied) {
+                userInput.placeholder = "Allow microphone permission to use Speak";
+                return;
+            }
+
+            if (isListening) {
+                recognition.stop();
+                return;
+            }
+
+            if (isMuted && "speechSynthesis" in window) {
+                window.speechSynthesis.cancel();
+            }
+
+            const selectedLang = langSelect ? langSelect.value : "auto";
+            const langMap = {
+                en: "en-US",
+                hi: "hi-IN",
+                gu: "gu-IN",
+                es: "es-ES",
+                fr: "fr-FR",
+                de: "de-DE",
+                ja: "ja-JP",
+                zh: "zh-CN",
+                ar: "ar-SA",
+                ru: "ru-RU",
+                pt: "pt-PT"
+            };
+            recognition.lang = selectedLang !== "auto" ? (langMap[selectedLang] || selectedLang) : "en-US";
+
+            try {
+                recognition.start();
+            } catch (error) {
+                isListening = false;
+                micBtn.classList.remove("recording");
+                userInput.placeholder = basePlaceholder;
+                appendMessage("Speak could not start. Check microphone permission and try again.", "bot-message");
+                console.error(error);
+            }
         });
-        trackHTML += '</div>';
-        
-        techMarquee.innerHTML = trackHTML + trackHTML;
+    } else if (micBtn) {
+        micBtn.style.display = "none";
     }
 
-    // Run Initial fetch
-    fetchKnowledgeBase();
+    clearConversation();
 });
