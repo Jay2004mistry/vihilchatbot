@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
+from pathlib import Path
 import os
 import sys
 
@@ -17,6 +18,10 @@ except ImportError:
     sys.path.insert(0, os.getcwd())
     import scraper
     import qa_engine
+
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
+INDEX_FILE = STATIC_DIR / "index.html"
 
 app = FastAPI(title="Vihil InfoTech AI Assistant")
 
@@ -100,19 +105,38 @@ def api_data():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Serves index.html at root
 @app.get("/")
 def read_index():
-    index_path = os.path.join("static", "index.html")
-    if not os.path.exists(index_path):
-        # Create static folder and files if they do not exist
-        os.makedirs("static", exist_ok=True)
-    return FileResponse(index_path)
+    if not INDEX_FILE.exists():
+        raise HTTPException(status_code=500, detail="static/index.html is missing.")
+    return FileResponse(INDEX_FILE)
 
-# Mount static files directory
-# Create static directory if not exists
-os.makedirs("static", exist_ok=True)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+STATIC_DIR.mkdir(exist_ok=True)
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+import threading
+
+def _run_initial_scrape():
+    """
+    Run the scraper in a background thread on startup if AUTO_SCRAPE != "false".
+    This keeps the server responsive while the crawl runs.
+    """
+    try:
+        print("AUTO_SCRAPE: starting background scrape.")
+        kb = scraper.scrape_vihil()
+        print("AUTO_SCRAPE: background scrape finished.")
+    except Exception as err:
+        print("AUTO_SCRAPE: background scrape error:", err)
+
+
+@app.on_event("startup")
+def _startup_auto_scrape():
+    auto = os.environ.get("AUTO_SCRAPE", "true").lower()
+    if auto not in ("0", "false", "no"):
+        t = threading.Thread(target=_run_initial_scrape, daemon=True)
+        t.start()
+    else:
+        print("AUTO_SCRAPE is disabled; skipping automatic scrape on startup.")
 
 if __name__ == "__main__":
     import uvicorn
