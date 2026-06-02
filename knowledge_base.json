@@ -1,477 +1,2052 @@
 {
-    "metadata": {
-        "source": "https://www.vihilinfotech.com/",
-        "crawled_at": "urlopen"
+  "abouts": [
+    {
+      "_id": "6977323760d2b31b7ebc6e65",
+      "title": "tester",
+      "description": "hgfgdgdgjhf",
+      "createdAt": "2026-01-26T09:21:59.688Z",
+      "updatedAt": "2026-05-13T09:35:41.141Z",
+      "__v": 1,
+      "features": [
+        {
+          "icon": "FaAlgolia",
+          "title": "AI-first Thinking",
+          "description": "From copilots to workflow automation and smart assistants.",
+          "_id": "6a0445ed669f4f9a22a73401"
+        },
+        {
+          "icon": "FaAnkh",
+          "title": "Scalable Systems",
+          "description": "Modular architecture for performance and future growth.",
+          "_id": "6a0445ed669f4f9a22a73402"
+        },
+        {
+          "icon": "FaAppStoreIos",
+          "title": "Reliable Delivery",
+          "description": "Outcome-oriented sprints with quality and transparency.",
+          "_id": "6a0445ed669f4f9a22a73403"
+        }
+      ],
+      "mainDescription": "We build IT systems that are scalable, secure, and AI-ready - from product discovery to launch and long-term evolution.",
+      "mainTitle": "About Us",
+      "whatDrivesUsDescription": "We love turning complexity into clarity. Our mission is to merge business strategy with IT execution and deliver products that create measurable impact.",
+      "whatDrivesUsPoints": [
+        "Business goals mapped to engineering roadmap",
+        "Fast iterations with modern web architecture",
+        "AI/ML opportunities built into product planning"
+      ],
+      "whatDrivesUsTitle": "What Drives Us?",
+      "whoWeAreDescription": "A product-focused team of engineers, designers, and AI specialists. We partner with startups and enterprises to create practical digital products that solve real business problems.",
+      "whoWeAreTitle": "Who We Are"
     },
-    "company": {
-        "name": "Vihil InfoTech",
-        "tagline": "Cutting Edge Technology & Cross Device Compatibility",
-        "vision": {
-            "area": "Vision of our Company",
-            "description": "At Vihil InfoTech, we believe in a systematic approach for any project be it complex or simple. We are a group of individuals with a various set of skill set varies from Digital Marketing to IoT/Robotics solutions. We have our dedicated team for your project which uses various methods such as agile Scrum & agile Kanban. We ensure top-notch quality, on-time delivery, and agility for your project."
-        },
-        "statistics": [
-            {
-                "name": "60",
-                "content": "Happy Clients"
-            },
-            {
-                "name": "60",
-                "content": "Completed Projects"
-            },
-            {
-                "name": "20+",
-                "content": "Experienced Staff"
-            },
-            {
-                "name": "4.8",
-                "content": "Ratings"
-            }
-        ],
-        "contact": {
-            "address": "207, Sky Tatva-1, Opp. Amba Ashram, College road, Nadiad, Gujarat, India. (PIN: 387001)",
-            "email": "vihil3010@gmail.com",
-            "phone": "+91 7016421339",
-            "social_links": {
-                "facebook": "https://www.facebook.com/profile.php?id=100090324282115&mibextid=ViGcVu",
-                "instagram": "https://www.instagram.com/vihilinfotech/",
-                "twitter": "https://twitter.com/VihilInfoTech",
-                "linkedin": "https://in.linkedin.com/in/vihil-infotech-5a78b5266"
-            }
-        }
+    {
+      "_id": "69fc31f68b7e3fbb981b482b",
+      "title": "cdcd dcdsccs",
+      "description": "ncnsopcackdcnjdncxjimklxmcxxcxlcxlcxkcoddw90duw8hdcnxnknklxcoiwd9wdopmcp,cnoiojdwd",
+      "createdAt": "2026-05-07T06:32:22.966Z",
+      "updatedAt": "2026-05-07T06:32:22.966Z",
+      "__v": 0
+    }
+  ],
+  "callscheduledetails": [
+    {
+      "_id": "6a044ec0e5e3c40c9d454f0c",
+      "mainTitle": "Let's plan your next product move. ",
+      "mainSubtitle": "Pick a convenient time, tell us your scope, and we will come prepared with a practical roadmap.",
+      "benefits": [
+        "30-minute strategy call",
+        "Tech + delivery suggestions",
+        "Transparent timeline and cost direction",
+        "NDA-friendly discussion"
+      ],
+      "meetingModeTitle": "Google Meet / Zoom",
+      "meetingModeSubtitle": "We share meeting link and agenda right after confirmation.",
+      "createdAt": "2026-05-13T10:13:20.094Z",
+      "updatedAt": "2026-05-13T10:13:57.704Z",
+      "__v": 0
+    }
+  ],
+  "callSchedules": [
+    {
+      "_id": "69fc3d76a38ec2ddce9c3b19",
+      "name": "jay",
+      "email": "jaymistry6565@gmail.com",
+      "projectType": "e-commerce",
+      "selectedDay": "today",
+      "selectedSlot": "10:00 AM",
+      "dateText": "Tue, 14 Apr",
+      "status": "confirmed",
+      "meetingLink": "https://meet.google.com/x1360wenar",
+      "createdAt": "2026-05-07T07:21:26.214Z",
+      "updatedAt": "2026-05-07T07:21:37.223Z",
+      "__v": 0
     },
-    "services": [
-        {
-            "desc1": "Transform your ideas into powerful, cross-platform mobile experiences with Vihil InfoTech. Specializing in React Native development, we create sleek and efficient applications that run seamlessly on both iOS and Android. Our expert team combines innovative design with agile development to deliver a standout user experience. From concept to deployment, we prioritize excellence, ensuring your app stands out in the competitive digital landscape. Elevate your mobile presence with Vihil InfoTech – where innovation meets efficiency.",
-            "title": "1. Mobile App Development ",
-            "id": 1
-        },
-        {
-            "desc1": "Welcome to Vihil InfoTech, your destination for cutting-edge web development powered by ReactJS and NextJS. Our expert team crafts visually stunning and high-performance websites tailored to your unique needs. With a focus on innovation and user experience, we bring your digital presence to life. Whether you're a startup or an established business, we specialize in creating dynamic and responsive web solutions. Elevate your online presence with Vihil InfoTech – where ReactJS and NextJS expertise meet excellence.",
-            "title": "2. Web Development ",
-            "id": 2
-        },
-        {
-            "desc1": "Embark on a journey of cross-platform mobile app excellence with Vihil InfoTech. Specializing in React Native development, we seamlessly bring your vision to life on both iOS and Android platforms. Our seasoned team combines innovation and efficiency to deliver sleek and feature-rich applications. Whether you're a startup with a groundbreaking idea or an enterprise seeking digital expansion, Vihil InfoTech is your trusted partner for top-notch cross-platform mobile solutions. Elevate your mobile presence – where React Native expertise meets unparalleled quality.",
-            "title": "3. Cross platform mobile app",
-            "id": 3
-        },
-        {
-            "desc1": "Step into the future of web experiences with Vihil InfoTech. As pioneers in Progressive Web App (PWA) development, we seamlessly blend web and app functionalities for a responsive and engaging user journey. Our expert team leverages cutting-edge technologies, including ReactJS and NextJS, to create high-performance PWAs tailored to your business needs. Elevate your online presence with a fast, reliable, and immersive user experience. Choose Vihil InfoTech for PWA development excellence – where innovation meets the web.",
-            "title": "4. PWA Development",
-            "id": 4
-        },
-        {
-            "desc1": "Empower your business with robust desktop applications crafted by Vihil InfoTech. Specializing in efficient development using cutting-edge technologies, such as ReactJS and Electron, we deliver powerful and intuitive desktop solutions. Our expert team ensures seamless integration and optimal performance for a superior user experience. Whether you're a startup or an established enterprise, Vihil InfoTech is your trusted partner for bespoke desktop applications. Elevate your digital capabilities – where innovation converges with desktop development excellence.",
-            "title": "5. Desktop Application Development",
-            "id": 5
-        },
-        {
-            "desc1": "Transform customer engagement with intelligent chatbot solutions from Vihil InfoTech. Specializing in Chatbot Development, we leverage state-of-the-art technologies to create conversational interfaces that enhance user interactions. Our expert team designs and implements chatbots tailored to your business needs, improving efficiency and customer satisfaction. Whether you're a startup looking to automate processes or an enterprise aiming for personalized customer support, Vihil InfoTech is your partner in driving innovation through Chatbot Development. Elevate your digital conversations – where technology meets intelligent communication.",
-            "title": "6. Chatbot Development",
-            "id": 6
-        }
-    ],
-    "what_we_do": [
-        {
-            "name": "Web Application",
-            "desc": "Platform independant business solutions for maximum availability",
-            "id": 1
-        },
-        {
-            "name": "Cross Platform Development",
-            "desc": "Interactive Apps with perfect integration of frontend and backend",
-            "id": 2
-        },
-        {
-            "name": "SEO",
-            "desc": "Let the world find you on top of others",
-            "id": 3
-        },
-        {
-            "name": "Desktop Application",
-            "desc": "Advanced autonomous technological softwares to make life simple",
-            "id": 4
-        },
-        {
-            "name": "BIG Data",
-            "desc": "Get your decision making backed by inteligent insight",
-            "id": 5
-        },
-        {
-            "name": "Cyber Security",
-            "desc": "Make your digital assets secure and protected",
-            "id": 6
-        },
-        {
-            "name": "Mobile Applications",
-            "desc": "The simplest but robust technology to accompany with you",
-            "id": 7
-        },
-        {
-            "name": "Digital Marketing",
-            "desc": "Business made easy in a digital world",
-            "id": 8
-        }
-    ],
-    "team": [
-        {
-            "name": "Bharat Desai",
-            "position": "(CEO)",
-            "desc": "Businessmen",
-            "id": 1
-        },
-        {
-            "name": "Manish Shah",
-            "position": "(CTO)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 2
-        },
-        {
-            "name": "Jay shah",
-            "position": "( Project manager and Fullstack developer)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 3
-        },
-        {
-            "name": "Heer patel",
-            "position": "(Sr. Frontend developer)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 4
-        },
-        {
-            "name": "Dhaval prajapati",
-            "position": "(Hr and Sr. QA)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 5
-        },
-        {
-            "name": "Mihir prajapati",
-            "position": "(Sr. backend developer and server handling)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 6
-        },
-        {
-            "name": "Dip pathak",
-            "position": "(Sr. frontend Developer)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 7
-        },
-        {
-            "name": "Kinjal patel",
-            "position": "(Jr. frontend developer)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 8
-        },
-        {
-            "name": "Jaydeep panchal",
-            "position": "(Jr. frontend developer)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 9
-        },
-        {
-            "name": "Shaami Rana",
-            "position": "(BDE)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 10
-        },
-        {
-            "name": "Niket patel",
-            "position": "(BA)",
-            "desc": "From automation to advanced analytics and seamless experiences",
-            "id": 11
-        }
-    ],
-    "technologies": [
-        "Android",
-        "React",
-        "ios"
-    ],
-    "tech_categories": {
-        "mobile": [
-            {
-                "desc": "React",
-                "id": 1
-            },
-            {
-                "desc": "Android",
-                "id": 2
-            },
-            {
-                "desc": "ios",
-                "id": 3
-            },
-            {
-                "desc": "React",
-                "id": 4
-            }
-        ],
-        "web_frontend": [
-            {
-                "desc": "React",
-                "id": 1
-            },
-            {
-                "desc": "Android",
-                "id": 2
-            },
-            {
-                "desc": "ios",
-                "id": 3
-            },
-            {
-                "desc": "ios",
-                "id": 4
-            },
-            {
-                "desc": "ios",
-                "id": 5
-            },
-            {
-                "desc": "ios",
-                "id": 6
-            },
-            {
-                "desc": "ios",
-                "id": 7
-            }
-        ],
-        "fullstack": [
-            {
-                "desc": "React",
-                "id": 1
-            },
-            {
-                "desc": "Android",
-                "id": 2
-            },
-            {
-                "desc": "ios",
-                "id": 3
-            },
-            {
-                "desc": "ios",
-                "id": 4
-            },
-            {
-                "desc": "ios",
-                "id": 5
-            },
-            {
-                "desc": "ios",
-                "id": 6
-            },
-            {
-                "desc": "ios",
-                "id": 7
-            },
-            {
-                "desc": "ios",
-                "id": 8
-            },
-            {
-                "desc": "ios",
-                "id": 9
-            }
-        ],
-        "backend": [
-            {
-                "desc": "React",
-                "id": 1
-            },
-            {
-                "desc": "Android",
-                "id": 2
-            },
-            {
-                "desc": "ios",
-                "id": 3
-            },
-            {
-                "desc": "ios",
-                "id": 4
-            },
-            {
-                "desc": "ios",
-                "id": 5
-            }
-        ],
-        "cross_platform": [
-            {
-                "desc": "React",
-                "id": 1
-            },
-            {
-                "desc": "Android",
-                "id": 2
-            },
-            {
-                "desc": "ios",
-                "id": 3
-            },
-            {
-                "desc": "ios",
-                "id": 4
-            }
-        ],
-        "frontend_frameworks": [
-            {
-                "desc": "React",
-                "id": 1
-            },
-            {
-                "desc": "Android",
-                "id": 2
-            },
-            {
-                "desc": "ios",
-                "id": 3
-            },
-            {
-                "desc": "ios",
-                "id": 4
-            }
-        ]
+    {
+      "_id": "69fc59a73b6518db93227ef9",
+      "name": "jay",
+      "email": "jaymistry6565@gmail.com",
+      "projectType": "AI/ML",
+      "selectedDay": "wed",
+      "selectedSlot": "9:30 AM",
+      "dateText": "15 Apr",
+      "status": "confirmed",
+      "meetingLink": "https://meet.google.com/yapq5gjqoq",
+      "createdAt": "2026-05-07T09:21:43.338Z",
+      "updatedAt": "2026-05-07T09:21:52.776Z",
+      "__v": 0
     },
-    "process": [
+    {
+      "_id": "69fc646e3b6518db93227f08",
+      "name": "jay",
+      "email": "jaymistry6565@gmail.com",
+      "projectType": "AI/ML",
+      "selectedDay": "wed",
+      "selectedSlot": "6:00 PM",
+      "dateText": "15 Apr",
+      "status": "confirmed",
+      "meetingLink": "https://meet.google.com/s8em9s71do",
+      "createdAt": "2026-05-07T10:07:42.764Z",
+      "updatedAt": "2026-05-07T10:18:39.461Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a1174395c4b0f35bf78fb78",
+      "name": "Test User",
+      "email": "test@example.com",
+      "projectType": "Web App",
+      "selectedDay": "today",
+      "selectedSlot": "11:30 AM",
+      "dateText": "Tue, 14 Apr",
+      "status": "pending",
+      "meetingLink": "https://meet.google.com/0o1y87jvny",
+      "createdAt": "2026-05-23T09:32:41.424Z",
+      "updatedAt": "2026-05-23T09:32:41.424Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a1174ad5c4b0f35bf78fb7b",
+      "name": "dhruvil",
+      "email": "dhruvilmistry19@gmail.com",
+      "projectType": "A",
+      "selectedDay": "wed",
+      "selectedSlot": "11:00 AM",
+      "dateText": "15 Apr",
+      "status": "confirmed",
+      "meetingLink": "https://meet.google.com/d0atqbhza1",
+      "createdAt": "2026-05-23T09:34:37.004Z",
+      "updatedAt": "2026-05-23T09:35:43.295Z",
+      "__v": 0
+    }
+  ],
+  "candidates": [
+    {
+      "_id": "699ede5d39754a8811171684",
+      "fullName": "Bharatbhai Desai",
+      "email": "juhil7365@gmail.com",
+      "phone": "08866661159",
+      "positionForApply": "fronten",
+      "resume": "1772019293078-276744542.jpeg",
+      "message": "new",
+      "__v": 0
+    },
+    {
+      "_id": "699ede8d39754a8811171687",
+      "fullName": "juhil desai",
+      "email": "juhil7365@gmail.com",
+      "phone": "08866661159",
+      "positionForApply": "frontend developer",
+      "resume": "1772019341130-75282036.jpeg",
+      "message": "new",
+      "__v": 0
+    },
+    {
+      "_id": "699edfc539754a881117168b",
+      "fullName": "kinjal",
+      "email": "juhil7365@gmail.com",
+      "phone": "08866661159",
+      "positionForApply": "frontend developer",
+      "resume": "1772019653174-71006737.jpeg",
+      "message": "for new position",
+      "__v": 0
+    },
+    {
+      "_id": "699ee03939754a881117168f",
+      "fullName": "kinjal",
+      "email": "juhil7365@gmail.com",
+      "phone": "08866661159",
+      "positionForApply": "frontend developer",
+      "resume": "1772019769922-965064693.jpeg",
+      "message": "for new position",
+      "__v": 0
+    },
+    {
+      "_id": "699ee1cd39754a881117169e",
+      "fullName": "Bharatbhai Desai",
+      "email": "juhil7365@gmail.com",
+      "phone": "08866661159",
+      "positionForApply": "frontend developer",
+      "resume": "1772020173464-392924880.jpeg",
+      "message": "okay",
+      "__v": 0
+    },
+    {
+      "_id": "699ee25039754a88111716b4",
+      "fullName": "juhil juhil desai",
+      "email": "juhil@yahoo.com",
+      "phone": "08866661159",
+      "positionForApply": "frontend developer",
+      "resume": "1772020304983-897380096.jpeg",
+      "message": "nn",
+      "__v": 0
+    }
+  ],
+  "careers": [
+    {
+      "_id": "690d7d2248c76e9192cb2183",
+      "position": "Frontend Developer",
+      "experience": "2 years",
+      "vacancy": "3",
+      "qualification": "B.Tech in Computer Science or equivalent",
+      "__v": 0
+    },
+    {
+      "_id": "690d973841f768726b9c00f7",
+      "position": "Tester",
+      "experience": "3+year",
+      "vacancy": "NA",
+      "qualification": "nthing to tell",
+      "__v": 0,
+      "updatedAt": "2026-01-26T09:13:00.968Z"
+    }
+  ],
+  "clienttestimonials": [
+    {
+      "_id": "6961e42a7d610e58a760fd3f",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527633/testimonials/pudy4oa65n0lsxax1hoo.png",
+      "position": "Founder and CEO, Bharat InfoTech",
+      "rating": "3",
+      "description": "Great UI and thoughtful content. Really stands out from the competition!",
+      "createdAt": "2026-01-10T05:31:22.540Z",
+      "updatedAt": "2026-03-03T08:47:14.142Z",
+      "__v": 0,
+      "name": "Mr. Patel"
+    },
+    {
+      "_id": "697224393047be44e192ec05",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527586/testimonials/il9kxxqnjok0favzqme4.png",
+      "position": "Founder and CEO, Bharat InfoTech",
+      "rating": "5",
+      "description": "Great UI and thoughtful content. Really stands out from the competition!",
+      "createdAt": "2026-01-22T13:20:57.473Z",
+      "updatedAt": "2026-03-03T08:46:26.844Z",
+      "__v": 0,
+      "name": "Mr. Patel"
+    },
+    {
+      "_id": "697335a7680575fa00f9845a",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527565/testimonials/vios51nuqhiwjla4ibue.png",
+      "position": "Founder and CEO, Bharat InfoTech",
+      "rating": "5",
+      "description": "Great UI and thoughtful content. Really stands out from the competition!",
+      "createdAt": "2026-01-23T08:47:35.672Z",
+      "updatedAt": "2026-03-03T08:46:06.612Z",
+      "__v": 0,
+      "name": "Mr. Patel"
+    },
+    {
+      "_id": "69772e6c60d2b31b7ebc6e04",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527548/testimonials/lqwcnax9idxe4hsm90r3.png",
+      "position": "tester",
+      "rating": "5",
+      "description": "i dont want to say anything about them they are just perfect",
+      "createdAt": "2026-01-26T09:05:48.589Z",
+      "updatedAt": "2026-03-03T08:45:49.033Z",
+      "__v": 0,
+      "name": "Mr. Patel"
+    },
+    {
+      "_id": "699edac866bbb32c05173822",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527498/testimonials/abgkifc48fj1i3xog8fs.png",
+      "position": "Founder and CEO, Bharat InfoTech",
+      "rating": "4",
+      "description": "Amazing experience! The platform design and performance exceeded my expectations.",
+      "createdAt": "2026-02-25T11:19:36.737Z",
+      "updatedAt": "2026-03-03T08:45:32.120Z",
+      "__v": 0,
+      "name": "Mr. Patel"
+    },
+    {
+      "_id": "699edb4acc1f3efe566e8632",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527468/testimonials/dm3yhe3bkghh7srcx1mm.png",
+      "name": "Mr. Patel",
+      "position": "Founder and CEO, Bharat InfoTech",
+      "rating": "5",
+      "description": "I just discovered this infotech page and I'm already hooked! The articles are insightful and informative, and the design of the website is sleek and modern. I especially appreciate the diversity of topics covered, from cybersecurity to software development. Keep up the great work!\",",
+      "createdAt": "2026-02-25T11:21:46.843Z",
+      "updatedAt": "2026-03-03T08:45:16.208Z",
+      "__v": 0
+    }
+  ],
+  "contactdetails": [
+    {
+      "_id": "6a0456521fed87b7d4b59a20",
+      "mainTitle": "Tell us what you want to launch next.",
+      "mainSubtitle": "Share your vision, timeline, and requirements. We'll guide you with a practical execution plan tailored to your product goals.",
+      "responseTime": "Within 2 hours",
+      "engagement": "NDA-friendly",
+      "address": "207, Sky Tatva - I, Opposite Amba Ashram, College Road, Nadiad, Gujarat - 387001",
+      "phone": "+91 70164 21339",
+      "email": "vihil3010@gmail.com",
+      "website": "www.vihilinfotech.com",
+      "createdAt": "2026-05-13T10:45:38.747Z",
+      "updatedAt": "2026-05-13T10:45:38.747Z",
+      "__v": 0
+    }
+  ],
+  "contactinfos": [
+    {
+      "_id": "6a02c7a296442d82cb3ef52a",
+      "title": "Contact Information",
+      "email": "vihil3010@gmail.com",
+      "contactNumber1": "+91-7016421339",
+      "contactNumber2": "+91-7016421339",
+      "paragraphTitle": "Why teams work with us",
+      "paragraphContent": "- Product + engineering alignment\n- AI/ML integration capability\n- Transparent sprint-based delivery",
+      "createdAt": "2026-05-12T06:24:34.265Z",
+      "updatedAt": "2026-05-13T09:49:25.284Z",
+      "__v": 0
+    }
+  ],
+  "contactUs": [
+    {
+      "_id": "699d8e6c17037970a1020c51",
+      "name": "ms.patel",
+      "email": "kinjal24@yopmail.com",
+      "message": "where we connect?",
+      "__v": 0
+    },
+    {
+      "_id": "69a6b8fbac586b887fa3a86b",
+      "name": "HETVI SHARMA",
+      "email": "hetsharma2627@gmail.com",
+      "message": "Hello team, I want to connect with you ",
+      "__v": 0
+    },
+    {
+      "_id": "69fc276973f9d17c34d1aef1",
+      "name": "jay",
+      "email": "jay@gmail.com",
+      "message": "hi my name is jay and i want to make a website",
+      "__v": 0
+    },
+    {
+      "_id": "6a1170d35c4b0f35bf78f8f6",
+      "name": "dhruvil",
+      "email": "dhruvilmistry19@gmail.com",
+      "message": "hyy i need help",
+      "__v": 0
+    }
+  ],
+  "faqs": [
+    {
+      "_id": "699d5143ea93d49b09c6bbb3",
+      "serialNumber": 1,
+      "question": "What services does Vihil infotech offer?",
+      "answer": "Vihil infotech specializes in [list of services, e.g., web development, mobile app development, IT consulting, etc.]. We provide end-to-end solutions to meet your digital needs.",
+      "createdAt": "2026-02-24T07:20:35.497Z",
+      "updatedAt": "2026-06-01T10:46:27.106Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01b6f54a87a2c3a50d7a2",
+      "serialNumber": 2,
+      "question": "What technologies does your team specialize in?",
+      "answer": "We specialize in technologies like React, Node.js, Python, AWS, Flutter, and more.",
+      "createdAt": "2026-02-26T10:07:43.877Z",
+      "updatedAt": "2026-02-26T10:07:43.877Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01b9154a87a2c3a50d7a6",
+      "serialNumber": 3,
+      "question": "How experienced is your team?",
+      "answer": "Our team consists of highly skilled professionals with years of industry experience in various domains.",
+      "createdAt": "2026-02-26T10:08:17.693Z",
+      "updatedAt": "2026-02-26T10:08:17.693Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01d2d54a87a2c3a50d7af",
+      "serialNumber": 4,
+      "question": "Can you handle both small projects and large-scale enterprise solutions?",
+      "answer": "Yes, Vihil infotech caters to a diverse clientele, ranging from startups to large enterprises. Our flexible approach allows us to tailor solutions to meet the unique requirements of each project.",
+      "createdAt": "2026-02-26T10:15:09.758Z",
+      "updatedAt": "2026-06-01T10:46:42.310Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01d6254a87a2c3a50d7b3",
+      "serialNumber": 5,
+      "question": "What is your development process like?",
+      "answer": "We follow an agile development methodology, ensuring transparency, collaboration, and adaptability throughout the project lifecycle. Our process includes stages like consultation, design, development, testing, deployment, and ongoing support.",
+      "createdAt": "2026-02-26T10:16:02.403Z",
+      "updatedAt": "2026-02-26T10:16:02.403Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01d7f54a87a2c3a50d7b7",
+      "serialNumber": 6,
+      "question": "How do you ensure the security of the projects you undertake?",
+      "answer": "Security is a top priority for us. We implement industry best practices, conduct regular security audits, and follow stringent measures to safeguard your data and applications.",
+      "createdAt": "2026-02-26T10:16:31.607Z",
+      "updatedAt": "2026-02-26T10:16:31.607Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01d9e54a87a2c3a50d7bb",
+      "serialNumber": 7,
+      "question": "Do you provide ongoing support and maintenance?",
+      "answer": "Yes, we offer post-launch support and maintenance services to ensure that your applications run smoothly. Our team is available to address any issues and implement updates as needed.",
+      "createdAt": "2026-02-26T10:17:02.489Z",
+      "updatedAt": "2026-02-26T10:17:02.489Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01dc054a87a2c3a50d7bf",
+      "serialNumber": 8,
+      "question": "What sets Vihil infotech apart from other IT service providers?",
+      "answer": "Vihil infotech stands out for its commitment to innovation, customer satisfaction, and the quality of our solutions. Our collaborative approach and focus on client success differentiate us in the industry.",
+      "createdAt": "2026-02-26T10:17:36.646Z",
+      "updatedAt": "2026-06-01T10:47:03.302Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01de454a87a2c3a50d7c3",
+      "serialNumber": 9,
+      "question": "How can I get a quote for my project?",
+      "answer": "To get a personalized quote, simply reach out to our team through [contact details]. We'll be happy to discuss your requirements and provide a tailored proposal.",
+      "createdAt": "2026-02-26T10:18:12.539Z",
+      "updatedAt": "2026-02-26T10:18:12.539Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a01e0154a87a2c3a50d7c7",
+      "serialNumber": 10,
+      "question": "Can you provide references or case studies of previous projects?",
+      "answer": "Certainly! We have a portfolio of successful projects and satisfied clients. Contact us, and we'll be happy to share relevant case studies and references.",
+      "createdAt": "2026-02-26T10:18:41.658Z",
+      "updatedAt": "2026-02-26T10:18:41.658Z",
+      "__v": 0
+    }
+  ],
+  "footermenus": [
+    {
+      "_id": "6a0d8f0ad697322fa0962bed",
+      "categories": [
         {
-            "position": "relative",
-            "title": "01.",
-            "content": "Research",
-            "dis": "Gethering Information from all around"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative",
-            "title": "02.",
-            "content": "Plan",
-            "dis": "Effective strategies for favorable outcomes"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative",
-            "title": "03.",
-            "content": "Implements",
-            "dis": "Timely executions as per the plan"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative",
-            "title": "04.",
-            "content": "Test and Deliver",
-            "dis": "Making a successful launch"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative",
-            "title": "05.",
-            "content": "Optimize",
-            "dis": "Steadyily climbing up the Hill"
-        },
-        {
-            "position": "relative"
-        },
-        {
-            "position": "relative"
+          "categoryTitle": "Data",
+          "items": [
+            {
+              "label": "Data Engineering",
+              "_id": "6a0ecc0159567c446c1410d0"
+            },
+            {
+              "label": "Data Science Solutions",
+              "_id": "6a0ecc0159567c446c1410d1"
+            },
+            {
+              "label": "Data Analytics Services",
+              "_id": "6a0ecc0159567c446c1410d2"
+            },
+            {
+              "label": "Big Data Services",
+              "_id": "6a0ecc0159567c446c1410d3"
+            },
+            {
+              "label": "Business Intelligence",
+              "_id": "6a0ecc0159567c446c1410d4"
+            }
+          ],
+          "_id": "6a0ecc0159567c446c1410cf"
         }
-    ],
-    "faqs": [
+      ],
+      "createdAt": "2026-05-20T10:38:02.619Z",
+      "updatedAt": "2026-05-21T09:10:25.897Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0d8f65d697322fa0962bfe",
+      "categories": [
         {
-            "question": "What services does Vihil InfoTech offer?",
-            "answer": "Vihil InfoTech specializes in [list of services, e.g., web development, mobile app development, IT consulting, etc.]. We provide end-to-end solutions to meet your digital needs.",
-            "id": 1
-        },
-        {
-            "question": "What technologies does your team specialize in?",
-            "answer": "Our team is proficient in a wide range of technologies, including but not limited to [list of technologies, e.g., ReactJS, React Native, Node.js, Python, etc.]. We stay updated with the latest advancements to deliver cutting-edge solutions.",
-            "id": 2
-        },
-        {
-            "question": "How experienced is your team?",
-            "answer": "Our team comprises highly experienced professionals with a proven track record in the IT industry. We bring a wealth of knowledge and expertise to every project we undertake.",
-            "id": 3
-        },
-        {
-            "question": "Can you handle both small projects and large-scale enterprise solutions?",
-            "answer": "Yes, Vihil InfoTech caters to a diverse clientele, ranging from startups to large enterprises. Our flexible approach allows us to tailor solutions to meet the unique requirements of each project.",
-            "id": 4
-        },
-        {
-            "question": "What is your development process like?",
-            "answer": "We follow an agile development methodology, ensuring transparency, collaboration, and adaptability throughout the project lifecycle. Our process includes stages like consultation, design, development, testing, deployment, and ongoing support.",
-            "id": 5
-        },
-        {
-            "question": "How do you ensure the security of the projects you undertake?",
-            "answer": "Security is a top priority for us. We implement industry best practices, conduct regular security audits, and follow stringent measures to safeguard your data and applications.",
-            "id": 6
-        },
-        {
-            "question": "Do you provide ongoing support and maintenance?",
-            "answer": "Yes, we offer post-launch support and maintenance services to ensure that your applications run smoothly. Our team is available to address any issues and implement updates as needed.",
-            "id": 7
-        },
-        {
-            "question": "What sets Vihil InfoTech apart from other IT service providers?",
-            "answer": "Vihil InfoTech stands out for its commitment to innovation, customer satisfaction, and the quality of our solutions. Our collaborative approach and focus on client success differentiate us in the industry.",
-            "id": 8
-        },
-        {
-            "question": "How can I get a quote for my project?",
-            "answer": "To get a personalized quote, simply reach out to our team through [contact details]. We'll be happy to discuss your requirements and provide a tailored proposal.",
-            "id": 9
-        },
-        {
-            "question": "Can you provide references or case studies of previous projects?",
-            "answer": "Certainly! We have a portfolio of successful projects and satisfied clients. Contact us, and we'll be happy to share relevant case studies and references.",
-            "id": 10
+          "categoryTitle": "Digital Solutions",
+          "items": [
+            {
+              "label": "Digital Twin Services",
+              "_id": "6a0d8f65d697322fa0962c00"
+            },
+            {
+              "label": "Digital Transformation",
+              "_id": "6a0d8f65d697322fa0962c01"
+            },
+            {
+              "label": "Unreal Development",
+              "_id": "6a0d8f65d697322fa0962c02"
+            },
+            {
+              "label": "UI/UX Design",
+              "_id": "6a0d8f65d697322fa0962c03"
+            },
+            {
+              "label": "Digital Marketing",
+              "_id": "6a0d8f65d697322fa0962c04"
+            }
+          ],
+          "_id": "6a0d8f65d697322fa0962bff"
         }
-    ],
-    "carousel": [
+      ],
+      "createdAt": "2026-05-20T10:39:33.733Z",
+      "updatedAt": "2026-05-20T10:39:33.733Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ecc6459567c446c1410eb",
+      "categories": [
         {
-            "name": "Cutting Edge Technology",
-            "desc": "Take the advantage of our cutting-edge solutions to increase your Return of Investment on IT.",
-            "id": 1
-        },
-        {
-            "name": "Cross Device Compatibility",
-            "desc": "Multi-device compatibility ensures that creating, viewing and providing quick and easy",
-            "id": 2
-        },
-        {
-            "name": "Tailer Mode Development",
-            "desc": "Scalable and dynamic systems with the ever-changing trends to meet your dynamic business needs",
-            "id": 3
-        },
-        {
-            "name": "Cutting Edge Technology",
-            "desc": "Take the advantage of our cutting-edge solutions to increase your Return of Investment on IT.",
-            "id": 4
-        },
-        {
-            "name": "Cross Device Compatibility",
-            "desc": "Multi-device compatibility ensures that creating, viewing and providing quick and easy",
-            "id": 5
+          "categoryTitle": "Application",
+          "items": [
+            {
+              "label": "Web Development",
+              "_id": "6a0ecc6459567c446c1410ed"
+            },
+            {
+              "label": "Mobile App Development",
+              "_id": "6a0ecc6459567c446c1410ee"
+            },
+            {
+              "label": "SaaS Development",
+              "_id": "6a0ecc6459567c446c1410ef"
+            },
+            {
+              "label": "PWA Development",
+              "_id": "6a0ecc6459567c446c1410f0"
+            },
+            {
+              "label": "MVP Development",
+              "_id": "6a0ecc6459567c446c1410f1"
+            },
+            {
+              "label": "Application Modernization",
+              "_id": "6a0ecc6459567c446c1410f2"
+            },
+            {
+              "label": "Game Development",
+              "_id": "6a0ecc6459567c446c1410f3"
+            }
+          ],
+          "_id": "6a0ecc6459567c446c1410ec"
         }
+      ],
+      "createdAt": "2026-05-21T09:12:04.425Z",
+      "updatedAt": "2026-05-21T09:12:04.425Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0eccf059567c446c14110c",
+      "categories": [
+        {
+          "categoryTitle": "Industries",
+          "items": [
+            {
+              "label": "Healthcare",
+              "_id": "6a0eccf059567c446c14110e"
+            },
+            {
+              "label": "Education",
+              "_id": "6a0eccf059567c446c14110f"
+            },
+            {
+              "label": "Sports",
+              "_id": "6a0eccf059567c446c141110"
+            },
+            {
+              "label": "Real Estate",
+              "_id": "6a0eccf059567c446c141111"
+            },
+            {
+              "label": "Fitness",
+              "_id": "6a0eccf059567c446c141112"
+            },
+            {
+              "label": "Finance",
+              "_id": "6a0eccf059567c446c141113"
+            },
+            {
+              "label": "Retail",
+              "_id": "6a0eccf059567c446c141114"
+            }
+          ],
+          "_id": "6a0eccf059567c446c14110d"
+        }
+      ],
+      "createdAt": "2026-05-21T09:14:24.046Z",
+      "updatedAt": "2026-05-21T09:14:24.046Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ecd3059567c446c141133",
+      "categories": [
+        {
+          "categoryTitle": "AI/ML",
+          "items": [
+            {
+              "label": "AI Development",
+              "_id": "6a0ecd3059567c446c141135"
+            },
+            {
+              "label": "Generative AI Development",
+              "_id": "6a0ecd3059567c446c141136"
+            },
+            {
+              "label": "ML Development",
+              "_id": "6a0ecd3059567c446c141137"
+            },
+            {
+              "label": "AI Agent Development",
+              "_id": "6a0ecd3059567c446c141138"
+            },
+            {
+              "label": "LLM Development Services",
+              "_id": "6a0ecd3059567c446c141139"
+            }
+          ],
+          "_id": "6a0ecd3059567c446c141134"
+        }
+      ],
+      "createdAt": "2026-05-21T09:15:28.451Z",
+      "updatedAt": "2026-05-21T09:15:28.451Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ecd6259567c446c141160",
+      "categories": [
+        {
+          "categoryTitle": "Software",
+          "items": [
+            {
+              "label": "Software Development",
+              "_id": "6a0ecd6259567c446c141162"
+            },
+            {
+              "label": "Software Product Development",
+              "_id": "6a0ecd6259567c446c141163"
+            },
+            {
+              "label": "Startups Software Development",
+              "_id": "6a0ecd6259567c446c141164"
+            },
+            {
+              "label": "Enterprise Software Development",
+              "_id": "6a0ecd6259567c446c141165"
+            },
+            {
+              "label": "Software Development Outsourcing",
+              "_id": "6a0ecd6259567c446c141166"
+            }
+          ],
+          "_id": "6a0ecd6259567c446c141161"
+        }
+      ],
+      "createdAt": "2026-05-21T09:16:18.384Z",
+      "updatedAt": "2026-05-21T09:16:18.384Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ecda759567c446c141197",
+      "categories": [
+        {
+          "categoryTitle": "Hire",
+          "items": [
+            {
+              "label": "Hire Dedicated Developers",
+              "_id": "6a0ecda759567c446c141199"
+            },
+            {
+              "label": "UI/UX Designers",
+              "_id": "6a0ecda759567c446c14119a"
+            },
+            {
+              "label": "Software Developers",
+              "_id": "6a0ecda759567c446c14119b"
+            },
+            {
+              "label": "Mobile App Developers",
+              "_id": "6a0ecda759567c446c14119c"
+            },
+            {
+              "label": "Frontend Developers",
+              "_id": "6a0ecda759567c446c14119d"
+            },
+            {
+              "label": "Backend Developers",
+              "_id": "6a0ecda759567c446c14119e"
+            },
+            {
+              "label": "Unreal Engine Developers",
+              "_id": "6a0ecda759567c446c14119f"
+            }
+          ],
+          "_id": "6a0ecda759567c446c141198"
+        }
+      ],
+      "createdAt": "2026-05-21T09:17:27.531Z",
+      "updatedAt": "2026-05-21T09:17:27.531Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ecdde59567c446c1411d2",
+      "categories": [
+        {
+          "categoryTitle": "Company",
+          "items": [
+            {
+              "label": "About Us",
+              "_id": "6a0ecdde59567c446c1411d4"
+            },
+            {
+              "label": "Careers",
+              "_id": "6a0ecdde59567c446c1411d5"
+            },
+            {
+              "label": "Partnership",
+              "_id": "6a0ecdde59567c446c1411d6"
+            },
+            {
+              "label": "Client Testimonials",
+              "_id": "6a0ecdde59567c446c1411d7"
+            },
+            {
+              "label": "FAQs",
+              "_id": "6a0ecdde59567c446c1411d8"
+            },
+            {
+              "label": "Areas We Serve",
+              "_id": "6a0ecdde59567c446c1411d9"
+            }
+          ],
+          "_id": "6a0ecdde59567c446c1411d3"
+        }
+      ],
+      "createdAt": "2026-05-21T09:18:22.828Z",
+      "updatedAt": "2026-05-21T09:18:22.828Z",
+      "__v": 0
+    }
+  ],
+  "headermenus": [
+    {
+      "_id": "6a0ed1ca59567c446c14122d",
+      "categories": [
+        {
+          "categoryTitle": "Web Development",
+          "items": [
+            {
+              "label": "React & modern frontends",
+              "_id": "6a0ed2dc59567c446c141255"
+            },
+            {
+              "label": "Node.js APIs & services",
+              "_id": "6a0ed2dc59567c446c141256"
+            },
+            {
+              "label": "Next.js applications",
+              "_id": "6a0ed2dc59567c446c141257"
+            },
+            {
+              "label": " Express.js backends",
+              "_id": "6a0ed2dc59567c446c141258"
+            },
+            {
+              "label": "PHP applications",
+              "_id": "6a0ed2dc59567c446c141259"
+            },
+            {
+              "label": "Full-stack product delivery",
+              "_id": "6a0ed2dc59567c446c14125a"
+            }
+          ],
+          "_id": "6a0ed2dc59567c446c141254"
+        },
+        {
+          "categoryTitle": "Mobile Apps",
+          "items": [
+            {
+              "label": "Cross-platform mobile apps",
+              "_id": "6a0ed2dc59567c446c14125c"
+            },
+            {
+              "label": "Android development",
+              "_id": "6a0ed2dc59567c446c14125d"
+            },
+            {
+              "label": "iOS development",
+              "_id": "6a0ed2dc59567c446c14125e"
+            },
+            {
+              "label": " App store release & CI/CD",
+              "_id": "6a0ed2dc59567c446c14125f"
+            }
+          ],
+          "_id": "6a0ed2dc59567c446c14125b"
+        },
+        {
+          "categoryTitle": "AI & Data",
+          "items": [
+            {
+              "label": "AI / ML features in products",
+              "_id": "6a0ed2dc59567c446c141261"
+            },
+            {
+              "label": " LLM & assistant integrations",
+              "_id": "6a0ed2dc59567c446c141262"
+            },
+            {
+              "label": "Data analytics & dashboards",
+              "_id": "6a0ed2dc59567c446c141263"
+            },
+            {
+              "label": " Automation & intelligent workflows",
+              "_id": "6a0ed2dc59567c446c141264"
+            }
+          ],
+          "_id": "6a0ed2dc59567c446c141260"
+        },
+        {
+          "categoryTitle": "Cyber security",
+          "items": [
+            {
+              "label": "Secure architecture & reviews",
+              "_id": "6a0ed2dc59567c446c141266"
+            },
+            {
+              "label": " Application hardening",
+              "_id": "6a0ed2dc59567c446c141267"
+            },
+            {
+              "label": "Compliance-aware engineering",
+              "_id": "6a0ed2dc59567c446c141268"
+            }
+          ],
+          "_id": "6a0ed2dc59567c446c141265"
+        },
+        {
+          "categoryTitle": "E-commerce",
+          "items": [
+            {
+              "label": "Shopify builds & customization",
+              "_id": "6a0ed2dc59567c446c14126a"
+            },
+            {
+              "label": "Custom storefronts",
+              "_id": "6a0ed2dc59567c446c14126b"
+            },
+            {
+              "label": "Payments & subscription flows",
+              "_id": "6a0ed2dc59567c446c14126c"
+            }
+          ],
+          "_id": "6a0ed2dc59567c446c141269"
+        },
+        {
+          "categoryTitle": "Marketing & discovery",
+          "items": [
+            {
+              "label": "Technical SEO",
+              "_id": "6a0ed2dc59567c446c14126e"
+            },
+            {
+              "label": "Performance & Core Web Vitals",
+              "_id": "6a0ed2dc59567c446c14126f"
+            },
+            {
+              "label": "Analytics & attribution setup",
+              "_id": "6a0ed2dc59567c446c141270"
+            }
+          ],
+          "_id": "6a0ed2dc59567c446c14126d"
+        }
+      ],
+      "createdAt": "2026-05-21T09:35:06.940Z",
+      "updatedAt": "2026-05-21T09:39:40.488Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ed45959567c446c14130a",
+      "categories": [
+        {
+          "categoryTitle": "Industries we serve",
+          "items": [
+            {
+              "label": "Healthcare & healthtech",
+              "_id": "6a0ed45959567c446c14130c"
+            },
+            {
+              "label": "Education & e-learning",
+              "_id": "6a0ed45959567c446c14130d"
+            },
+            {
+              "label": "FinTech & banking",
+              "_id": "6a0ed45959567c446c14130e"
+            },
+            {
+              "label": "Retail & e-commerce",
+              "_id": "6a0ed45959567c446c14130f"
+            },
+            {
+              "label": "Logistics & supply chain",
+              "_id": "6a0ed45959567c446c141310"
+            },
+            {
+              "label": "SaaS & B2B platforms",
+              "_id": "6a0ed45959567c446c141311"
+            },
+            {
+              "label": "Manufacturing & IoT",
+              "_id": "6a0ed45959567c446c141312"
+            }
+          ],
+          "_id": "6a0ed45959567c446c14130b"
+        },
+        {
+          "categoryTitle": "Business focus",
+          "items": [
+            {
+              "label": "Startup MVP & product-market fit",
+              "_id": "6a0ed45959567c446c141314"
+            },
+            {
+              "label": "Enterprise digital transformation",
+              "_id": "6a0ed45959567c446c141315"
+            },
+            {
+              "label": "Product discovery & UX",
+              "_id": "6a0ed45959567c446c141316"
+            },
+            {
+              "label": "Dedicated product teams",
+              "_id": "6a0ed45959567c446c141317"
+            },
+            {
+              "label": "Staff augmentation",
+              "_id": "6a0ed45959567c446c141318"
+            },
+            {
+              "label": "Fixed-scope agile sprints",
+              "_id": "6a0ed45959567c446c141319"
+            },
+            {
+              "label": "Ongoing support & scale",
+              "_id": "6a0ed45959567c446c14131a"
+            }
+          ],
+          "_id": "6a0ed45959567c446c141313"
+        },
+        {
+          "categoryTitle": "Growth-driven solutions",
+          "items": [
+            {
+              "label": "CRM development & integrations",
+              "_id": "6a0ed45959567c446c14131c"
+            },
+            {
+              "label": "CMS development",
+              "_id": "6a0ed45959567c446c14131d"
+            },
+            {
+              "label": "On-demand marketplace apps",
+              "_id": "6a0ed45959567c446c14131e"
+            },
+            {
+              "label": " Web portal development",
+              "_id": "6a0ed45959567c446c14131f"
+            },
+            {
+              "label": "ERP integrations",
+              "_id": "6a0ed45959567c446c141320"
+            },
+            {
+              "label": "API platforms & ecosystems",
+              "_id": "6a0ed45959567c446c141321"
+            }
+          ],
+          "_id": "6a0ed45959567c446c14131b"
+        }
+      ],
+      "createdAt": "2026-05-21T09:46:01.221Z",
+      "updatedAt": "2026-05-21T09:46:01.221Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ed831296876347f098537",
+      "categories": [
+        {
+          "categoryTitle": "Data & AI",
+          "items": [
+            {
+              "label": "Data scientists",
+              "_id": "6a0ed831296876347f098539"
+            },
+            {
+              "label": "AI / ML engineers",
+              "_id": "6a0ed831296876347f09853a"
+            },
+            {
+              "label": "AI agent & LLM developers",
+              "_id": "6a0ed831296876347f09853b"
+            },
+            {
+              "label": "Data engineers",
+              "_id": "6a0ed831296876347f09853c"
+            },
+            {
+              "label": "MLOps & model deployment",
+              "_id": "6a0ed831296876347f09853d"
+            }
+          ],
+          "_id": "6a0ed831296876347f098538"
+        },
+        {
+          "categoryTitle": "Mobile",
+          "items": [
+            {
+              "label": "Android developers",
+              "_id": "6a0ed831296876347f09853f"
+            },
+            {
+              "label": "iOS developers",
+              "_id": "6a0ed831296876347f098540"
+            },
+            {
+              "label": "React Native engineers",
+              "_id": "6a0ed831296876347f098541"
+            },
+            {
+              "label": "Mobile leads & architects",
+              "_id": "6a0ed831296876347f098542"
+            }
+          ],
+          "_id": "6a0ed831296876347f09853e"
+        },
+        {
+          "categoryTitle": "Frontend",
+          "items": [
+            {
+              "label": "React developers",
+              "_id": "6a0ed831296876347f098544"
+            },
+            {
+              "label": " Next.js engineers",
+              "_id": "6a0ed831296876347f098545"
+            },
+            {
+              "label": "UI engineers & design systems",
+              "_id": "6a0ed831296876347f098546"
+            },
+            {
+              "label": " Performance & accessibility",
+              "_id": "6a0ed831296876347f098547"
+            }
+          ],
+          "_id": "6a0ed831296876347f098543"
+        },
+        {
+          "categoryTitle": "Backend",
+          "items": [
+            {
+              "label": "Node.js engineers",
+              "_id": "6a0ed831296876347f098549"
+            },
+            {
+              "label": "Express / API developers",
+              "_id": "6a0ed831296876347f09854a"
+            },
+            {
+              "label": "PHP & Laravel developers",
+              "_id": "6a0ed831296876347f09854b"
+            },
+            {
+              "label": "Cloud & microservices",
+              "_id": "6a0ed831296876347f09854c"
+            }
+          ],
+          "_id": "6a0ed831296876347f098548"
+        },
+        {
+          "categoryTitle": "Trending",
+          "items": [
+            {
+              "label": "Full-stack engineers",
+              "_id": "6a0ed831296876347f09854e"
+            },
+            {
+              "label": "DevOps & platform",
+              "_id": "6a0ed831296876347f09854f"
+            },
+            {
+              "label": "QA automation",
+              "_id": "6a0ed831296876347f098550"
+            },
+            {
+              "label": "Technical program managers",
+              "_id": "6a0ed831296876347f098551"
+            },
+            {
+              "label": "Solutions architects",
+              "_id": "6a0ed831296876347f098552"
+            }
+          ],
+          "_id": "6a0ed831296876347f09854d"
+        }
+      ],
+      "createdAt": "2026-05-21T10:02:25.631Z",
+      "updatedAt": "2026-05-21T10:02:25.631Z",
+      "__v": 0
+    }
+  ],
+  "herosections": [
+    {
+      "_id": "6a0db4bb2143eb1b1123a249",
+      "topBadge": "AI/ML-driven digital engineering",
+      "mainHeading": "Build intelligent products with\nmodern software engineering.",
+      "description": "Vihil InfoTech helps businesses launch high-performance web, mobile, and AI-enabled products with a design-first and outcome-driven approach.",
+      "primaryBtnText": "Start Your Project",
+      "secondaryBtnText": "Explore Cabilities",
+      "metrics": [
+        {
+          "icon": "FaBackspace",
+          "number": "80+",
+          "label": "AI/ML Integrations",
+          "_id": "6a0db4bb2143eb1b1123a24a"
+        },
+        {
+          "icon": "FaAmazonPay",
+          "number": "250+",
+          "label": "Project Shipped",
+          "_id": "6a0ef02a296876347f098974"
+        },
+        {
+          "icon": "FaBlind",
+          "number": "98%",
+          "label": "Client Satisfaction",
+          "_id": "6a0ef02a296876347f098975"
+        }
+      ],
+      "dashboardTitle": "Innovation Dashboard",
+      "dashboardSubtitle": "AI + Cloud + Project Analytics",
+      "dashboardItems": [
+        {
+          "icon": "FaAmazonPay",
+          "label": "Predictive Insights",
+          "_id": "6a0db4bb2143eb1b1123a24b"
+        },
+        {
+          "icon": "FaAlipay",
+          "label": "Cloud Native Scale",
+          "_id": "6a0ef0c7296876347f098985"
+        }
+      ],
+      "createdAt": "2026-05-20T13:18:51.076Z",
+      "updatedAt": "2026-05-21T11:47:19.589Z",
+      "__v": 0
+    }
+  ],
+  "impactmetrixes": [
+    {
+      "_id": "6a02eb10ca96051889e7b7b1",
+      "title": "Impact Metrics",
+      "subTitle": "Growth and delivery highlights  ",
+      "yearsOfExpertise": "5+",
+      "countriesServed": "10+",
+      "techExperts": "100+",
+      "clientsServed": "50+",
+      "projectsDelivered": "100+",
+      "createdAt": "2026-05-12T08:55:44.511Z",
+      "updatedAt": "2026-06-01T10:43:13.008Z",
+      "__v": 0
+    }
+  ],
+  "policies": [
+    {
+      "_id": "6960aa54cd310ecd25fac880",
+      "title": "Information We Collect",
+      "description": "We may collect personal information such as your name, email address, phone number, company details, and any information you voluntarily provide while using our services.\n\nWe also collect technical information including IP address, browser type, device information, and usage data to enhance performance and improve user experience.",
+      "createdAt": "2026-01-09T07:12:20.187Z",
+      "updatedAt": "2026-05-21T09:02:23.187Z",
+      "__v": 0
+    },
+    {
+      "_id": "6977320260d2b31b7ebc6e5e",
+      "title": "How We Use Information",
+      "description": "The information we collect is used to provide, maintain, and improve our services. This includes responding to inquiries, processing requests, and enhancing platform functionality.\n\nWe may use your information to send important updates, service notifications, and relevant communications where permitted by law.",
+      "createdAt": "2026-01-26T09:21:06.099Z",
+      "updatedAt": "2026-05-21T09:02:42.675Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ec9d426fa14d485e11ddb",
+      "title": "Information Sharing",
+      "description": "We do not sell, rent, or trade your personal information. Your data may be shared with trusted third-party providers who assist in operating our services under strict confidentiality agreements.\n\nWe may disclose information when required by law or to protect our legal rights.",
+      "createdAt": "2026-05-21T09:01:08.001Z",
+      "updatedAt": "2026-05-21T09:02:57.562Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0eca5a26fa14d485e11de4",
+      "title": "Data Security",
+      "description": "We implement appropriate technical and organizational measures to protect your data against unauthorized access, alteration, disclosure, or destruction.\n\nAlthough we strive to safeguard your information, no method of internet transmission is completely secure.",
+      "createdAt": "2026-05-21T09:03:22.799Z",
+      "updatedAt": "2026-05-21T09:03:22.799Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ecacf26fa14d485e11de7",
+      "title": "Your Rights",
+      "description": "You have the right to access, update, or request deletion of your personal data. You may also request restrictions on certain processing activities.\n\nTo exercise your rights, please contact us using the information provided below.",
+      "createdAt": "2026-05-21T09:05:19.382Z",
+      "updatedAt": "2026-05-21T09:05:19.382Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ecae426fa14d485e11dea",
+      "title": "Contact Us",
+      "description": "If you have any questions about this Privacy Policy or our data practices, please contact us.\n\nEmail: vihil3010@gmail.com | Phone: +91 7016421339",
+      "createdAt": "2026-05-21T09:05:40.300Z",
+      "updatedAt": "2026-05-21T09:05:40.300Z",
+      "__v": 0
+    }
+  ],
+  "positions": [
+    {
+      "_id": "699ed73e66bbb32c05173813",
+      "position": "frontend developer",
+      "createdAt": "2026-02-25T11:04:30.003Z",
+      "updatedAt": "2026-02-25T11:21:03.110Z",
+      "__v": 0
+    },
+    {
+      "_id": "699fe48fd979c75c626e22ff",
+      "position": "Backend developer",
+      "createdAt": "2026-02-26T06:13:35.742Z",
+      "updatedAt": "2026-02-26T06:13:35.742Z",
+      "__v": 0
+    }
+  ],
+  "reviewlefts": [
+    {
+      "_id": "6a0da60d2efd4148149fee8c",
+      "subtitle": "Why Clients Stay",
+      "title": "Delivery quality with reliable communication.",
+      "description": "Each testimonial reflects project outcomes, speed, and long-term partnership quality.",
+      "metrics": [
+        {
+          "label": "Avg. CSAT",
+          "value": "4.8/5",
+          "_id": "6a0da60d2efd4148149fee8d"
+        },
+        {
+          "label": "Repeat Engagements",
+          "value": "86%",
+          "_id": "6a0da60d2efd4148149fee8e"
+        },
+        {
+          "label": "On-time Milestones",
+          "value": "94%",
+          "_id": "6a0da60d2efd4148149fee8f"
+        }
+      ],
+      "createdAt": "2026-05-20T12:16:13.860Z",
+      "updatedAt": "2026-05-20T12:16:13.860Z",
+      "__v": 0
+    }
+  ],
+  "teammembers": [
+    {
+      "_id": "695650f9ad93a53bde313862",
+      "name": "Bharat Desai",
+      "position": "CEO",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772880578/team_members/bpwmocjf6elhlnkmggjs.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "696b192df5af027221fcb36a",
+      "name": "Manish V. Shah",
+      "position": "CTO",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772881575/team_members/wagvox0dpguilpqll0ur.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "6971cd5b946bd4e937a5602b",
+      "name": "Janvi M Shah",
+      "position": "Sr. FrontEnd Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772881585/team_members/midgvzx71rmsovqcotbc.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "697335e6680575fa00f98463",
+      "name": "Dhaval B. Prajapati",
+      "position": "HR Manager, Networking, QA manager",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772881343/team_members/po2zq0w7iwgef6e3c5rs.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "69771bc360d2b31b7ebc6dce",
+      "name": "Kinjal Patel",
+      "position": "Jr. FrontEnd Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772256195/team_members/zrwkucwt9ztsvwkadq8e.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "699fd854d979c75c626e2206",
+      "name": "Krupal Valand",
+      "position": "Software Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772175576/team_members/vplf0vz4bnbsxqgzeu7h.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "69a27c5d7919f79eb2acdb8d",
+      "name": "Dhruvil Mistry",
+      "position": "FullStack Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772256349/team_members/svl3jvhmpy20wvsusp0o.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "69a27ca17919f79eb2acdb90",
+      "name": "Hetvi Sharma",
+      "position": "Jr. FrontEnd Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772256416/team_members/qwxby0fejw9tdnjf5pco.jpg",
+      "__v": 0
+    }
+  ],
+  "technologies": [
+    {
+      "_id": "6a04411bc99b132d929438a9",
+      "content": "Technologies we build with",
+      "icon": "",
+      "type": "title",
+      "createdAt": "2026-05-13T09:15:07.481Z",
+      "updatedAt": "2026-05-13T09:15:07.481Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a044144c99b132d929438ac",
+      "content": "Mobile app",
+      "icon": "FaAppStore",
+      "type": "tech",
+      "createdAt": "2026-05-13T09:15:48.321Z",
+      "updatedAt": "2026-05-22T04:57:25.148Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a044153c99b132d929438af",
+      "content": "Shopify",
+      "icon": "FaAngellist",
+      "type": "tech",
+      "createdAt": "2026-05-13T09:16:03.528Z",
+      "updatedAt": "2026-05-13T09:16:03.528Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a04415fc99b132d929438b2",
+      "content": "Cyber security",
+      "icon": "FaAnchor",
+      "type": "tech",
+      "createdAt": "2026-05-13T09:16:15.970Z",
+      "updatedAt": "2026-05-22T04:57:11.137Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0fe1d7121eb8196955e89b",
+      "content": "iOS",
+      "icon": "FaApple",
+      "type": "tech",
+      "createdAt": "2026-05-22T04:55:51.262Z",
+      "updatedAt": "2026-05-22T04:55:51.262Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0fe257121eb8196955e8a2",
+      "content": "SEO",
+      "icon": "FaAtlas",
+      "type": "tech",
+      "createdAt": "2026-05-22T04:57:59.308Z",
+      "updatedAt": "2026-05-22T04:57:59.308Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0fe287121eb8196955e8a5",
+      "content": "Android",
+      "icon": "FaAndroid",
+      "type": "tech",
+      "createdAt": "2026-05-22T04:58:47.278Z",
+      "updatedAt": "2026-05-22T05:02:08.160Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0fe304121eb8196955e8a8",
+      "content": "Express.js",
+      "icon": "FaBlackberry",
+      "type": "tech",
+      "createdAt": "2026-05-22T05:00:52.810Z",
+      "updatedAt": "2026-05-22T05:00:52.810Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0fe316121eb8196955e8ab",
+      "content": "React",
+      "icon": "FaAtom",
+      "type": "tech",
+      "createdAt": "2026-05-22T05:01:10.738Z",
+      "updatedAt": "2026-05-22T05:01:10.738Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0fe347121eb8196955e8ae",
+      "content": "PHP",
+      "icon": "FaAccusoft",
+      "type": "tech",
+      "createdAt": "2026-05-22T05:01:59.125Z",
+      "updatedAt": "2026-05-22T05:01:59.125Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0fe38a121eb8196955e8b3",
+      "content": "Next.js",
+      "icon": "FaAutoprefixer",
+      "type": "tech",
+      "createdAt": "2026-05-22T05:03:06.304Z",
+      "updatedAt": "2026-05-22T05:03:06.304Z",
+      "__v": 0
+    }
+  ],
+  "terms": [
+    {
+      "_id": "6961ee3a595d0fbc00004358",
+      "title": " Intellectual Property",
+      "description": "All content, trademarks, logos, designs, and intellectual property displayed on our platform are owned by us or licensed to us.\n\nYou may not copy, reproduce, distribute, modify, or create derivative works without prior written permission.",
+      "createdAt": "2026-01-10T06:14:18.239Z",
+      "updatedAt": "2026-05-21T08:51:35.888Z",
+      "__v": 0
+    },
+    {
+      "_id": "6961ee62595d0fbc0000435b",
+      "title": "Account Responsibilities",
+      "description": "If you create an account, you are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account.\n\nYou agree to provide accurate, complete, and up-to-date information and to notify us immediately of any unauthorized use of your account.",
+      "createdAt": "2026-01-10T06:14:58.864Z",
+      "updatedAt": "2026-05-21T08:51:07.381Z",
+      "__v": 0
+    },
+    {
+      "_id": "6977312b60d2b31b7ebc6e4f",
+      "title": "Use of Services",
+      "description": "By accessing and using our services, you agree to comply with all applicable laws and regulations. You may use our services only for lawful purposes and in accordance with these Terms.\n\nYou agree not to misuse the platform, attempt unauthorized access, interfere with system integrity, or disrupt other users' experience.",
+      "createdAt": "2026-01-26T09:17:31.972Z",
+      "updatedAt": "2026-05-21T08:50:45.405Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ec7ce1e0d5ff99555611f",
+      "title": "Limitation of Liability",
+      "description": "To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our services.\n\nOur total liability for any claim related to the services shall not exceed the amount paid by you, if any, for accessing the services.",
+      "createdAt": "2026-05-21T08:52:30.239Z",
+      "updatedAt": "2026-05-21T08:52:30.239Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ec7e61e0d5ff995556122",
+      "title": "Changes to Terms",
+      "description": "We reserve the right to update or modify these Terms at any time. Changes will become effective upon posting on this page.\n\nYour continued use of the services after any changes indicates your acceptance of the updated Terms.",
+      "createdAt": "2026-05-21T08:52:54.859Z",
+      "updatedAt": "2026-05-21T08:52:54.859Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ec7fa1e0d5ff995556125",
+      "title": "Governing Law",
+      "description": "These Terms shall be governed and interpreted in accordance with the laws of the applicable jurisdiction, without regard to conflict of law principles.\n\nAny disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts in that jurisdiction.",
+      "createdAt": "2026-05-21T08:53:14.120Z",
+      "updatedAt": "2026-05-21T08:53:14.120Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ec84d1e0d5ff995556128",
+      "title": "Contact Us",
+      "description": "If you have any questions about these Terms and Conditions, please contact us.\n\nEmail: vihil3010@gmail.com | Phone: +91 7016421339",
+      "createdAt": "2026-05-21T08:54:37.014Z",
+      "updatedAt": "2026-05-21T08:54:37.014Z",
+      "__v": 0
+    }
+  ],
+  "testimoniallefts": [
+    {
+      "_id": "6a0d96135f2cc0f62fd199ca",
+      "subtitle": "Why Clients Stay",
+      "title": "Delivery quality with reliable communication.",
+      "description": "Each testimonial reflects project outcomes, speed, and long-term partnership quality.",
+      "metrics": [
+        {
+          "label": "Avg. CSAT",
+          "value": "4.8/5",
+          "_id": "6a0d97675f2cc0f62fd199fe"
+        },
+        {
+          "label": "Repeat Engagements",
+          "value": "86%",
+          "_id": "6a0d97675f2cc0f62fd199ff"
+        },
+        {
+          "label": "On-time Milestones",
+          "value": "94%",
+          "_id": "6a0d97675f2cc0f62fd19a00"
+        }
+      ],
+      "createdAt": "2026-05-20T11:08:03.131Z",
+      "updatedAt": "2026-05-20T11:13:43.550Z",
+      "__v": 0
+    }
+  ],
+  "trusts": [
+    {
+      "_id": "6a031333fd8fb444ceb28621",
+      "title": "Trusted by ambitious teams worldwide",
+      "brands": [
+        "Google",
+        "KFC",
+        "Panasonic"
+      ],
+      "createdAt": "2026-05-12T11:46:59.864Z",
+      "updatedAt": "2026-05-12T11:46:59.864Z",
+      "__v": 0
+    }
+  ],
+  "vihilcapabilities": [
+    {
+      "_id": "6970a413017d90e6bd5af064",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772520613/vihil_capabilities/djsi2q6piyysxqgre3sh.png",
+      "title": "Mobile App Development",
+      "description": "Transform your ideas into powerful, cross-platform mobile experiences with [Vihil infotech]. Specializing in React Native development, we create sleek and efficient applications that run seamlessly on both iOS and Android. Our expert team combines innovative design with agile development to deliver a standout user experience. From concept to deployment, we prioritize excellence, ensuring your app stands out in the competitive digital landscape. Elevate your mobile presence with [Vihil infotech] – where innovation meets efficiency.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/gwmoyduop8ty4amnjsgd.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/ppwl0ikpjen8k25ylutt.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/ust54w5hvnqbyuwwqclb.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/xz3g7elxvktfww745twi.png"
+      ],
+      "__v": 4
+    },
+    {
+      "_id": "6971cfb3946bd4e937a56043",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521051/vihil_capabilities/mkdfoxv2uugycyfr4axx.png",
+      "title": "Web Development",
+      "description": "Welcome to [Vihil infotech], your destination for cutting-edge web development powered by ReactJS and NextJS. Our expert team crafts visually stunning and high-performance websites tailored to your unique needs. With a focus on innovation and user experience, we bring your digital presence to life. Whether you're a startup or an established business, we specialize in creating dynamic and responsive web solutions. Elevate your online presence with [Vihil infotech] – where ReactJS and NextJS expertise meet excellence.\r\n\r\nWhat, Why and How?",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521930/vihil_capabilities/imrwhejsmarcvirvalkl.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/e9ff7aw8gbkwz9sys0hq.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/dhhal09g83awvcfhm0bb.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/plmd6oci4bkihli6dkqu.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/sigwgs1unfkmw1u4lpax.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/sr7jmgqkax76scehxgcl.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/uoapqdbachmb4dnkmrfd.png"
+      ],
+      "__v": 2
+    },
+    {
+      "_id": "697203a53047be44e192eb46",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521069/vihil_capabilities/ktrcowpgmnlwsoa6fxci.png",
+      "title": "Cross platform mobile app",
+      "description": "Embark on a journey of cross-platform mobile app excellence with [Vihil infotech]. Specializing in React Native development, we seamlessly bring your vision to life on both iOS and Android platforms. Our seasoned team combines innovation and efficiency to deliver sleek and feature-rich applications. Whether you're a startup with a groundbreaking idea or an enterprise seeking digital expansion, [Vihil infotech] is your trusted partner for top-notch cross-platform mobile solutions. Elevate your mobile presence – where React Native expertise meets unparalleled quality.\r\n",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/a4pu9xl83cxiujhubops.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/orbo0olqudvhtqialyrn.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/bxr0eokj0gj34erajoed.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/kduflamlhpuz4yrt5fkj.png"
+      ],
+      "__v": 2
+    },
+    {
+      "_id": "69772de260d2b31b7ebc6dd9",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521130/vihil_capabilities/km8lb78hs1brm4mf9woq.png",
+      "title": "PWA Development",
+      "description": "Step into the future of web experiences with [Vihil infotech]. As pioneers in Progressive Web App (PWA) development, we seamlessly blend web and app functionalities for a responsive and engaging user journey. Our expert team leverages cutting-edge technologies, including ReactJS and NextJS, to create high-performance PWAs tailored to your business needs. Elevate your online presence with a fast, reliable, and immersive user experience. Choose [Vihil infotech] for PWA development excellence – where innovation meets the web.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/oiravf9eiddnlcefyjm1.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/yupoo0wump3l7ielfexq.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/pru3lgwsldi1gftpb6n8.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/pwp0tewebh5cnxux35ud.png"
+      ],
+      "__v": 3
+    },
+    {
+      "_id": "699fd97ad979c75c626e2227",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521147/vihil_capabilities/yfmvq36umljmpzusnfyv.png",
+      "title": "Desktop Application Development",
+      "description": "Empower your business with robust desktop applications crafted by [Vihil infotech]. Specializing in efficient development using cutting-edge technologies, such as ReactJS and Electron, we deliver powerful and intuitive desktop solutions. Our expert team ensures seamless integration and optimal performance for a superior user experience. Whether you're a startup or an established enterprise, [Vihil infotech] is your trusted partner for bespoke desktop applications. Elevate your digital capabilities – where innovation converges with desktop development excellence.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/r7ug5tny7exak93lfkle.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/zwrouf7lmx58bk7bxcsp.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/fbnjdu0fdptxdkzjyyci.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/qwg724rcm7oneo9bcp42.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/ihphkq9qlzhmxkutkedz.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/my7lqoe4jyv8er0el44x.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/s3n9zpopiot7alcdz1ld.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/r2jlklbeo6amzq1ntqfe.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/dvzkc1dfbr5qjwh4aszf.png"
+      ],
+      "__v": 2
+    },
+    {
+      "_id": "699fd9a1d979c75c626e222a",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521163/vihil_capabilities/dv9eaks1n2lplcixfryz.png",
+      "title": " Chatbot Development",
+      "description": "Transform customer engagement with intelligent chatbot solutions from [Vihil infotech]. Specializing in Chatbot Development, we leverage state-of-the-art technologies to create conversational interfaces that enhance user interactions. Our expert team designs and implements chatbots tailored to your business needs, improving efficiency and customer satisfaction. Whether you're a startup looking to automate processes or an enterprise aiming for personalized customer support, [Vihil infotech] is your partner in driving innovation through Chatbot Development. Elevate your digital conversations – where technology meets intelligent communication.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/yfkmdzg9jej60tnzgfsd.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/i6drx03ohjtdzj7u0qcy.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/cln1vlenpxdbtwgwozti.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/jymeazbqmsap9znchrzd.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/bztkesgvbc4vk6stpvpv.png"
+      ],
+      "__v": 2
+    }
+  ],
+  "vihildetails": [
+    {
+      "_id": "697214233047be44e192ebbc",
+      "phone": "vihil   ",
+      "email": "vihil ",
+      "address": "vihil ",
+      "happyClients": "50+",
+      "completedProjects": "66+ ",
+      "experiencedStaff": "10+",
+      "rating": "5 ",
+      "__v": 0
+    }
+  ],
+  "vihilservices": [
+    {
+      "_id": "690596255bf47e6a8286db8a",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528281/services/k36vbngcao9xpqqai6l4.png",
+      "title": "Digital Marketing",
+      "description": "Business made easy in a digital world",
+      "createdAt": "2025-11-01T05:09:57.928Z",
+      "updatedAt": "2026-03-03T08:58:02.241Z",
+      "__v": 0,
+      "icon": "FaAdversal"
+    },
+    {
+      "_id": "695757cb57e294b3f1854912",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528143/services/c7jb9wyaudf7dz9hzrtg.png",
+      "title": "Mobile Applications",
+      "description": "The simplest but robust technology to accompany with you",
+      "createdAt": "2026-01-02T05:29:47.647Z",
+      "updatedAt": "2026-03-03T08:55:44.660Z",
+      "__v": 0,
+      "icon": "FaAdjust"
+    },
+    {
+      "_id": "69575aa857e294b3f1854917",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528114/services/y5qp73vjbqzxb1mlojlq.jpg",
+      "title": "Cyber Security",
+      "description": "Make your digital assets secure and protected",
+      "createdAt": "2026-01-02T05:42:00.642Z",
+      "updatedAt": "2026-03-03T08:55:16.313Z",
+      "__v": 0,
+      "icon": "FaAccessibleIcon"
+    },
+    {
+      "_id": "6971c3b6946bd4e937a55f72",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528081/services/acvtpyqjsqoj8qvsgojt.png",
+      "title": "BIG Data",
+      "description": "Get your decision making backed by inteligent insight",
+      "createdAt": "2026-01-22T06:29:10.416Z",
+      "updatedAt": "2026-03-03T08:54:42.239Z",
+      "__v": 0,
+      "icon": "FaAccessibleIcon"
+    },
+    {
+      "_id": "6971c842946bd4e937a55fc5",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528049/services/kzelwigwgflt05cqfupy.png",
+      "title": "Desktop Application",
+      "description": "Advanced autonomous technological softwares to make life simple\r\n",
+      "createdAt": "2026-01-22T06:48:34.466Z",
+      "updatedAt": "2026-03-03T08:54:10.265Z",
+      "__v": 0,
+      "icon": "FaAccessibleIcon"
+    },
+    {
+      "_id": "699d96c6c82dfd86f0198fec",
+      "icon": "FaAdn",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528017/services/vhhysiyrohoap1ehxfkq.png",
+      "title": "SEO",
+      "description": "Let the world find you on top of others",
+      "createdAt": "2026-02-24T12:17:10.840Z",
+      "updatedAt": "2026-03-03T08:53:38.951Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a67f55bc13867ef694156c",
+      "icon": "FaAdversal",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527988/services/xnsjcautlioayzqoiaxc.png",
+      "title": "Cross Platform Development",
+      "description": "Interactive Apps with perfect integration of frontend and backend",
+      "createdAt": "2026-03-03T06:27:33.451Z",
+      "updatedAt": "2026-03-03T08:53:09.785Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a67f9dbc13867ef6941575",
+      "icon": "FaAdversal",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527956/services/sg0h15hxpi0jt7dr7wbc.png",
+      "title": "Web Application",
+      "description": "Platform independant business solutions for maximum availability",
+      "createdAt": "2026-03-03T06:28:45.475Z",
+      "updatedAt": "2026-03-03T08:52:37.909Z",
+      "__v": 0
+    }
+  ],
+  "visions": [
+    {
+      "_id": "6971c39e946bd4e937a55f6d",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772256816/visions/exxt3zubdhagsmnnzwdj.png",
+      "title": "Cutting Edge Technology",
+      "description": "Take the advantage of our cutting-edge solutions to increase your Return of Investment on IT.",
+      "__v": 0,
+      "icon": "Fa500Px"
+    },
+    {
+      "_id": "69771b9960d2b31b7ebc6dbd",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772529008/visions/jrueilrgrwf2nx3maztg.png",
+      "title": "Cross Device Compatibility",
+      "description": "Multi-device compatibility ensures that creating, viewing and providing quick and easy",
+      "__v": 0,
+      "icon": "FaAccusoft"
+    },
+    {
+      "_id": "699d86b1f290bc39fd0b92c5",
+      "icon": "FaAngellist",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772529023/visions/jsn78g7lly34ntgj4rxn.png",
+      "title": "Tailer Mode Development",
+      "description": "Scalable and dynamic systems with the ever-changing trends to meet your dynamic business needs.",
+      "__v": 0
+    },
+    {
+      "_id": "69a13e96fbab31f96ca4b782",
+      "icon": "FaAccusoft",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772257036/visions/yf6icva02xdknllahq21.png",
+      "title": "Cutting Edge Technology",
+      "description": "Take the advantage of our cutting-edge solutions to increase your Return of Investment on IT.",
+      "__v": 0
+    },
+    {
+      "_id": "69a13eb6fbab31f96ca4b785",
+      "icon": "FaAdn",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772529037/visions/x0cyaq4rs5qd6ztexzm4.png",
+      "title": "Cross Device Compatibility",
+      "description": "Multi-device compatibility ensures that creating, viewing and providing quick and easy",
+      "__v": 0
+    },
+    {
+      "_id": "69a13f2ffbab31f96ca4b78e",
+      "icon": "FaAccessibleIcon",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772529050/visions/tczavywxxdlhpwepspg1.png",
+      "title": "Tailer Mode Development",
+      "description": "Scalable and dynamic systems with the ever-changing trends to meet your dynamic business needs",
+      "__v": 0
+    },
+    {
+      "_id": "6a0ead50e62fdef694394bb5",
+      "icon": "FaAdn",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1779346767/visions/u4mrqzbc1huw0goosajy.jpg",
+      "title": "Cutting Edge Technology",
+      "description": "Take the advantage of our cutting-edge solutions to increase your Return of Investment on IT.",
+      "__v": 0,
+      "impact": "Automation & intelligence",
+      "label": "AI Transformation",
+      "priority": "High",
+      "timeline": "4-8 weeks"
+    }
+  ],
+  "company": {
+    "contact": {
+      "contactdetails": {
+        "_id": "6a0456521fed87b7d4b59a20",
+        "mainTitle": "Tell us what you want to launch next.",
+        "mainSubtitle": "Share your vision, timeline, and requirements. We'll guide you with a practical execution plan tailored to your product goals.",
+        "responseTime": "Within 2 hours",
+        "engagement": "NDA-friendly",
+        "address": "207, Sky Tatva - I, Opposite Amba Ashram, College Road, Nadiad, Gujarat - 387001",
+        "phone": "+91 70164 21339",
+        "email": "vihil3010@gmail.com",
+        "website": "www.vihilinfotech.com",
+        "createdAt": "2026-05-13T10:45:38.747Z",
+        "updatedAt": "2026-05-13T10:45:38.747Z",
+        "__v": 0
+      }
+    },
+    "stats": [
+      {
+        "label": "title",
+        "value": "Impact Metrics"
+      },
+      {
+        "label": "subTitle",
+        "value": "Growth and delivery highlights  "
+      },
+      {
+        "label": "yearsOfExpertise",
+        "value": "5+"
+      },
+      {
+        "label": "countriesServed",
+        "value": "10+"
+      },
+      {
+        "label": "techExperts",
+        "value": "100+"
+      },
+      {
+        "label": "clientsServed",
+        "value": "50+"
+      },
+      {
+        "label": "projectsDelivered",
+        "value": "100+"
+      }
     ]
+  },
+  "services": [
+    {
+      "_id": "690596255bf47e6a8286db8a",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528281/services/k36vbngcao9xpqqai6l4.png",
+      "title": "Digital Marketing",
+      "description": "Business made easy in a digital world",
+      "createdAt": "2025-11-01T05:09:57.928Z",
+      "updatedAt": "2026-03-03T08:58:02.241Z",
+      "__v": 0,
+      "icon": "FaAdversal"
+    },
+    {
+      "_id": "695757cb57e294b3f1854912",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528143/services/c7jb9wyaudf7dz9hzrtg.png",
+      "title": "Mobile Applications",
+      "description": "The simplest but robust technology to accompany with you",
+      "createdAt": "2026-01-02T05:29:47.647Z",
+      "updatedAt": "2026-03-03T08:55:44.660Z",
+      "__v": 0,
+      "icon": "FaAdjust"
+    },
+    {
+      "_id": "69575aa857e294b3f1854917",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528114/services/y5qp73vjbqzxb1mlojlq.jpg",
+      "title": "Cyber Security",
+      "description": "Make your digital assets secure and protected",
+      "createdAt": "2026-01-02T05:42:00.642Z",
+      "updatedAt": "2026-03-03T08:55:16.313Z",
+      "__v": 0,
+      "icon": "FaAccessibleIcon"
+    },
+    {
+      "_id": "6971c3b6946bd4e937a55f72",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528081/services/acvtpyqjsqoj8qvsgojt.png",
+      "title": "BIG Data",
+      "description": "Get your decision making backed by inteligent insight",
+      "createdAt": "2026-01-22T06:29:10.416Z",
+      "updatedAt": "2026-03-03T08:54:42.239Z",
+      "__v": 0,
+      "icon": "FaAccessibleIcon"
+    },
+    {
+      "_id": "6971c842946bd4e937a55fc5",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528049/services/kzelwigwgflt05cqfupy.png",
+      "title": "Desktop Application",
+      "description": "Advanced autonomous technological softwares to make life simple\r\n",
+      "createdAt": "2026-01-22T06:48:34.466Z",
+      "updatedAt": "2026-03-03T08:54:10.265Z",
+      "__v": 0,
+      "icon": "FaAccessibleIcon"
+    },
+    {
+      "_id": "699d96c6c82dfd86f0198fec",
+      "icon": "FaAdn",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528017/services/vhhysiyrohoap1ehxfkq.png",
+      "title": "SEO",
+      "description": "Let the world find you on top of others",
+      "createdAt": "2026-02-24T12:17:10.840Z",
+      "updatedAt": "2026-03-03T08:53:38.951Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a67f55bc13867ef694156c",
+      "icon": "FaAdversal",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527988/services/xnsjcautlioayzqoiaxc.png",
+      "title": "Cross Platform Development",
+      "description": "Interactive Apps with perfect integration of frontend and backend",
+      "createdAt": "2026-03-03T06:27:33.451Z",
+      "updatedAt": "2026-03-03T08:53:09.785Z",
+      "__v": 0
+    },
+    {
+      "_id": "69a67f9dbc13867ef6941575",
+      "icon": "FaAdversal",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772527956/services/sg0h15hxpi0jt7dr7wbc.png",
+      "title": "Web Application",
+      "description": "Platform independant business solutions for maximum availability",
+      "createdAt": "2026-03-03T06:28:45.475Z",
+      "updatedAt": "2026-03-03T08:52:37.909Z",
+      "__v": 0
+    }
+  ],
+  "what_we_do": [
+    {
+      "_id": "6970a413017d90e6bd5af064",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772520613/vihil_capabilities/djsi2q6piyysxqgre3sh.png",
+      "title": "Mobile App Development",
+      "description": "Transform your ideas into powerful, cross-platform mobile experiences with [Vihil infotech]. Specializing in React Native development, we create sleek and efficient applications that run seamlessly on both iOS and Android. Our expert team combines innovative design with agile development to deliver a standout user experience. From concept to deployment, we prioritize excellence, ensuring your app stands out in the competitive digital landscape. Elevate your mobile presence with [Vihil infotech] – where innovation meets efficiency.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/gwmoyduop8ty4amnjsgd.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/ppwl0ikpjen8k25ylutt.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/ust54w5hvnqbyuwwqclb.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521823/vihil_capabilities/xz3g7elxvktfww745twi.png"
+      ],
+      "__v": 4
+    },
+    {
+      "_id": "6971cfb3946bd4e937a56043",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521051/vihil_capabilities/mkdfoxv2uugycyfr4axx.png",
+      "title": "Web Development",
+      "description": "Welcome to [Vihil infotech], your destination for cutting-edge web development powered by ReactJS and NextJS. Our expert team crafts visually stunning and high-performance websites tailored to your unique needs. With a focus on innovation and user experience, we bring your digital presence to life. Whether you're a startup or an established business, we specialize in creating dynamic and responsive web solutions. Elevate your online presence with [Vihil infotech] – where ReactJS and NextJS expertise meet excellence.\r\n\r\nWhat, Why and How?",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521930/vihil_capabilities/imrwhejsmarcvirvalkl.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/e9ff7aw8gbkwz9sys0hq.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/dhhal09g83awvcfhm0bb.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/plmd6oci4bkihli6dkqu.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/sigwgs1unfkmw1u4lpax.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/sr7jmgqkax76scehxgcl.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528573/vihil_capabilities/uoapqdbachmb4dnkmrfd.png"
+      ],
+      "__v": 2
+    },
+    {
+      "_id": "697203a53047be44e192eb46",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521069/vihil_capabilities/ktrcowpgmnlwsoa6fxci.png",
+      "title": "Cross platform mobile app",
+      "description": "Embark on a journey of cross-platform mobile app excellence with [Vihil infotech]. Specializing in React Native development, we seamlessly bring your vision to life on both iOS and Android platforms. Our seasoned team combines innovation and efficiency to deliver sleek and feature-rich applications. Whether you're a startup with a groundbreaking idea or an enterprise seeking digital expansion, [Vihil infotech] is your trusted partner for top-notch cross-platform mobile solutions. Elevate your mobile presence – where React Native expertise meets unparalleled quality.\r\n",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/a4pu9xl83cxiujhubops.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/orbo0olqudvhtqialyrn.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/bxr0eokj0gj34erajoed.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528659/vihil_capabilities/kduflamlhpuz4yrt5fkj.png"
+      ],
+      "__v": 2
+    },
+    {
+      "_id": "69772de260d2b31b7ebc6dd9",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521130/vihil_capabilities/km8lb78hs1brm4mf9woq.png",
+      "title": "PWA Development",
+      "description": "Step into the future of web experiences with [Vihil infotech]. As pioneers in Progressive Web App (PWA) development, we seamlessly blend web and app functionalities for a responsive and engaging user journey. Our expert team leverages cutting-edge technologies, including ReactJS and NextJS, to create high-performance PWAs tailored to your business needs. Elevate your online presence with a fast, reliable, and immersive user experience. Choose [Vihil infotech] for PWA development excellence – where innovation meets the web.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/oiravf9eiddnlcefyjm1.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/yupoo0wump3l7ielfexq.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/pru3lgwsldi1gftpb6n8.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528721/vihil_capabilities/pwp0tewebh5cnxux35ud.png"
+      ],
+      "__v": 3
+    },
+    {
+      "_id": "699fd97ad979c75c626e2227",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521147/vihil_capabilities/yfmvq36umljmpzusnfyv.png",
+      "title": "Desktop Application Development",
+      "description": "Empower your business with robust desktop applications crafted by [Vihil infotech]. Specializing in efficient development using cutting-edge technologies, such as ReactJS and Electron, we deliver powerful and intuitive desktop solutions. Our expert team ensures seamless integration and optimal performance for a superior user experience. Whether you're a startup or an established enterprise, [Vihil infotech] is your trusted partner for bespoke desktop applications. Elevate your digital capabilities – where innovation converges with desktop development excellence.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/r7ug5tny7exak93lfkle.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/zwrouf7lmx58bk7bxcsp.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/fbnjdu0fdptxdkzjyyci.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/qwg724rcm7oneo9bcp42.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/ihphkq9qlzhmxkutkedz.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/my7lqoe4jyv8er0el44x.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/s3n9zpopiot7alcdz1ld.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/r2jlklbeo6amzq1ntqfe.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528850/vihil_capabilities/dvzkc1dfbr5qjwh4aszf.png"
+      ],
+      "__v": 2
+    },
+    {
+      "_id": "699fd9a1d979c75c626e222a",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772521163/vihil_capabilities/dv9eaks1n2lplcixfryz.png",
+      "title": " Chatbot Development",
+      "description": "Transform customer engagement with intelligent chatbot solutions from [Vihil infotech]. Specializing in Chatbot Development, we leverage state-of-the-art technologies to create conversational interfaces that enhance user interactions. Our expert team designs and implements chatbots tailored to your business needs, improving efficiency and customer satisfaction. Whether you're a startup looking to automate processes or an enterprise aiming for personalized customer support, [Vihil infotech] is your partner in driving innovation through Chatbot Development. Elevate your digital conversations – where technology meets intelligent communication.",
+      "extensions": [
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/yfkmdzg9jej60tnzgfsd.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/i6drx03ohjtdzj7u0qcy.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/cln1vlenpxdbtwgwozti.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/jymeazbqmsap9znchrzd.png",
+        "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772528930/vihil_capabilities/bztkesgvbc4vk6stpvpv.png"
+      ],
+      "__v": 2
+    }
+  ],
+  "team": [
+    {
+      "_id": "695650f9ad93a53bde313862",
+      "name": "Bharat Desai",
+      "position": "CEO",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772880578/team_members/bpwmocjf6elhlnkmggjs.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "696b192df5af027221fcb36a",
+      "name": "Manish V. Shah",
+      "position": "CTO",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772881575/team_members/wagvox0dpguilpqll0ur.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "6971cd5b946bd4e937a5602b",
+      "name": "Janvi M Shah",
+      "position": "Sr. FrontEnd Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772881585/team_members/midgvzx71rmsovqcotbc.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "697335e6680575fa00f98463",
+      "name": "Dhaval B. Prajapati",
+      "position": "HR Manager, Networking, QA manager",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772881343/team_members/po2zq0w7iwgef6e3c5rs.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "69771bc360d2b31b7ebc6dce",
+      "name": "Kinjal Patel",
+      "position": "Jr. FrontEnd Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772256195/team_members/zrwkucwt9ztsvwkadq8e.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "699fd854d979c75c626e2206",
+      "name": "Krupal Valand",
+      "position": "Software Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772175576/team_members/vplf0vz4bnbsxqgzeu7h.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "69a27c5d7919f79eb2acdb8d",
+      "name": "Dhruvil Mistry",
+      "position": "FullStack Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772256349/team_members/svl3jvhmpy20wvsusp0o.jpg",
+      "__v": 0
+    },
+    {
+      "_id": "69a27ca17919f79eb2acdb90",
+      "name": "Hetvi Sharma",
+      "position": "Jr. FrontEnd Developer",
+      "image": "https://res.cloudinary.com/dzwfcvu9f/image/upload/v1772256416/team_members/qwxby0fejw9tdnjf5pco.jpg",
+      "__v": 0
+    }
+  ]
 }

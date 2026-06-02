@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatForm = document.getElementById("chatForm");
     const userInput = document.getElementById("userInput");
     const chatMessages = document.getElementById("chatMessages");
-    const recrawlBtn = document.getElementById("recrawlBtn");
-    const scrapeOverlay = document.getElementById("scrapeOverlay");
+
     const micBtn = document.getElementById("micBtn");
     const langSelect = document.getElementById("langSelect");
+    const topbarTime = document.getElementById("topbarTime");
     const muteBtn = document.getElementById("muteBtn");
     const muteIcon = document.getElementById("muteIcon");
     const clearBtn = document.getElementById("clearBtn");
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let recognition = null;
     let isListening = false;
     let micPermissionDenied = false;
+
 
     function setMuted(nextMuted) {
         isMuted = nextMuted;
@@ -92,6 +93,18 @@ document.addEventListener("DOMContentLoaded", () => {
         appendMessage("Hello! I am Vihil InfoTech's AI assistant. Ask about services, technologies, team, or contact details.", "bot-message");
     }
 
+    function updateClock() {
+        if (!topbarTime) return;
+        const now = new Date();
+        topbarTime.textContent = new Intl.DateTimeFormat([], {
+            hour: "numeric",
+            minute: "2-digit"
+        }).format(now);
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
     if (muteBtn) {
         muteBtn.addEventListener("click", () => setMuted(!isMuted));
     }
@@ -111,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    async function submitQuery(text) {
+    async function submitQuery(text, wasSpoken = false) {
         appendMessage(text, "user-message");
         const typing = appendTypingIndicator();
 
@@ -119,7 +132,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch("/api/query", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ query: text, lang: langSelect ? langSelect.value : "auto" })
+                body: JSON.stringify({ 
+                    query: text, 
+                    lang: langSelect ? langSelect.value : "auto",
+                    voice_response: !isMuted
+                })
             });
 
             typing.remove();
@@ -154,26 +171,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         userInput.value = "";
-        submitQuery(text);
+        submitQuery(text, false);
     });
 
-    if (recrawlBtn) {
-        recrawlBtn.addEventListener("click", async () => {
-            scrapeOverlay.classList.add("active");
-            try {
-                const response = await fetch("/api/scrape", { method: "POST" });
-                if (!response.ok) {
-                    throw new Error("Scrape failed");
-                }
-                appendMessage("Website data refreshed successfully.", "bot-message");
-            } catch (error) {
-                appendMessage("Could not refresh the website data.", "bot-message");
-                console.error(error);
-            } finally {
-                scrapeOverlay.classList.remove("active");
-            }
-        });
-    }
+
 
     if (micBtn && ("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -200,11 +201,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
-            userInput.value = transcript;
+            userInput.value = "";
             isListening = false;
             micBtn.classList.remove("recording");
             userInput.placeholder = basePlaceholder;
-            chatForm.requestSubmit();
+            submitQuery(transcript, true);
         };
 
         recognition.onerror = (event) => {
@@ -274,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     } else if (micBtn) {
-        micBtn.style.display = "none";
+        micBtn.addEventListener("click", () => alert("Speech recognition is not supported in this browser. Please use Chrome or Edge."));
     }
 
     clearConversation();

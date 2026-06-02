@@ -17,21 +17,38 @@
     <main class="phone-shell" aria-label="Vihil InfoTech chat assistant">
         <section class="phone-window">
             <header class="phone-topbar">
-                <div class="topbar-time">10:26 AM</div>
-                <div class="topbar-dots" aria-hidden="true">
-                    <span></span><span></span><span></span>
-                </div>
+                <label class="topbar-lang" for="langSelect">
+                    <span class="lang-icon">🌍</span>
+                    <select id="langSelect" aria-label="Language selection">
+                        <option value="auto">Auto</option>
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese</option>
+                        <option value="ar">Arabic</option>
+                        <option value="ru">Russian</option>
+                        <option value="pt">Portuguese</option>
+                    </select>
+                </label>
+                <div class="topbar-time" id="topbarTime">--:--</div>
+
             </header>
 
+
+
             <section class="assistant-header">
-                <h1>Vihil Infotech</h1>
-                <p><span class="status-dot"></span>Auto</p>
+                <div class="assistant-brand">
+                    <h1>Vihil Infotech</h1>
+                    <p><span class="status-dot"></span>Auto</p>
+                </div>
                 <div class="header-actions">
-                    <button type="button" id="muteBtn" class="icon-btn" title="Mute audio" aria-label="Mute audio">
+                    <button type="button" id="muteBtn" class="icon-btn" title="Mute/Unmute" aria-label="Mute or Unmute">
                         <svg id="muteIcon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                            <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
-                            <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89l.706.706z"/>
-                            <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                            <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89l.706.706z"/><path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
                         </svg>
                     </button>
                     <button type="button" id="clearBtn" class="icon-btn" title="Clear chat" aria-label="Clear chat">
@@ -46,38 +63,12 @@
             <section class="messages" id="chatMessages" aria-live="polite"></section>
 
             <section class="composer-panel">
-                <div class="mode-switch" role="tablist" aria-label="Input mode">
-                    <button type="button" class="mode-btn active" data-mode="type">Type</button>
-                    <button type="button" class="mode-btn" data-mode="speak">Speak</button>
-                </div>
-
-                <div class="utility-row">
-                    <label class="lang-wrap" for="langSelect">
-                        <span class="lang-icon">🌍</span>
-                        <select id="langSelect" aria-label="Language selection">
-                            <option value="auto">Auto-Detect</option>
-                            <option value="en">English</option>
-                            <option value="hi">Hindi</option>
-                            <option value="gu">Gujarati</option>
-                            <option value="es">Spanish</option>
-                            <option value="fr">French</option>
-                            <option value="de">German</option>
-                            <option value="ja">Japanese</option>
-                            <option value="zh">Chinese</option>
-                            <option value="ar">Arabic</option>
-                            <option value="ru">Russian</option>
-                            <option value="pt">Portuguese</option>
-                        </select>
-                    </label>
-                    <button type="button" id="recrawlBtn" class="pill-btn">Sync Website</button>
-                </div>
-
                 <form id="chatForm" class="composer" autocomplete="off">
                     <input id="userInput" type="text" placeholder="Type a message..." required>
-                    <button type="button" id="micBtn" class="mic-btn" aria-label="Speak to assistant">
+                    <button type="button" id="micBtn" class="mic-btn" aria-label="Speak" title="Speak">
                         <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                             <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                            <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+                            <path d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V3a3 3 0 0 1 3-3z"/>
                         </svg>
                     </button>
                     <button type="submit" id="sendBtn" class="send-btn" aria-label="Send message">
@@ -90,13 +81,7 @@
         </section>
     </main>
 
-    <div class="scrape-overlay" id="scrapeOverlay" aria-hidden="true">
-        <div class="overlay-card">
-            <div class="spinner"></div>
-            <h3>Updating knowledge base</h3>
-            <p>Refreshing Vihil InfoTech website data.</p>
-        </div>
-    </div>
+
 
     <button class="floating-close" type="button" aria-label="Close demo frame">×</button>
 

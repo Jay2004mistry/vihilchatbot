@@ -71,6 +71,15 @@ def load_knowledge_base(filepath="knowledge_base.json"):
         print(f"Error loading knowledge base: {e}", file=sys.stderr)
         return {}
 
+def prune_json(data):
+    """Recursively removes large or useless metadata keys from JSON to shrink payload size."""
+    if isinstance(data, dict):
+        return {k: prune_json(v) for k, v in data.items() if k not in ["_id", "__v", "createdAt", "updatedAt", "image", "resume", "extensions", "icon"]}
+    elif isinstance(data, list):
+        return [prune_json(item) for item in data]
+    else:
+        return data
+
 def clean_and_tokenize(text):
     """Clean, lowercase, and tokenize text into a set of words, removing common stop words."""
     if not text:
@@ -120,7 +129,19 @@ def build_search_index(kb):
         
     # 3. Company Statistics
     stats = kb.get("company", {}).get("statistics", [])
-    if stats:
+    if isinstance(stats, dict):
+        # New DB structure
+        stats = stats.get("vihildetails", {})
+        if stats:
+            stats_str = f"Happy Clients: {stats.get('happyClients')}, Completed Projects: {stats.get('completedProjects')}, Rating: {stats.get('rating')}"
+            index.append({
+                "type": "statistics",
+                "title": "Company Statistics & Achievements Ratings Projects",
+                "search_text": f"statistics stats numbers count completed projects happy clients ratings rating staff experience size {stats_str}",
+                "content": stats_str,
+                "answer": f"### 📊 Vihil InfoTech Statistics\n- **Happy Clients**: {stats.get('happyClients', '50+')}\n- **Completed Projects**: {stats.get('completedProjects', '66+')}\n- **Experienced Staff**: {stats.get('experiencedStaff', '10+')}\n- **Rating**: {stats.get('rating', '5')}"
+            })
+    elif stats:
         stats_str = "\n".join([f"- **{s.get('content')}**: {s.get('name')}" for s in stats])
         index.append({
             "type": "statistics",
@@ -132,27 +153,45 @@ def build_search_index(kb):
         
     # 4. Contact Details
     contact = kb.get("company", {}).get("contact", {})
-    if contact:
-        addr = contact.get("address", "")
-        email = contact.get("email", "")
-        phone = contact.get("phone", "")
-        socials = contact.get("social_links", {})
+    contact_details = contact.get("contactdetails", contact)
+    
+    if contact_details:
+        addr = contact_details.get("address", "")
+        email = contact_details.get("email", "")
+        phone = contact_details.get("phone", "")
+        response_time = contact_details.get("response_time", contact_details.get("responseTime", "We reply within 24 hours"))
+        socials = contact_details.get("social_links", {})
         socials_str = "\n".join([f"- **{k.capitalize()}**: [{v}]({v})" for k, v in socials.items()])
-        
+
         index.append({
             "type": "contact",
-            "title": "Contact Information Email Phone Location Address Office",
-            "search_text": "contact email phone mobile number telephone support vihil3010@gmail.com +91 7016421339 facebook instagram twitter linkedin address office location where headquarter head quarters nadiad gujarat india",
+            "title": "Contact Information Email Phone Location Address Office Social",
+            "search_text": (
+                "contact email phone mobile number telephone support vihil3010@gmail.com +91 7016421339 "
+                "instagram linkedin facebook address office location where headquarter nadiad gujarat india "
+                f"book call reach out inquiry quote {addr} {email} {phone}"
+            ),
             "content": f"{addr} {email} {phone} {socials_str}",
-            "answer": f"### 📞 Contact Vihil InfoTech\n- 📍 **Address**: {addr}\n- ✉ **Email**: {email}\n- 📞 **Phone**: {phone}\n\n**Social Profiles**:\n{socials_str}"
+            "answer": (
+                f"### 📞 Contact Vihil InfoTech\n"
+                f"- 📍 **Address**: {addr}\n"
+                f"- ✉ **Email**: {email}\n"
+                f"- 📞 **Phone**: {phone}\n"
+                f"- ⏱ **Response Time**: {response_time}\n\n"
+                f"**Social & Web**:\n{socials_str}"
+            )
         })
         
     # 5. Core Services
-    for s in kb.get("services", []):
+    services_list = kb.get("services", [])
+    if isinstance(services_list, dict):
+        services_list = services_list.get("vihilservices", []) + services_list.get("vihilcapabilities", [])
+        
+    for s in services_list:
         title = s.get("title", "").strip()
         clean_title = re.sub(r'^[0-9\.\s]+', '', title)
         desc1 = s.get("desc1", "")
-        desc = s.get("desc", "")
+        desc = s.get("description", s.get("desc", ""))
         ans_text = desc1 or desc
         index.append({
             "type": "service",
@@ -174,7 +213,28 @@ def build_search_index(kb):
             "answer": f"### ⚡ {name}\n*{desc}*"
         })
         
-    # 7. FAQs
+    # 6b. AI / ML Capabilities (new section)
+    ai_ml = kb.get("ai_ml", {})
+    if ai_ml:
+        caps = ai_ml.get("capabilities", [])
+        caps_str = "\n".join([
+            f"- **{c.get('name')}**: {c.get('desc','')}" +
+            (f"\n  Features: {', '.join(c.get('features', []))}" if c.get('features') else "") +
+            (f"\n  Stack: {', '.join(c.get('tech_stack', []))}" if c.get('tech_stack') else "")
+            for c in caps
+        ])
+        index.append({
+            "type": "ai_ml",
+            "title": "AI ML Capabilities Artificial Intelligence Machine Learning LLM RAG Automation",
+            "search_text": (
+                "ai ml artificial intelligence machine learning llm large language model rag retrieval augmented generation "
+                "generative ai workflow automation langchain fastapi data intelligence forecasting chatbot copilot smart "
+                f"{ai_ml.get('headline', '')} {caps_str}"
+            ),
+            "content": caps_str,
+            "answer": f"### 🤖 AI/ML Capabilities at Vihil InfoTech\n{ai_ml.get('headline','')}\n\n{caps_str}"
+        })
+        
     for f in kb.get("faqs", []):
         q = f.get("question", "").strip()
         ans = f.get("answer", "").strip()
@@ -187,10 +247,14 @@ def build_search_index(kb):
         })
         
     # 8. Team Members
-    for m in kb.get("team", []):
+    team_list = kb.get("team", [])
+    if isinstance(team_list, dict):
+        team_list = team_list.get("teammembers", [])
+        
+    for m in team_list:
         name = m.get("name", "").strip()
         pos = m.get("position", "").replace("(", "").replace(")", "").strip()
-        desc = m.get("desc", "").strip()
+        desc = m.get("desc", m.get("description", "")).strip()
         index.append({
             "type": "team",
             "title": f"Team Member: {name} ({pos})",
@@ -228,8 +292,13 @@ def build_search_index(kb):
         
     # 11. Technologies
     techs = kb.get("technologies", [])
-    if techs:
+    if isinstance(techs, list) and techs and isinstance(techs[0], dict):
+        techs_str = ", ".join([t.get("content", "") for t in techs if t.get("type") == "tech"])
+        techs = [t.get("content", "") for t in techs if t.get("type") == "tech"]
+    elif techs:
         techs_str = ", ".join(techs)
+        
+    if techs:
         index.append({
             "type": "technology",
             "title": "Specialized Technologies Stack Languages Frameworks",
@@ -339,7 +408,13 @@ def preprocess_multilingual_query(query):
         # QA / Security
         "security": ["सुरक्षा", "સુરક્ષા", "cyber", "protect", "safe", "secure"],
         # Development Process
-        "process": ["काम करने का तरीका", "પદ્ધતિ", "चरण", "पद्धति", "process", "step", "method", "workflow"]
+        "process": ["काम करने का तरीका", "પદ્ધતિ", "चरण", "पद्धति", "process", "step", "method", "workflow"],
+        # AI / ML
+        "ai": ["ai", "ml", "artificial intelligence", "machine learning", "llm", "rag", "langchain", "copilot", "bot", "automation", "generative", "chatbot", "smart", "intelligent", "bots"],
+        # Cloud & Infrastructure
+        "cloud": ["cloud", "devops", "aws", "gcp", "azure", "infrastructure", "server", "deployment", "hosting"],
+        # LinkedIn / Social
+        "linkedin": ["linkedin", "social", "instagram", "facebook", "profile", "follow"],
     }
     
     expanded_terms = []
@@ -354,11 +429,13 @@ def preprocess_multilingual_query(query):
         "location": ["where", "location", "address", "office", "city", "nadiad", "gujarat", "india", "place", "map", "situated", "located"],
         "ceo": ["ceo", "cto", "owner", "founder", "head", "boss", "runs", "manage", "bharat", "manish", "desai", "shah"],
         "team": ["who works", "member", "staff", "employees", "team", "people", "developers", "engineers"],
-        "contact": ["email", "phone", "call", "mobile", "number", "reach", "support", "talk to", "contact"],
+        "contact": ["email", "phone", "call", "mobile", "number", "reach", "support", "talk to", "contact", "linkedin", "instagram", "facebook", "social", "book"],
         "service": ["services", "capabilities", "what we do", "build", "develop", "create", "offering", "solutions"],
         "quote": ["price", "cost", "charge", "quote", "payment", "budget", "how much"],
         "process": ["process", "methodology", "workflow", "steps", "stages", "how do you build", "how you work"],
-        "faqs": ["faqs", "questions", "common", "support", "help", "security", "maintenance"]
+        "faqs": ["faqs", "questions", "common", "support", "help", "security", "maintenance"],
+        "ai": ["ai", "ml", "machine learning", "artificial intelligence", "llm", "rag", "langchain", "automation", "generative", "copilot", "smart"],
+        "cloud": ["cloud", "devops", "aws", "azure", "gcp", "infrastructure", "server", "hosting", "deployment"],
     }
     
     for concept, keywords in synonyms.items():
@@ -410,13 +487,13 @@ def fallback_qa(query, kb):
     ]
     if any(re.search(pat, query_clean) for pat in capabilities_patterns):
         return (
-            "I am specialized in helping you discover Vihil InfoTech! Specifically, I can:\n"
-            "- Explain our **Core Services** (Web, Mobile, Desktop engineering, Custom CMS).\n"
-            "- Describe our **5-Step Development Process** (Research, Planning, Implementation, Testing, Optimization).\n"
-            "- Introduce our **Expert Team** (like Bharat Desai, our CEOs, and designers).\n"
-            "- Give **Contact Information** (Email, phone number, physical office location in Nadiad, Gujarat).\n"
-            "- Share our **Technologies Stack** (React, Next.js, Python, FastAPI, Flutter, etc.).\n\n"
-            "Ask me about any of these, or set up a live Gemini API key for an unrestricted chat!"
+            "I am Vihil InfoTech's AI assistant. Here's what I can help you with:\n"
+            "- **Services**: Web Dev (React/Next.js), Mobile Apps (React Native/iOS/Android), AI/ML Integration, Cloud & Infrastructure, Cyber Security, SEO, PWA, Desktop Apps.\n"
+            "- **Development Process**: Research → Plan → Implement → Test & Deliver → Optimize.\n"
+            "- **Team**: 20+ engineers, designers, and AI specialists.\n"
+            "- **Contact**: vihil3010@gmail.com | +91 7016421339 | Reply within 24 hours.\n"
+            "- **Tech Stack**: React, Next.js, Node.js, Python, FastAPI, LangChain, React Native, TypeScript, Cloud (AWS/GCP/Azure).\n\n"
+            "Set a Groq API key with `/setkey <key>` to unlock full AI conversation mode!"
         )
 
     # 5. Thanks / Gratitude
@@ -456,7 +533,11 @@ def fallback_qa(query, kb):
         "team", "member", "ceo", "cto", "pm", "developer", "engineer", "designer", "bharat", "manish", "jay",
         "process", "methodology", "workflow", "step", "planning", "research", "test", "testing", "optimize",
         "faq", "faqs", "question", "questions", "answer", "quote", "cost", "price", "portfolio", "carousel",
-        "android", "ios", "react", "nextjs", "python", "fastapi", "node"
+        "android", "ios", "react", "nextjs", "python", "fastapi", "node",
+        # New AI/ML terms
+        "ai", "ml", "llm", "rag", "langchain", "cloud", "automation", "generative", "intelligence",
+        "copilot", "assistant", "infrastructure", "devops", "shopify", "typescript",
+        "linkedin", "instagram", "facebook", "social"
     }
     
     # Preprocess and expand the query to support multiple languages and synonyms
@@ -471,10 +552,10 @@ def fallback_qa(query, kb):
     if not is_relevant_topic and original_tokens:
         # If the question contains no company name and no business keywords, fail early to prevent wrong answers
         return (
-            "I am Vihil InfoTech's AI Assistant. Since the Gemini API is currently offline/inactive, I am operating on local cached knowledge base facts. "
-            "I couldn't find a confident, highly-relevant match for your query in our local site cache.\n\n"
-            "**To resolve this and unlock smart general conversation**:\n"
-            "1. **Upgrade to Live AI Mode**: If you have a Gemini API key, configure it using `/setkey <your_key>` in the terminal, or save it as `GEMINI_API_KEY` in a `.env` file. This unlocks the powerful `gemini-1.5-flash` model, allowing me to answer any general, conversational, or advanced questions beautifully!\n"
+            "I am Vihil InfoTech's AI Assistant. I operate on a local cached knowledge base facts when the Live API is disconnected. "
+            "I couldn't find a highly-relevant match for your query in our local site cache.\n\n"
+            "**To resolve this and unlock smart conversation**:\n"
+            "1. **Wait for Rate Limit**: If you configured Groq, you might have hit the free-tier limits. Wait a minute and try again, or use a new key!\n"
             "2. **Ask about Vihil InfoTech**: You can ask me about our core services, development process, specialized technologies, and team members, and I'll fetch the answers instantly from our local cache.\n"
             "3. **Contact us directly**: Feel free to reach out to our team at vihil3010@gmail.com or call +91 7016421339. We'd love to help you build your digital vision!"
         )
@@ -488,10 +569,10 @@ def fallback_qa(query, kb):
         return best_doc["answer"]
         
     return (
-        "I am Vihil InfoTech's AI Assistant. Since the Gemini API is currently offline/inactive, I am operating on local cached knowledge base facts. "
-        "I couldn't find a confident, highly-relevant match for your query in our local site cache.\n\n"
-        "**To resolve this and unlock smart general conversation**:\n"
-        "1. **Upgrade to Live AI Mode**: If you have a Gemini API key, configure it using `/setkey <your_key>` in the terminal, or save it as `GEMINI_API_KEY` in a `.env` file. This unlocks the powerful `gemini-1.5-flash` model, allowing me to answer any general, conversational, or advanced questions beautifully!\n"
+        "I am Vihil InfoTech's AI Assistant. I operate on a local cached knowledge base facts when the Live API is disconnected. "
+        "I couldn't find a highly-relevant match for your query in our local site cache.\n\n"
+        "**To resolve this and unlock smart conversation**:\n"
+        "1. **Wait for Rate Limit**: If you configured Groq, you might have hit the free-tier limits. Wait a minute and try again, or use a new key!\n"
         "2. **Ask about Vihil InfoTech**: You can ask me about our core services, development process, specialized technologies, and team members, and I'll fetch the answers instantly from our local cache.\n"
         "3. **Contact us directly**: Feel free to reach out to our team at vihil3010@gmail.com or call +91 7016421339. We'd love to help you build your digital vision!"
     )
@@ -514,7 +595,7 @@ def detect_language_simple(text):
         return "ko"
     return "en"
 
-def query_groq_api(query, kb, api_key, stream=False):
+def query_groq_api(query, kb, api_key, stream=False, lang_pref=None):
     """
     Direct REST API client for Groq to support Llama 3 models.
     Uses standard urllib to bypass extra library requirements.
@@ -527,15 +608,33 @@ def query_groq_api(query, kb, api_key, stream=False):
     url = "https://api.groq.com/openai/v1/chat/completions"
     
     system_instruction = (
-        "You are Vihil InfoTech's highly wise, helpful, and friendly AI assistant. "
-        "Your goal is to answer questions about Vihil InfoTech accurately, comprehensively, and beautifully using the provided website context.\n"
+        "You are the official AI assistant for Vihil InfoTech (Vihil Infotech Private Limited), "
+        "a product-focused technology company based in Nadiad, Gujarat, India.\n"
+        "Your goal is to answer questions about Vihil InfoTech accurately, helpfully, and warmly using the provided website context.\n\n"
+        "Key facts to always have ready:\n"
+        "- Company: Vihil InfoTech | Legal: Vihil Infotech Private Limited\n"
+        "- Tagline: 'Build faster with a dependable tech partner.'\n"
+        "- Services: Web (React/Next.js), Mobile (React Native/iOS/Android), AI/ML (LLMs, RAG, automation), Cloud, Cyber Security, SEO, PWA, Desktop Apps\n"
+        "- Tech Stack: React, Next.js, Node.js, Express.js, Python, FastAPI, LangChain, React Native, Shopify, PHP, TypeScript, Cloud (AWS/GCP/Azure)\n"
+        "- Team Size: 20+ professionals | Clients: 60+ | Projects: 60+ | Rating: 4.8\n"
+        "- Address: 207, Sky Tatva-1, Opposite Amba Aashram, College Road, Nadiad, Gujarat, India\n"
+        "- Email: vihil3010@gmail.com | Phone: +91 7016421339\n"
+        "- LinkedIn: https://www.linkedin.com/company/vihil-infotech-private-limited/\n"
+        "- Instagram: https://www.instagram.com/vihilinfotech/\n"
+        "- Facebook: https://www.facebook.com/vihilinfotech\n"
+        "- Response time: Within 24 hours\n\n"
         "Guidelines:\n"
-        "- Be exceptionally professional, insightful, and warm in your responses.\n"
-        "- Communicate naturally in the language of the user's prompt (supporting all world languages, matching scripts and tone exactly).\n"
-        "- Use the provided website context to answer company-related questions. If a question is about Vihil InfoTech but the context does not contain the exact details, answer politely using general helpful company framing, or guide them to contact the team, rather than giving a dry, robotic refusal. If the query is completely unrelated to the company (e.g., general chat, greetings, math, science, programming), act as a wise and knowledgeable general AI companion, answering their query beautifully while gracefully tying it back to how Vihil InfoTech can help build digital solutions!\n"
-        "- If they greet you, give a highly localized, warm time-of-day greeting (matching their language and script) based on the Current Local Time.\n"
+        "- Be professional, insightful, and warm.\n"
+        "- Respond in the language the user writes in (Hindi, Gujarati, English, etc.).\n"
+        "- ALWAYS format responses clearly line-by-line with Markdown bullet points or numbered lists. NEVER combine multiple items into a single paragraph.\n"
+        "- If the user asks for team members, services, or FAQs, YOU MUST list each one clearly with bullet points.\n"
+        "- For company questions not covered by the context, politely guide them to contact vihil3010@gmail.com or call +91 7016421339.\n"
+        "- For completely off-topic questions (math, general chat), answer helpfully as a smart AI and tie back to how Vihil InfoTech can help build digital solutions.\n"
     )
     
+    if lang_pref:
+        system_instruction += f"\n- VERY IMPORTANT: The user has explicitly selected the language code '{lang_pref}'. You MUST respond entirely in this requested language."
+        
     if not stream:
         system_instruction += (
             "\nResponse format MUST be a JSON object with two fields:\n"
@@ -546,13 +645,23 @@ def query_groq_api(query, kb, api_key, stream=False):
         system_instruction += "\nGenerate your response in standard Markdown format. Stream the response directly."
         
     current_time = datetime.datetime.now().strftime("%I:%M %p")
-    hour = datetime.datetime.now().hour
-    greeting_context = "Good morning" if hour < 12 else "Good afternoon" if hour < 18 else "Good evening"
     
-    context_str = json.dumps(kb, indent=2, ensure_ascii=False)
+    # Use RAG (Retrieval-Augmented Generation) to avoid Groq rate limits
+    index = build_search_index(kb)
+    expanded_query = preprocess_multilingual_query(query)
+    results = compute_tfidf_score(expanded_query, index)
+    
+    # Inject the top 15 most relevant documents so it can list all team members/services without cutting off
+    top_docs = results[:15] if results else []
+    context_lines = []
+    for score, doc in top_docs:
+        context_lines.append(f"[{doc.get('title', 'Info')}]: {doc.get('content', '')}")
+        
+    context_str = "\n\n".join(context_lines)
+    if not context_str.strip():
+        context_str = "No specific database details matched. Rely on general Vihil InfoTech facts."
     prompt = (
-        f"Current Local Time: {current_time}.\n"
-        f"When the user greets you or asks for the time, naturally respond with the appropriate real-time greeting (e.g., '{greeting_context}').\n\n"
+        f"Current Local Time: {current_time}.\n\n"
         f"Website Context:\n{context_str}\n\n"
         f"User Question: {query}"
     )
@@ -564,7 +673,7 @@ def query_groq_api(query, kb, api_key, stream=False):
     }
     
     body = {
-        "model": "llama-3.3-70b-versatile",
+        "model": "llama-3.1-8b-instant",
         "messages": [
             {"role": "system", "content": system_instruction},
             {"role": "user", "content": prompt}
@@ -590,18 +699,17 @@ def query_groq_api(query, kb, api_key, stream=False):
     return req, ctx
 
 def answer_query(query, filepath="knowledge_base.json", lang_pref=None):
-    """Query answering coordinator. Uses Groq or Gemini API if key is present, else fall back to local rule engine."""
+    """Query answering coordinator. Uses Groq API if key is present, else fall back to local rule engine."""
     import urllib.request
     import json
     load_dotenv_custom()
     kb = load_knowledge_base(filepath)
     groq_api_key = os.environ.get("GROQ_API_KEY")
-    gemini_api_key = os.environ.get("GEMINI_API_KEY")
     
     # 1. Try Groq API first if available
     if groq_api_key:
         try:
-            req, ctx = query_groq_api(query, kb, groq_api_key, stream=False)
+            req, ctx = query_groq_api(query, kb, groq_api_key, stream=False, lang_pref=lang_pref)
             with urllib.request.urlopen(req, timeout=15, context=ctx) as response:
                 res_data = json.loads(response.read().decode("utf-8"))
                 content_str = res_data["choices"][0]["message"]["content"].strip()
@@ -613,84 +721,29 @@ def answer_query(query, filepath="knowledge_base.json", lang_pref=None):
                 except Exception:
                     return content_str, detect_language_simple(content_str)
         except Exception as e:
+            if "429" in str(e):
+                return "⚠️ **Groq API Rate Limit Reached**\nYou have sent too many requests and hit the free-tier limit for the Groq API. Please wait a moment for the rate limit to reset before trying again, or use a new Groq API key.", "en"
             print(f"Groq API Error: {e}", file=sys.stderr)
-            
-    # 2. Try Gemini API next if available
-    if gemini_api_key:
-        try:
-            import google.generativeai as genai
-            genai.configure(api_key=gemini_api_key)
-            
-            system_instruction = (
-                "You are Vihil InfoTech's highly wise, helpful, and friendly AI assistant. "
-                "Your goal is to answer questions about Vihil InfoTech accurately, comprehensively, and beautifully using the provided website context.\n"
-                "Guidelines:\n"
-                "- Be exceptionally professional, insightful, and warm in your responses.\n"
-                "- Communicate naturally in the language of the user's prompt (supporting all world languages, matching scripts and tone exactly).\n"
-                "- Use the provided website context to answer company-related questions. If a question is about Vihil InfoTech but the context does not contain the exact details, answer politely using general helpful company framing, or guide them to contact the team, rather than giving a dry, robotic refusal. If the query is completely unrelated to the company (e.g., general chat, greetings, math, science, programming), act as a wise and knowledgeable general AI companion, answering their query beautifully while gracefully tying it back to how Vihil InfoTech can help build digital solutions!\n"
-                "- If they greet you, give a highly localized, warm time-of-day greeting (matching their language and script) based on the Current Local Time.\n"
-                "Response format MUST be a JSON object with two fields:\n"
-                "1. 'answer': The actual text response.\n"
-                "2. 'lang_code': The standard 2-letter language code (e.g. 'en', 'hi', 'gu', 'es', 'fr', 'ja', 'ru', etc.) of the generated answer."
-            )
-            
-            model = genai.GenerativeModel(
-                model_name="gemini-1.5-flash",
-                system_instruction=system_instruction
-            )
-            
-            current_time = datetime.datetime.now().strftime("%I:%M %p")
-            hour = datetime.datetime.now().hour
-            greeting_context = "Good morning" if hour < 12 else "Good afternoon" if hour < 18 else "Good evening"
-
-            context_str = json.dumps(kb, indent=2, ensure_ascii=False)
-            prompt = (
-                f"Current Local Time: {current_time}.\n"
-                f"When the user greets you or asks for the time, naturally respond with the appropriate real-time greeting (e.g., '{greeting_context}').\n\n"
-                f"Website Context:\n{context_str}\n\n"
-                f"User Question: {query}"
-            )
-            
-            response = model.generate_content(
-                prompt,
-                generation_config={
-                    "response_mime_type": "application/json",
-                    "temperature": 0.1
-                }
-            )
-            
-            try:
-                res_json = json.loads(response.text.strip())
-                ans = res_json.get("answer", "")
-                lang_code = res_json.get("lang_code", "en")
-                return ans, lang_code
-            except Exception as json_err:
-                text = response.text.strip()
-                return text, detect_language_simple(text)
-                
-        except Exception as e:
-            print(f"Gemini API Error: {e}", file=sys.stderr)
             
     ans = fallback_qa(query, kb)
     return ans, detect_language_simple(ans)
 
-def stream_answer_query(query, filepath="knowledge_base.json"):
+def stream_answer_query(query, filepath="knowledge_base.json", lang_pref=None):
     """
     Generator that yields chunks of the answer.
     Enables highly responsive real-time streaming in the terminal and browser.
-    Supports Groq, Gemini, or local search fallback.
+    Supports Groq or local search fallback.
     """
     import urllib.request
     import json
     load_dotenv_custom()
     kb = load_knowledge_base(filepath)
     groq_api_key = os.environ.get("GROQ_API_KEY")
-    gemini_api_key = os.environ.get("GEMINI_API_KEY")
     
     # 1. Try Groq API first if available
     if groq_api_key:
         try:
-            req, ctx = query_groq_api(query, kb, groq_api_key, stream=True)
+            req, ctx = query_groq_api(query, kb, groq_api_key, stream=True, lang_pref=lang_pref)
             with urllib.request.urlopen(req, timeout=15, context=ctx) as response:
                 buffer = ""
                 for chunk in response:
@@ -713,58 +766,10 @@ def stream_answer_query(query, filepath="knowledge_base.json"):
                                 pass
             return
         except Exception as e:
+            if "429" in str(e):
+                yield "⚠️ **Groq API Rate Limit Reached**\nYou have sent too many requests and hit the free-tier limit for the Groq API. Please wait a moment for the rate limit to reset before trying again, or use a new Groq API key."
+                return
             print(f"Groq Stream Error: {e}", file=sys.stderr)
-
-    # 2. Try Gemini API next if available
-    if gemini_api_key:
-        try:
-            import google.generativeai as genai
-            genai.configure(api_key=gemini_api_key)
-            
-            system_instruction = (
-                "You are Vihil InfoTech's highly wise, helpful, and friendly AI assistant.\n"
-                "Your goal is to answer questions about Vihil InfoTech accurately, comprehensively, and beautifully using the provided website context.\n"
-                "Guidelines:\n"
-                "- Be exceptionally professional, insightful, and warm in your responses.\n"
-                "- Communicate naturally in the language of the user's prompt (supporting all world languages, matching scripts and tone exactly).\n"
-                "- Use the provided website context to answer company-related questions. If a question is about Vihil InfoTech but the context does not contain the exact details, answer politely using general helpful company framing, or guide them to contact the team, rather than giving a dry, robotic refusal.\n"
-                "- If the query is completely unrelated to the company (e.g., general chat, greetings, math, science, programming), act as a wise and knowledgeable general AI companion, answering their query beautifully while gracefully tying it back to how Vihil InfoTech can help build digital solutions!\n"
-                "- If they greet you, give a highly localized, warm time-of-day greeting (matching their language and script) based on the Current Local Time.\n"
-                "- Stream the answer directly as markdown text."
-            )
-            
-            model = genai.GenerativeModel(
-                model_name="gemini-1.5-flash",
-                system_instruction=system_instruction
-            )
-            
-            current_time = datetime.datetime.now().strftime("%I:%M %p")
-            hour = datetime.datetime.now().hour
-            greeting_context = "Good morning" if hour < 12 else "Good afternoon" if hour < 18 else "Good evening"
-                
-            context_str = json.dumps(kb, indent=2, ensure_ascii=False)
-            prompt = (
-                f"Current Local Time: {current_time}.\n"
-                f"When the user greets you or asks for the time, naturally respond with the appropriate real-time greeting (e.g., '{greeting_context}').\n\n"
-                f"Website Context:\n{context_str}\n\n"
-                f"User Question: {query}\n\n"
-                "Generate your response in standard Markdown format. Stream the response directly."
-            )
-            
-            response = model.generate_content(
-                prompt,
-                stream=True,
-                generation_config={
-                    "temperature": 0.1
-                }
-            )
-            
-            for chunk in response:
-                if chunk.text:
-                    yield chunk.text
-            return
-        except Exception as e:
-            print(f"Gemini Stream Error: {e}", file=sys.stderr)
             
     ans = fallback_qa(query, kb)
     words = ans.split(" ")
@@ -808,54 +813,45 @@ def set_api_key(key):
         return
         
     lines = []
-    found_gemini = False
     found_groq = False
     env_path = ".env"
     
-    is_groq = key.startswith("gsk_")
-    key_var = "GROQ_API_KEY" if is_groq else "GEMINI_API_KEY"
+    key_var = "GROQ_API_KEY"
     
     if os.path.exists(env_path):
         with open(env_path, "r", encoding="utf-8") as f:
             for line in f:
                 if line.strip().startswith(f"{key_var}="):
                     lines.append(f"{key_var}={key}\n")
-                    if is_groq:
-                        found_groq = True
-                    else:
-                        found_gemini = True
+                    found_groq = True
                 else:
                     lines.append(line)
                     
-    if is_groq and not found_groq:
+    if not found_groq:
         lines.append(f"GROQ_API_KEY={key}\n")
-    elif not is_groq and not found_gemini:
-        lines.append(f"GEMINI_API_KEY={key}\n")
         
     with open(env_path, "w", encoding="utf-8") as f:
         f.writelines(lines)
         
     os.environ[key_var] = key
     print(f"\n{Colors.GREEN}✔ API key successfully configured and saved to .env!{Colors.ENDC}")
-    print(f"{Colors.GREEN}AI assistant is now upgraded to Live {'Groq' if is_groq else 'Gemini'} Mode.{Colors.ENDC}\n")
+    print(f"{Colors.GREEN}AI assistant is now upgraded to Live Groq Mode.{Colors.ENDC}\n")
 
 def print_status(filepath="knowledge_base.json"):
     kb = load_knowledge_base(filepath)
     groq_api_key = os.environ.get("GROQ_API_KEY")
-    gemini_api_key = os.environ.get("GEMINI_API_KEY")
     
     if groq_api_key:
-        api_status = f"{Colors.GREEN}CONNECTED (Groq Llama-3.3-70b-versatile){Colors.ENDC}"
-    elif gemini_api_key:
-        api_status = f"{Colors.GREEN}CONNECTED (Gemini-1.5-flash){Colors.ENDC}"
+        api_status = f"{Colors.GREEN}CONNECTED (Groq Llama-3.1-8b-instant){Colors.ENDC}"
     else:
         api_status = f"{Colors.YELLOW}OFFLINE MODE (Local TF-IDF Vector Search Engine){Colors.ENDC}"
     
     services_count = len(kb.get("services", []))
     team_count = len(kb.get("team", []))
     faqs_count = len(kb.get("faqs", []))
-    process_count = len(kb.get("process", []))
+    process_count = len([p for p in kb.get("process", []) if p.get("content")])
     techs_count = len(kb.get("technologies", []))
+    ai_caps_count = len(kb.get("ai_ml", {}).get("capabilities", []))
     
     cur_time = datetime.datetime.now().strftime("%Y-%m-%d %I:%M:%S %p")
     
@@ -867,6 +863,7 @@ def print_status(filepath="knowledge_base.json"):
     print(f"  - Frequently Asked Qs: {faqs_count}")
     print(f"  - Process Steps: {process_count}")
     print(f"  - Tech Stack Items: {techs_count}")
+    print(f"  - AI/ML Capabilities: {ai_caps_count}")
     print(f"- **Current Local Time**: {cur_time}")
     print(f"=====================\n")
 
@@ -924,7 +921,7 @@ def print_help():
     print(f"  {Colors.BOLD}/help{Colors.ENDC}             - Show this help menu.")
     print(f"  {Colors.BOLD}/status{Colors.ENDC}           - Display AI configurations & database stats.")
     print(f"  {Colors.BOLD}/sync{Colors.ENDC}             - Crawl & refresh local database from live website.")
-    print(f"  {Colors.BOLD}/setkey <key>{Colors.ENDC}     - Save Gemini/Groq API key to .env file for Live Mode.")
+    print(f"  {Colors.BOLD}/setkey <key>{Colors.ENDC}     - Save Groq API key to .env file for Live Mode.")
     print(f"  {Colors.BOLD}/view <cat>{Colors.ENDC}       - View lists ('services', 'team', 'faqs', 'tech').")
     print(f"  {Colors.BOLD}/clear{Colors.ENDC}            - Clear the terminal screen.")
     print(f"  {Colors.BOLD}/exit{Colors.ENDC} or {Colors.BOLD}/quit{Colors.ENDC}    - Exit the interactive assistant.")
@@ -993,11 +990,8 @@ def run_terminal_client(filepath="knowledge_base.json"):
                 
             # Regular question answering with streaming
             groq_api_key = os.environ.get("GROQ_API_KEY")
-            gemini_api_key = os.environ.get("GEMINI_API_KEY")
             if groq_api_key:
                 engine_label = "Groq Llama-3"
-            elif gemini_api_key:
-                engine_label = "Gemini Flash"
             else:
                 engine_label = "Local TF-IDF Search"
             
