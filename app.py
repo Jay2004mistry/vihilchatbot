@@ -81,8 +81,8 @@ def api_query(request: QueryRequest):
                 audio_b64 = asyncio.run(get_audio(clean_text, lang_code))
             except Exception as e:
                 print("TTS Error:", e)
-
-        return {"answer": ans, "audio": audio_b64, "lang": lang_code}
+        explicit_switch = qa_engine.check_language_switch_request(request.query) is not None
+        return {"answer": ans, "audio": audio_b64, "lang": lang_code, "explicit_switch": explicit_switch}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

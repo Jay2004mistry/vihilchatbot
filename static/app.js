@@ -199,7 +199,9 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Dynamically update the selected language if the server returned a different language
             if (data.lang && langSelect && langSelect.value !== data.lang) {
-                langSelect.value = data.lang;
+                if (langSelect.value !== "auto" || data.explicit_switch) {
+                    langSelect.value = data.lang;
+                }
             }
 
             appendMessage(data.answer, "bot-message");

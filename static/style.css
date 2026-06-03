@@ -15,6 +15,7 @@
     --text-secondary: #8a8f98; /* Sophisticated grey */
     --text-muted: #525866;
     --success: #00ffbb;
+}
 :root {
     --bg: #04070d;
     --panel: rgba(20, 24, 36, 0.84);
@@ -731,6 +732,7 @@ body {
         font-size: 0.72rem;
     }
 }
+.hud-corner {
     opacity: 0.7;
     transition: all 0.3s ease;
 }
