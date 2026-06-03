@@ -446,7 +446,7 @@ def preprocess_multilingual_query(query):
         return query + " " + " ".join(set(expanded_terms))
     return query
 
-def fallback_qa(query, kb):
+def fallback_qa(query, kb, lang_pref=None):
     """
     Advanced offline QA search engine.
     Uses TF-IDF similarity vector matching across indexed facts for extreme precision.
@@ -460,31 +460,90 @@ def fallback_qa(query, kb):
     # Precise high-fidelity conversational routing to prevent unrelated vector matches
     # 1. Greetings
     greeting_patterns = [r'\bhello\b', r'\bhi\b', r'\bhey\b', r'\bgreetings\b', r'\bgood\s+morning\b', r'\bgood\s+afternoon\b', r'\bgood\s+evening\b']
-    if any(re.search(pat, query_clean) for pat in greeting_patterns):
-        return "Hello! I am Vihil InfoTech's AI assistant. I have been trained on our official company context. How can I help you today?"
-        
     # 2. Identity & Name
     identity_patterns = [
         r'\bwho\s+are\s+you\b', r'\bwhat\s+is\s+your\s+name\b', r'\byour\s+name\b',
         r'\bwho\s+made\s+you\b', r'\bwho\s+created\s+you\b', r'\bwho\s+developed\s+you\b',
         r'\bintroduce\s+yourself\b'
     ]
-    if any(re.search(pat, query_clean) for pat in identity_patterns):
-        return "I am Vihil InfoTech's official AI assistant. I am programmed to help you explore our services, technical stacks, development process, team profiles, and office locations!"
-
     # 3. How are you
     how_are_you_patterns = [
         r'\bhow\s+are\s+you\b', r'\bhow\s+do\s+you\s+do\b', r'\bhope\s+you\s+are\s+well\b',
         r'\bhow\'s\s+it\s+going\b', r'\bdoing\s+well\b'
     ]
-    if any(re.search(pat, query_clean) for pat in how_are_you_patterns):
-        return "I'm doing fantastic, thank you for asking! I'm completely ready to help you explore Vihil InfoTech's engineering offerings. What can I assist you with today?"
-
     # 4. Capabilities / What can you do
     capabilities_patterns = [
         r'\bwhat\s+do\s+you\s+do\b', r'\bwhat\s+can\s+you\s+do\b', r'\byour\s+capabilities\b',
         r'\bhow\s+can\s+you\s+help\b', r'\bhelp\s+me\b', r'\bwhat\s+are\s+you\s+capable\s+of\b'
     ]
+    # 5. Thanks / Gratitude
+    thanks_patterns = [
+        r'\bthank\s+you\b', r'\bthanks\b', r'\bappreciate\s+it\b', r'\bthankful\b',
+        r'\bgreat\s+help\b', r'\bawesome\b', r'\bgood\s+job\b'
+    ]
+    # 6. Goodbye / Farewell
+    goodbye_patterns = [
+        r'\bbye\b', r'\bgoodbye\b', r'\bsee\s+you\b', r'\btalk\s+to\s+you\s+later\b',
+        r'\bexit\b', r'\bquit\b'
+    ]
+
+    # Handle language-specific offline responses
+    if lang_pref == "gu":
+        if any(re.search(pat, query_clean) for pat in greeting_patterns):
+            return "નમસ્તે! હું વિહિલ ઇન્ફોટેક (Vihil InfoTech) નો AI આસિસ્ટન્ટ છું. હું તમારી શું મદદ કરી શકું?"
+        if any(re.search(pat, query_clean) for pat in identity_patterns):
+            return "હું વિહિલ ઇન્ફોટેક નો ઓફિશિયલ AI આસિસ્ટન્ટ છું. હું તમને અમારી સેવાઓ, ટેકનોલોજી અને ટીમ પ્રોફાઇલ્સ વિશે માહિતી આપી શકું છું!"
+        if any(re.search(pat, query_clean) for pat in how_are_you_patterns):
+            return "હું એકદમ મજામાં છું, પૂછવા માટે આભાર! હું તમારી મદદ કરવા માટે તૈયાર છું. આજે હું તમારી શું સહાય કરું?"
+        if any(re.search(pat, query_clean) for pat in capabilities_patterns):
+            return (
+                "હું વિહિલ ઇન્ફોટેક નો AI આસિસ્ટન્ટ છું. હું નીચેની બાબતોમાં મદદ કરી શકું છું:\n"
+                "- **સેવાઓ**: વેબ ડેવલપમેન્ટ (React/Next.js), મોબાઈલ એપ્સ (React Native/iOS/Android), AI/ML ઇન્ટિગ્રેશન, ક્લાઉડ, સાયબર સિક્યોરિટી, SEO અને ડેસ્કટોપ એપ્સ.\n"
+                "- **વર્કફ્લો**: સંશોધન → આયોજન → અમલીકરણ → પરીક્ષણ અને ડિલિવરી.\n"
+                "- **ટીમ**: ૨૦+ એન્જિનિયર્સ, ડિઝાઇનર્સ અને AI સ્પેશિયાલિસ્ટ.\n"
+                "- **સંપર્ક**: vihil3010@gmail.com | +91 7016421339.\n\n"
+                "ગ્રોક API કી સેટ કરવા માટે `/setkey <key>` નો ઉપયોગ કરો!"
+            )
+        if any(re.search(pat, query_clean) for pat in thanks_patterns):
+            return "તમારો ખૂબ ખૂબ આભાર! જો બીજો કોઈ પ્રશ્ન હોય તો જરૂર જણાવજો."
+        if any(re.search(pat, query_clean) for pat in goodbye_patterns):
+            return "આવજો! વાત કરવા બદલ ખુબ ખુબ આભાર. તમારો દિવસ શુભ રહે!"
+
+    elif lang_pref == "hi":
+        if any(re.search(pat, query_clean) for pat in greeting_patterns):
+            return "नमस्ते! मैं विहिल इन्फोटेक (Vihil InfoTech) का एआई सहायक हूँ। मैं आपकी क्या मदद कर सकता हूँ?"
+        if any(re.search(pat, query_clean) for pat in identity_patterns):
+            return "मैं विहिल इन्फोटेक का आधिकारिक एआई सहायक हूँ। मैं आपको हमारी सेवाओं, तकनीकी स्टैक, विकास प्रक्रिया और टीम प्रोफाइल के बारे में जानकारी दे सकता हूँ!"
+        if any(re.search(pat, query_clean) for pat in how_are_you_patterns):
+            return "मैं बिल्कुल ठीक हूँ, पूछने के लिए धन्यवाद! मैं आपकी मदद करने के लिए तैयार हूँ। आज मैं आपकी क्या सहायता करूँ?"
+        if any(re.search(pat, query_clean) for pat in capabilities_patterns):
+            return (
+                "मैं विहिल इन्फोटेक का एआई सहायक हूँ। मैं निम्नलिखित क्षेत्रों में आपकी मदद कर सकता हूँ:\n"
+                "- **सेवाएं**: वेब विकास (React/Next.js), मोबाइल ऐप्स (React Native/iOS/Android), एआई/एमएल एकीकरण, क्लाउड, साइबर सुरक्षा, एसईओ और डेस्कटॉप ऐप्स।\n"
+                "- **विकास प्रक्रिया**: अनुसंधान → योजना → कार्यान्वयन → परीक्षण और वितरण।\n"
+                "- **टीम**: 20+ इंजीनियर, डिजाइनर और एआई विशेषज्ञ।\n"
+                "- **संपर्क**: vihil3010@gmail.com | +91 7016421339.\n\n"
+                "ग्रोक एपीआई कुंजी सेट करने के लिए `/setkey <key>` का उपयोग करें!"
+            )
+        if any(re.search(pat, query_clean) for pat in thanks_patterns):
+            return "आपका बहुत-बहुत धन्यवाद! अगर कोई और सवाल हो तो जरूर बताएं।"
+        if any(re.search(pat, query_clean) for pat in goodbye_patterns):
+            return "अलविदा! बात करने के लिए धन्यवाद। आपका दिन शुभ हो!"
+
+    # Default English responses
+    # 1. Greetings
+    if any(re.search(pat, query_clean) for pat in greeting_patterns):
+        return "Hello! I am Vihil InfoTech's AI assistant. I have been trained on our official company context. How can I help you today?"
+        
+    # 2. Identity & Name
+    if any(re.search(pat, query_clean) for pat in identity_patterns):
+        return "I am Vihil InfoTech's official AI assistant. I am programmed to help you explore our services, technical stacks, development process, team profiles, and office locations!"
+
+    # 3. How are you
+    if any(re.search(pat, query_clean) for pat in how_are_you_patterns):
+        return "I'm doing fantastic, thank you for asking! I'm completely ready to help you explore Vihil InfoTech's engineering offerings. What can I assist you with today?"
+
+    # 4. Capabilities / What can you do
     if any(re.search(pat, query_clean) for pat in capabilities_patterns):
         return (
             "I am Vihil InfoTech's AI assistant. Here's what I can help you with:\n"
@@ -497,18 +556,10 @@ def fallback_qa(query, kb):
         )
 
     # 5. Thanks / Gratitude
-    thanks_patterns = [
-        r'\bthank\s+you\b', r'\bthanks\b', r'\bappreciate\s+it\b', r'\bthankful\b',
-        r'\bgreat\s+help\b', r'\bawesome\b', r'\bgood\s+job\b'
-    ]
     if any(re.search(pat, query_clean) for pat in thanks_patterns):
         return "You're very welcome! Helping you is what I do best. Let me know if there's anything else about Vihil InfoTech you want to explore!"
 
     # 6. Goodbye / Farewell
-    goodbye_patterns = [
-        r'\bbye\b', r'\bgoodbye\b', r'\bsee\s+you\b', r'\btalk\s+to\s+you\s+later\b',
-        r'\bexit\b', r'\bquit\b'
-    ]
     if any(re.search(pat, query_clean) for pat in goodbye_patterns):
         return "Goodbye! Thank you for chatting. We hope to collaborate on your next big digital idea soon! Have an amazing day!"
 
@@ -576,6 +627,115 @@ def fallback_qa(query, kb):
         "2. **Ask about Vihil InfoTech**: You can ask me about our core services, development process, specialized technologies, and team members, and I'll fetch the answers instantly from our local cache.\n"
         "3. **Contact us directly**: Feel free to reach out to our team at vihil3010@gmail.com or call +91 7016421339. We'd love to help you build your digital vision!"
     )
+
+def detect_language_from_text(text):
+    """
+    Detects language (gu, hi, or en) from the query text.
+    Checks for both Unicode ranges and common Romanized/transliterated words.
+    """
+    text_clean = text.lower().strip()
+    
+    # 1. Check Unicode character ranges first (extremely reliable)
+    if re.search(r'[\u0A80-\u0AFF]', text):
+        return "gu"
+    if re.search(r'[\u0900-\u097F]', text):
+        return "hi"
+        
+    # 2. Check Romanized Gujarati phrases
+    romanized_gu = [
+        r'\bkem\s+chho\b', r'\bkem\s+cho\b', r'\bgujarati\s+ma\b', r'\bgujrati\s+ma\b',
+        r'\btame\s+kem\s+chho\b', r'\bvaat\s+karo\b', r'\bshu\s+chhe\b', r'\bshu\s+che\b',
+        r'\bgujarati\s+ma\s+bolo\b', r'\bgujrati\s+ma\s+bolo\b'
+    ]
+    if any(re.search(pat, text_clean) for pat in romanized_gu):
+        return "gu"
+        
+    # 3. Check Romanized Hindi phrases
+    romanized_hi = [
+        r'\bkaise\s+ho\b', r'\bkya\s+haal\b', r'\bhindi\s+me\b', r'\bbaat\s+karo\b',
+        r'\bkaise\s+hain\b', r'\bhindi\s+me\s+bolo\b'
+    ]
+    if any(re.search(pat, text_clean) for pat in romanized_hi):
+        return "hi"
+        
+    return "en"
+
+def check_language_switch_request(query):
+    """
+    Checks if the user is explicitly requesting to switch the conversational language.
+    Returns the target language code (e.g. 'gu', 'hi', 'en') if a match is found, else None.
+    """
+    q_clean = query.lower().strip()
+    
+    # Gujarati requests
+    gujarati_patterns = [
+        r'\bspeak\s+in\s+gujarati\b',
+        r'\btalk\s+in\s+gujarati\b',
+        r'\bgujarati\s+ma\s+bolo\b',
+        r'\bgujarati\s+ma\s+vaat\b',
+        r'\bgujrati\s+ma\s+bolo\b',
+        r'\bgujrati\s+ma\s+vaat\b',
+        r'\bgujarati\s+bolo\b',
+        r'\bgujrati\s+bolo\b',
+        r'ગુજરાતી\s*માં',
+        r'ગુજરાતી\s*બોલો',
+        r'ગુજરાતી\s*માં\s*વાત',
+        r'\bkem\s+chho\b',
+        r'\bkem\s+cho\b'
+    ]
+    
+    # Hindi requests
+    hindi_patterns = [
+        r'\bspeak\s+in\s+hindi\b',
+        r'\btalk\s+in\s+hindi\b',
+        r'\bhindi\s+me\s+bolo\b',
+        r'\bhindi\s+me\s+baat\b',
+        r'\bhindi\s+bolo\b',
+        r'हिंदी\s*में',
+        r'हिंदी\s*बोलो',
+        r'हिंदी\s*में\s*बात',
+        r'हिन्दी\s*में',
+        r'हिन्दी\s*बोलो'
+    ]
+    
+    # English requests
+    english_patterns = [
+        r'\bspeak\s+in\s+english\b',
+        r'\btalk\s+in\s+english\b',
+        r'\benglish\s+me\s+bolo\b',
+        r'\benglish\s+me\s+baat\b',
+        r'\benglish\s+please\b'
+    ]
+    
+    if any(re.search(pat, q_clean) for pat in gujarati_patterns):
+        return "gu"
+    if any(re.search(pat, q_clean) for pat in hindi_patterns):
+        return "hi"
+    if any(re.search(pat, q_clean) for pat in english_patterns):
+        return "en"
+        
+    return None
+
+def is_pure_language_switch(query):
+    """
+    Determines if the query is just a language switch trigger/command.
+    """
+    q_clean = query.lower().strip()
+    phrases = [
+        "speak in gujarati", "talk in gujarati", "gujarati ma bolo", "gujarati ma vaat karo", "gujarati bolo",
+        "gujrati ma bolo", "gujrati ma vaat karo", "gujrati bolo",
+        "ગુજરાતી માં વાત કરો", "ગુજરાતી માં બોલો", "ગુજરાતી બોલો",
+        "speak in hindi", "talk in hindi", "hindi me baat karo", "hindi me bolo", "hindi bolo",
+        "हिंदी में बात करो", "हिंदी में बोलो", "hindi bolo", "हिन्दी में बात करो", "हिन्दी में बोलो",
+        "speak in english", "talk in english", "english me bolo", "english me baat karo"
+    ]
+    if q_clean in ["gujarati", "gujrati", "ગુજરાતી", "hindi", "हिंदी", "हिन्दी", "english"]:
+        return True
+    q_stripped = re.sub(r'[^\w\s\u0A80-\u0AFF\u0900-\u097F]', '', q_clean).strip()
+    for phrase in phrases:
+        if q_stripped == phrase:
+            return True
+    return False
 
 def detect_language_simple(text):
     """Simple heuristic to detect Gujarati, Hindi/Devanagari, or default to English."""
@@ -706,7 +866,24 @@ def answer_query(query, filepath="knowledge_base.json", lang_pref=None):
     kb = load_knowledge_base(filepath)
     groq_api_key = os.environ.get("GROQ_API_KEY")
     
-    # 1. Try Groq API first if available
+    # 1. Detect language switch requests or detect language from text
+    requested_lang = check_language_switch_request(query)
+    if requested_lang:
+        lang_pref = requested_lang
+        # If it is a pure language switch command, return immediate confirmation
+        if is_pure_language_switch(query):
+            if requested_lang == "gu":
+                return "હા, હવે હું તમારી સાથે ગુજરાતીમાં વાત કરીશ. હું ગુજરાતીમાં બોલી શકું છું! હું તમારી શું મદદ કરી શકું?", "gu"
+            elif requested_lang == "hi":
+                return "हाँ, अब मैं आपसे हिंदी में बात करूँगा। मैं हिंदी में बोल सकता हूँ! मैं आपकी क्या मदद कर सकता हूँ?", "hi"
+            elif requested_lang == "en":
+                return "Sure, I will speak with you in English now! How can I help you today?", "en"
+    elif not lang_pref or lang_pref.lower() == "auto":
+        detected_lang = detect_language_from_text(query)
+        if detected_lang != "en":
+            lang_pref = detected_lang
+            
+    # 2. Try Groq API first if available
     if groq_api_key:
         try:
             req, ctx = query_groq_api(query, kb, groq_api_key, stream=False, lang_pref=lang_pref)
@@ -725,7 +902,7 @@ def answer_query(query, filepath="knowledge_base.json", lang_pref=None):
                 return "⚠️ **Groq API Rate Limit Reached**\nYou have sent too many requests and hit the free-tier limit for the Groq API. Please wait a moment for the rate limit to reset before trying again, or use a new Groq API key.", "en"
             print(f"Groq API Error: {e}", file=sys.stderr)
             
-    ans = fallback_qa(query, kb)
+    ans = fallback_qa(query, kb, lang_pref=lang_pref)
     return ans, detect_language_simple(ans)
 
 def stream_answer_query(query, filepath="knowledge_base.json", lang_pref=None):
@@ -740,7 +917,25 @@ def stream_answer_query(query, filepath="knowledge_base.json", lang_pref=None):
     kb = load_knowledge_base(filepath)
     groq_api_key = os.environ.get("GROQ_API_KEY")
     
-    # 1. Try Groq API first if available
+    # 1. Detect language switch requests or detect language from text
+    requested_lang = check_language_switch_request(query)
+    if requested_lang:
+        lang_pref = requested_lang
+        # If it is a pure language switch command, yield immediate confirmation and return
+        if is_pure_language_switch(query):
+            if requested_lang == "gu":
+                yield "હા, હવે હું તમારી સાથે ગુજરાતીમાં વાત કરીશ. હું ગુજરાતીમાં બોલી શકું છું! હું તમારી શું મદદ કરી શકું?"
+            elif requested_lang == "hi":
+                yield "हाँ, अब मैं आपसे हिंदी में बात करूँगा। मैं हिंदी में बोल सकता हूँ! मैं आपकी क्या मदद कर सकता हूँ?"
+            elif requested_lang == "en":
+                yield "Sure, I will speak with you in English now! How can I help you today?"
+            return
+    elif not lang_pref or lang_pref.lower() == "auto":
+        detected_lang = detect_language_from_text(query)
+        if detected_lang != "en":
+            lang_pref = detected_lang
+            
+    # 2. Try Groq API first if available
     if groq_api_key:
         try:
             req, ctx = query_groq_api(query, kb, groq_api_key, stream=True, lang_pref=lang_pref)
@@ -771,7 +966,7 @@ def stream_answer_query(query, filepath="knowledge_base.json", lang_pref=None):
                 return
             print(f"Groq Stream Error: {e}", file=sys.stderr)
             
-    ans = fallback_qa(query, kb)
+    ans = fallback_qa(query, kb, lang_pref=lang_pref)
     words = ans.split(" ")
     for i, word in enumerate(words):
         yield (word + " " if i < len(words) - 1 else word)

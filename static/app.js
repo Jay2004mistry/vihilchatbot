@@ -196,6 +196,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const data = await response.json();
+            
+            // Dynamically update the selected language if the server returned a different language
+            if (data.lang && langSelect && langSelect.value !== data.lang) {
+                langSelect.value = data.lang;
+            }
+
             appendMessage(data.answer, "bot-message");
 
             if (!isMuted) {
