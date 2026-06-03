@@ -14,7 +14,15 @@
     <div class="page-orb page-orb-left"></div>
     <div class="page-orb page-orb-right"></div>
 
-    <main class="phone-shell" aria-label="Vihil InfoTech chat assistant">
+    <!-- Floating Chat Button -->
+    <button id="chatFab" class="chat-fab" aria-label="Open Chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </button>
+
+    <!-- Chat Container -->
+    <main id="chatContainer" class="phone-shell hidden" aria-label="Vihil InfoTech chat assistant">
         <section class="phone-window">
             <header class="phone-topbar">
                 <label class="topbar-lang" for="langSelect">
@@ -35,7 +43,12 @@
                     </select>
                 </label>
                 <div class="topbar-time" id="topbarTime">--:--</div>
-
+                <button type="button" id="closeChatBtn" class="close-chat-btn" aria-label="Close Chat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </header>
 
 

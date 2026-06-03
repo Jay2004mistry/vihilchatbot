@@ -625,15 +625,15 @@ def query_groq_api(query, kb, api_key, stream=False, lang_pref=None):
         "- Response time: Within 24 hours\n\n"
         "Guidelines:\n"
         "- Be professional, insightful, and warm.\n"
-        "- Respond in the language the user writes in (Hindi, Gujarati, English, etc.).\n"
+        "- CRITICAL LANGUAGE RULE: You MUST reply in the exact same language the user writes in. If the user asks in English, reply in English. Do NOT default to Hindi just because the company is in India.\n"
         "- ALWAYS format responses clearly line-by-line with Markdown bullet points or numbered lists. NEVER combine multiple items into a single paragraph.\n"
         "- If the user asks for team members, services, or FAQs, YOU MUST list each one clearly with bullet points.\n"
         "- For company questions not covered by the context, politely guide them to contact vihil3010@gmail.com or call +91 7016421339.\n"
         "- For completely off-topic questions (math, general chat), answer helpfully as a smart AI and tie back to how Vihil InfoTech can help build digital solutions.\n"
     )
     
-    if lang_pref:
-        system_instruction += f"\n- VERY IMPORTANT: The user has explicitly selected the language code '{lang_pref}'. You MUST respond entirely in this requested language."
+    if lang_pref and lang_pref.lower() != "auto":
+        system_instruction += f"\n- VERY IMPORTANT: The user has explicitly selected the language code '{lang_pref}'. You MUST bypass the English default and respond entirely in this requested language."
         
     if not stream:
         system_instruction += (
