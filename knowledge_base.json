@@ -1,459 +1,513 @@
 {
-    "company": {
-        "name": "Vihil InfoTech",
-        "legal_name": "Vihil Infotech Private Limited",
-        "tagline": "Build faster with a dependable tech partner.",
-        "sub_tagline": "Your trusted IT partner for web, mobile, AI, and cloud solutions — built for clarity, speed, and long-term growth.",
-        "vision": {
-            "area": "Vision Of Our Company",
-            "description": "We envision technology as a growth engine where AI/ML, product engineering, and cloud infrastructure come together to create measurable business outcomes."
-        },
-        "about": {
-            "headline": "We build IT systems that are scalable, secure, and AI-ready — from product discovery to launch and long-term evolution.",
-            "who_we_are": "A product-focused team of engineers, designers, and AI specialists. We partner with startups and enterprises to create practical digital products that solve real business problems.",
-            "mission": "Our mission is to merge business strategy with IT execution and deliver products that create measurable impact.",
-            "pillars": [
-                {
-                    "name": "AI-first Thinking",
-                    "desc": "From copilots to workflow automation and smart assistants."
-                },
-                {
-                    "name": "Scalable Systems",
-                    "desc": "Modular architecture for performance and future growth."
-                },
-                {
-                    "name": "Reliable Delivery",
-                    "desc": "Outcome-oriented sprints with quality and transparency."
-                }
-            ]
-        },
-        "statistics": [
-            {
-                "name": "60+",
-                "content": "Happy Clients"
-            },
-            {
-                "name": "60+",
-                "content": "Completed Projects"
-            },
-            {
-                "name": "20+",
-                "content": "Experienced Staff"
-            },
-            {
-                "name": "4.8",
-                "content": "Ratings"
-            }
-        ],
-        "contact": {
-            "address": "207, Vihil Infotech Private Limited, Sky Tatva-1, Opposite Amba Aashram, College Road, Nadiad, Gujarat, India",
-            "email": "vihil3010@gmail.com",
-            "phone": "+91 7016421339",
-            "response_time": "We reply within 24 hours",
-            "social_links": {
-                "instagram": "https://www.instagram.com/vihilinfotech/",
-                "linkedin": "https://www.linkedin.com/company/vihil-infotech-private-limited/",
-                "facebook": "https://www.facebook.com/vihilinfotech",
-                "website": "https://www.vihilinfotech.com/"
-            }
-        }
+  "company": {
+    "name": "Vihil InfoTech",
+    "legal_name": "Vihil Infotech Private Limited",
+    "tagline": "Build faster with a dependable tech partner.",
+    "sub_tagline": "Your trusted IT partner for web, mobile, AI, and cloud solutions — built for clarity, speed, and long-term growth.",
+    "hero": {
+      "badge": "AI/ML-driven digital engineering",
+      "headline": "Build intelligent products with modern software engineering.",
+      "description": "Vihil InfoTech helps businesses launch high-performance web, mobile, and AI-enabled products with a design-first and outcome-driven approach."
     },
-    "services": [
+    "about": {
+      "main_title": "About Us",
+      "headline": "We build IT systems that are scalable, secure, and AI-ready — from product discovery to launch and long-term evolution.",
+      "who_we_are": "A product-focused team of engineers, designers, and AI specialists. We partner with startups and enterprises to create practical digital products that solve real business problems.",
+      "what_drives_us": "We love turning complexity into clarity. Our mission is to merge business strategy with IT execution and deliver products that create measurable impact.",
+      "what_drives_us_points": [
+        "Business goals mapped to engineering roadmap",
+        "Fast iterations with modern web architecture",
+        "AI/ML opportunities built into product planning"
+      ],
+      "pillars": [
         {
-            "id": 1,
-            "title": "Web Development",
-            "desc1": "High-performance web apps using React, Next.js, Node.js — from landing pages to enterprise platforms."
+          "name": "AI-first Thinking",
+          "desc": "From copilots to workflow automation and smart assistants."
         },
         {
-            "id": 2,
-            "title": "Mobile App Development",
-            "desc1": "Cross-platform and native iOS/Android apps built with React Native for seamless user experiences."
+          "name": "Scalable Systems",
+          "desc": "Modular architecture for performance and future growth."
         },
         {
-            "id": 3,
-            "title": "AI / ML Integration",
-            "desc1": "LLM assistants, RAG knowledge search, workflow automation, and data intelligence layers for measurable outcomes."
-        },
-        {
-            "id": 4,
-            "title": "Cloud & Infrastructure",
-            "desc1": "Cloud modernization, DevOps, CI/CD pipelines, and managed cloud-native architectures."
-        },
-        {
-            "id": 5,
-            "title": "Cyber Security",
-            "desc1": "Security audits, penetration testing, compliance reviews, and secure architecture design."
-        },
-        {
-            "id": 6,
-            "title": "SEO & Digital Marketing",
-            "desc1": "Data-backed SEO, technical optimization, and digital campaigns to grow visibility and ROI."
-        },
-        {
-            "id": 7,
-            "title": "PWA Development",
-            "desc1": "Progressive Web Apps with React/Next.js for fast, reliable, installable cross-device experiences."
-        },
-        {
-            "id": 8,
-            "title": "Desktop Application Development",
-            "desc1": "Cross-platform desktop apps using Electron and React for Windows, macOS, and Linux."
+          "name": "Reliable Delivery",
+          "desc": "Outcome-oriented sprints with quality and transparency."
         }
-    ],
-    "what_we_do": [
-        {
-            "id": 1,
-            "name": "Web Application",
-            "desc": "Platform-independent business solutions for maximum availability"
-        },
-        {
-            "id": 2,
-            "name": "Cross Platform Development",
-            "desc": "Interactive apps with perfect integration of frontend and backend"
-        },
-        {
-            "id": 3,
-            "name": "SEO",
-            "desc": "Let the world find you on top of others"
-        },
-        {
-            "id": 4,
-            "name": "Desktop Application",
-            "desc": "Advanced autonomous software to make life simple"
-        },
-        {
-            "id": 5,
-            "name": "BIG Data",
-            "desc": "Decision making backed by intelligent insight"
-        },
-        {
-            "id": 6,
-            "name": "Cyber Security",
-            "desc": "Make your digital assets secure and protected"
-        },
-        {
-            "id": 7,
-            "name": "Mobile Applications",
-            "desc": "Robust technology to accompany with you"
-        },
-        {
-            "id": 8,
-            "name": "Digital Marketing",
-            "desc": "Business made easy in a digital world"
-        },
-        {
-            "id": 9,
-            "name": "AI / ML Enablement",
-            "desc": "Smarter products powered by generative AI and machine learning"
-        },
-        {
-            "id": 10,
-            "name": "Cloud Modernization",
-            "desc": "Scalable, cost-efficient cloud-native infrastructure and DevOps"
-        }
-    ],
-    "ai_ml": {
-        "headline": "AI/ML can be integrated here for smarter products and automation.",
-        "capabilities": [
-            {
-                "name": "Generative AI Workflows",
-                "desc": "Automate content, support, and internal operations with secure AI assistants.",
-                "features": [
-                    "LLM-based assistants",
-                    "Knowledge search + RAG",
-                    "Workflow automation agents"
-                ]
-            },
-            {
-                "name": "Data Intelligence Layer",
-                "desc": "ML predictions for forecasting, retention, and decision-making."
-            },
-            {
-                "name": "Automation & AI Ops",
-                "desc": "Connect AI with existing systems and automate repetitive processes.",
-                "tech_stack": [
-                    "FastAPI",
-                    "LangChain",
-                    "Node.js",
-                    "Cloud"
-                ]
-            }
-        ]
+      ]
     },
-    "team": [
+    "vision": {
+      "description": "We envision technology as a growth engine where AI/ML, product engineering, and cloud infrastructure come together to create measurable business outcomes.",
+      "highlights": [
         {
-            "id": 1,
-            "name": "Bharat Desai",
-            "position": "CEO",
-            "desc": "Founder driving company vision and growth strategy."
+          "title": "Cutting Edge Technology",
+          "description": "Take advantage of our cutting-edge solutions to increase your Return on Investment in IT.",
+          "impact": "Automation & intelligence",
+          "label": "AI Transformation",
+          "priority": "High",
+          "timeline": "4-8 weeks"
         },
         {
-            "id": 2,
-            "name": "Manish Shah",
-            "position": "CTO",
-            "desc": "From automation to advanced analytics and seamless experiences."
+          "title": "Cross Device Compatibility",
+          "description": "Multi-device compatibility ensures seamless access across all platforms."
         },
         {
-            "id": 3,
-            "name": "Jay Shah",
-            "position": "Project Manager & Fullstack Developer",
-            "desc": "From automation to advanced analytics and seamless experiences."
-        },
-        {
-            "id": 4,
-            "name": "Heer Patel",
-            "position": "Sr. Frontend Developer",
-            "desc": "From automation to advanced analytics and seamless experiences."
-        },
-        {
-            "id": 5,
-            "name": "Dhaval Prajapati",
-            "position": "HR & Sr. QA",
-            "desc": "From automation to advanced analytics and seamless experiences."
-        },
-        {
-            "id": 6,
-            "name": "Mihir Prajapati",
-            "position": "Sr. Backend Developer & Server Handling",
-            "desc": "From automation to advanced analytics and seamless experiences."
-        },
-        {
-            "id": 7,
-            "name": "Dip Pathak",
-            "position": "Sr. Frontend Developer",
-            "desc": "From automation to advanced analytics and seamless experiences."
-        },
-        {
-            "id": 8,
-            "name": "Kinjal Patel",
-            "position": "Jr. Frontend Developer",
-            "desc": "From automation to advanced analytics and seamless experiences."
-        },
-        {
-            "id": 9,
-            "name": "Jaydeep Panchal",
-            "position": "Jr. Frontend Developer",
-            "desc": "From automation to advanced analytics and seamless experiences."
-        },
-        {
-            "id": 10,
-            "name": "Shaami Rana",
-            "position": "BDE (Business Development Executive)",
-            "desc": "From automation to advanced analytics and seamless experiences."
+          "title": "Tailored Mode Development",
+          "description": "Scalable and dynamic systems built to meet your ever-changing business needs."
         }
-    ],
-    "technologies": [
-        "AI / ML",
-        "Android",
-        "Cloud (AWS/GCP/Azure)",
-        "Cyber Security",
-        "Electron",
-        "Express.js",
-        "FastAPI",
-        "JavaScript",
-        "LangChain",
-        "Next.js",
-        "Node.js",
-        "PHP",
-        "Python",
-        "React",
-        "React Native",
-        "SEO",
-        "Shopify",
-        "TypeScript",
-        "iOS"
-    ],
-    "tech_categories": {
-        "web_frontend": [
-            {
-                "desc": "React"
-            },
-            {
-                "desc": "Next.js"
-            },
-            {
-                "desc": "TypeScript"
-            },
-            {
-                "desc": "JavaScript"
-            }
-        ],
-        "backend": [
-            {
-                "desc": "Node.js"
-            },
-            {
-                "desc": "Express.js"
-            },
-            {
-                "desc": "PHP"
-            },
-            {
-                "desc": "Python"
-            },
-            {
-                "desc": "FastAPI"
-            }
-        ],
-        "mobile": [
-            {
-                "desc": "React Native"
-            },
-            {
-                "desc": "Android"
-            },
-            {
-                "desc": "iOS"
-            }
-        ],
-        "ai_ml": [
-            {
-                "desc": "LangChain"
-            },
-            {
-                "desc": "AI / ML"
-            },
-            {
-                "desc": "RAG / Knowledge Search"
-            }
-        ],
-        "ecommerce": [
-            {
-                "desc": "Shopify"
-            }
-        ],
-        "cloud": [
-            {
-                "desc": "Cloud (AWS/GCP/Azure)"
-            }
-        ]
+      ]
     },
-    "process": [
-        {
-            "id": 1,
-            "title": "01.",
-            "content": "Research",
-            "dis": "Gathering information from all around"
-        },
-        {
-            "id": 2,
-            "title": "02.",
-            "content": "Plan",
-            "dis": "Effective strategies for favorable outcomes"
-        },
-        {
-            "id": 3,
-            "title": "03.",
-            "content": "Implement",
-            "dis": "Timely executions as per the plan"
-        },
-        {
-            "id": 4,
-            "title": "04.",
-            "content": "Test and Deliver",
-            "dis": "Making a successful launch"
-        },
-        {
-            "id": 5,
-            "title": "05.",
-            "content": "Optimize",
-            "dis": "Steadily climbing up the hill"
-        }
-    ],
-    "faqs": [
-        {
-            "id": 1,
-            "question": "What services does Vihil InfoTech offer?",
-            "answer": "Web development (React/Next.js), mobile apps (React Native/iOS/Android), AI/ML integration (LLMs, RAG, automation), cloud infrastructure, cybersecurity, SEO, PWA, and desktop app development."
-        },
-        {
-            "id": 2,
-            "question": "What technologies does your team specialize in?",
-            "answer": "React, Next.js, Node.js, Express.js, React Native, Python, FastAPI, LangChain, PHP, Shopify, Android, iOS, TypeScript, and Cloud platforms (AWS/GCP/Azure)."
-        },
-        {
-            "id": 3,
-            "question": "How experienced is your team?",
-            "answer": "20+ experienced professionals with 60+ completed projects, 60+ happy clients, and a 4.8 rating."
-        },
-        {
-            "id": 4,
-            "question": "Can you handle both small projects and large-scale enterprise solutions?",
-            "answer": "Yes. We work with startups and enterprises, from MVPs to complex enterprise platforms."
-        },
-        {
-            "id": 5,
-            "question": "What is your development process?",
-            "answer": "Research → Plan → Implement → Test & Deliver → Optimize. Using agile Scrum and Kanban."
-        },
-        {
-            "id": 6,
-            "question": "Do you integrate AI and ML into products?",
-            "answer": "Yes. LLM assistants, RAG, generative AI workflows, data intelligence, and AI Ops using FastAPI, LangChain, Node.js, and cloud."
-        },
-        {
-            "id": 7,
-            "question": "How do you ensure security?",
-            "answer": "Security audits, secure coding, penetration testing, compliance reviews, and dedicated cybersecurity services."
-        },
-        {
-            "id": 8,
-            "question": "Do you provide ongoing support?",
-            "answer": "Yes. Post-launch support, maintenance, and continuous optimization."
-        },
-        {
-            "id": 9,
-            "question": "How can I get a quote?",
-            "answer": "Email vihil3010@gmail.com, call +91 7016421339, or book a call at https://www.vihilinfotech.com/. We reply within 24 hours."
-        },
-        {
-            "id": 10,
-            "question": "Where is Vihil InfoTech located?",
-            "answer": "207, Vihil Infotech Private Limited, Sky Tatva-1, Opposite Amba Aashram, College Road, Nadiad, Gujarat, India."
-        },
-        {
-            "id": 11,
-            "question": "What sets Vihil InfoTech apart?",
-            "answer": "AI-first thinking, scalable modular systems, and reliable agile delivery. We merge business strategy with IT execution."
-        },
-        {
-            "id": 12,
-            "question": "Can you provide references or case studies?",
-            "answer": "Yes. Contact vihil3010@gmail.com for case studies and references relevant to your industry."
-        }
-    ],
-    "carousel": [
-        {
-            "id": 1,
-            "name": "Cutting Edge Technology",
-            "desc": "Take advantage of our solutions to increase your Return on Investment in IT."
-        },
-        {
-            "id": 2,
-            "name": "Cross Device Compatibility",
-            "desc": "Multi-device compatibility ensures seamless access across all platforms."
-        },
-        {
-            "id": 3,
-            "name": "Tailored Mode Development",
-            "desc": "Scalable and dynamic systems built to meet your ever-changing business needs."
-        },
-        {
-            "id": 4,
-            "name": "AI-first Products",
-            "desc": "From copilots to workflow automation — build smarter products powered by AI/ML."
-        },
-        {
-            "id": 5,
-            "name": "Reliable Delivery",
-            "desc": "Outcome-oriented sprints with quality, transparency, and speed you can count on."
-        }
-    ],
-    "metadata": {
-        "source": "https://www.vihilinfotech.com/",
-        "crawled_at": "2026-06-03T16:30:36.290771",
-        "sources_tried": [
-            "static_fallback"
-        ]
+    "impact_metrics": {
+      "title": "Impact Metrics",
+      "subtitle": "Growth and delivery highlights",
+      "years_of_expertise": "5+",
+      "countries_served": "10+",
+      "tech_experts": "100+",
+      "clients_served": "50+",
+      "projects_delivered": "100+",
+      "avg_csat": "4.8/5",
+      "repeat_engagements": "86%",
+      "on_time_milestones": "94%",
+      "ai_ml_integrations": "80+",
+      "client_satisfaction": "98%"
+    },
+    "contact": {
+      "address": "207, Sky Tatva - I, Opposite Amba Ashram, College Road, Nadiad, Gujarat - 387001",
+      "email": "vihil3010@gmail.com",
+      "phone": "+91 70164 21339",
+      "website": "www.vihilinfotech.com",
+      "response_time": "Within 2 hours",
+      "engagement": "NDA-friendly",
+      "social_links": {
+        "instagram": "https://www.instagram.com/vihilinfotech/",
+        "linkedin": "https://www.linkedin.com/company/vihil-infotech-private-limited/",
+        "facebook": "https://www.facebook.com/vihilinfotech",
+        "website": "https://www.vihilinfotech.com/"
+      }
+    },
+    "why_clients_stay": {
+      "subtitle": "Why Clients Stay",
+      "title": "Delivery quality with reliable communication.",
+      "description": "Each testimonial reflects project outcomes, speed, and long-term partnership quality.",
+      "metrics": [
+        { "label": "Avg. CSAT", "value": "4.8/5" },
+        { "label": "Repeat Engagements", "value": "86%" },
+        { "label": "On-time Milestones", "value": "94%" }
+      ]
     }
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Web Development",
+      "description": "High-performance web apps using React, Next.js, Node.js — from landing pages to enterprise platforms.",
+      "sub_services": [
+        "React & modern frontends",
+        "Node.js APIs & services",
+        "Next.js applications",
+        "Express.js backends",
+        "PHP applications",
+        "Full-stack product delivery"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Mobile App Development",
+      "description": "Cross-platform and native iOS/Android apps built with React Native for seamless user experiences.",
+      "sub_services": [
+        "Cross-platform mobile apps (React Native)",
+        "Android development",
+        "iOS development",
+        "App store release & CI/CD"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "AI / ML Integration",
+      "description": "LLM assistants, RAG knowledge search, workflow automation, and data intelligence layers for measurable outcomes.",
+      "sub_services": [
+        "AI / ML features in products",
+        "LLM & assistant integrations",
+        "Data analytics & dashboards",
+        "Automation & intelligent workflows",
+        "Generative AI workflows",
+        "RAG / Knowledge Search",
+        "AI agent development",
+        "LLM development services"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Cloud & Infrastructure",
+      "description": "Cloud modernization, DevOps, CI/CD pipelines, and managed cloud-native architectures.",
+      "sub_services": [
+        "AWS / GCP / Azure setup & management",
+        "DevOps & CI/CD pipelines",
+        "Cloud-native microservices",
+        "MLOps & model deployment"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Cyber Security",
+      "description": "Security audits, penetration testing, compliance reviews, and secure architecture design.",
+      "sub_services": [
+        "Secure architecture & reviews",
+        "Application hardening",
+        "Compliance-aware engineering",
+        "Penetration testing"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "SEO & Digital Marketing",
+      "description": "Data-backed SEO, technical optimization, and digital campaigns to grow visibility and ROI.",
+      "sub_services": [
+        "Technical SEO",
+        "Performance & Core Web Vitals",
+        "Analytics & attribution setup",
+        "Digital marketing campaigns"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "PWA Development",
+      "description": "Progressive Web Apps with React/Next.js for fast, reliable, installable cross-device experiences."
+    },
+    {
+      "id": 8,
+      "title": "Desktop Application Development",
+      "description": "Cross-platform desktop apps using Electron and React for Windows, macOS, and Linux."
+    },
+    {
+      "id": 9,
+      "title": "Chatbot Development",
+      "description": "Intelligent chatbot solutions using state-of-the-art AI technologies to enhance user interactions and automate customer support."
+    },
+    {
+      "id": 10,
+      "title": "E-commerce Development",
+      "description": "Shopify builds, custom storefronts, and payment/subscription flow integrations.",
+      "sub_services": [
+        "Shopify builds & customization",
+        "Custom storefronts",
+        "Payments & subscription flows"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "SaaS & Product Development",
+      "description": "End-to-end SaaS development, MVP builds, application modernization, and B2B platform delivery.",
+      "sub_services": [
+        "SaaS development",
+        "MVP development",
+        "Application modernization",
+        "CRM development & integrations",
+        "CMS development",
+        "On-demand marketplace apps",
+        "Web portal development",
+        "ERP integrations",
+        "API platforms & ecosystems"
+      ]
+    }
+  ],
+  "industries_served": [
+    "Healthcare & Healthtech",
+    "Education & E-learning",
+    "FinTech & Banking",
+    "Retail & E-commerce",
+    "Logistics & Supply Chain",
+    "SaaS & B2B Platforms",
+    "Manufacturing & IoT",
+    "Real Estate",
+    "Sports & Fitness",
+    "Finance"
+  ],
+  "engagement_models": [
+    "Startup MVP & product-market fit",
+    "Enterprise digital transformation",
+    "Product discovery & UX",
+    "Dedicated product teams",
+    "Staff augmentation",
+    "Fixed-scope agile sprints",
+    "Ongoing support & scale"
+  ],
+  "ai_ml_capabilities": {
+    "headline": "AI/ML can be integrated into your products for smarter automation and intelligence.",
+    "capabilities": [
+      {
+        "name": "Generative AI Workflows",
+        "description": "Automate content, support, and internal operations with secure AI assistants.",
+        "features": ["LLM-based assistants", "Knowledge search + RAG", "Workflow automation agents"]
+      },
+      {
+        "name": "Data Intelligence Layer",
+        "description": "ML predictions for forecasting, retention, and decision-making."
+      },
+      {
+        "name": "Automation & AI Ops",
+        "description": "Connect AI with existing systems and automate repetitive processes.",
+        "tech_stack": ["FastAPI", "LangChain", "Node.js", "Cloud"]
+      },
+      {
+        "name": "Chatbot Development",
+        "description": "Conversational AI interfaces for customer support, lead qualification, and process automation."
+      }
+    ]
+  },
+  "technologies": {
+    "web_frontend": ["React", "Next.js", "TypeScript", "JavaScript"],
+    "backend": ["Node.js", "Express.js", "PHP", "Python", "FastAPI"],
+    "mobile": ["React Native", "Android", "iOS"],
+    "ai_ml": ["LangChain", "AI / ML", "RAG / Knowledge Search", "Generative AI"],
+    "ecommerce": ["Shopify"],
+    "cloud": ["AWS", "GCP", "Azure"],
+    "desktop": ["Electron"],
+    "other": ["Cyber Security", "SEO"]
+  },
+  "team": [
+    {
+      "name": "Bharat Desai",
+      "position": "CEO",
+      "description": "Founder driving company vision and growth strategy."
+    },
+    {
+      "name": "Manish V. Shah",
+      "position": "CTO",
+      "description": "Leading technology strategy, from automation to advanced analytics and seamless user experiences."
+    },
+    {
+      "name": "Janvi M Shah",
+      "position": "Sr. Frontend Developer",
+      "description": "Building modern, performant frontend interfaces."
+    },
+    {
+      "name": "Dhaval B. Prajapati",
+      "position": "HR Manager, Networking & QA Manager",
+      "description": "Managing HR, quality assurance, and IT networking."
+    },
+    {
+      "name": "Kinjal Patel",
+      "position": "Jr. Frontend Developer",
+      "description": "Frontend development with React and modern web technologies."
+    },
+    {
+      "name": "Krupal Valand",
+      "position": "Software Developer",
+      "description": "Full-cycle software development across platforms."
+    },
+    {
+      "name": "Dhruvil Mistry",
+      "position": "FullStack Developer",
+      "description": "End-to-end product development across frontend and backend."
+    },
+    {
+      "name": "Hetvi Sharma",
+      "position": "Jr. Frontend Developer",
+      "description": "Frontend development and UI implementation."
+    }
+  ],
+  "process": [
+    {
+      "step": "01",
+      "title": "Research",
+      "description": "Gathering requirements, understanding business goals, and mapping technical scope."
+    },
+    {
+      "step": "02",
+      "title": "Plan",
+      "description": "Defining effective strategies, architecture, and sprint roadmap for favorable outcomes."
+    },
+    {
+      "step": "03",
+      "title": "Implement",
+      "description": "Timely execution of sprints as per the agreed plan with full transparency."
+    },
+    {
+      "step": "04",
+      "title": "Test and Deliver",
+      "description": "Thorough QA, UAT, and making a successful product launch."
+    },
+    {
+      "step": "05",
+      "title": "Optimize",
+      "description": "Post-launch improvements, monitoring, and continuous iteration for growth."
+    }
+  ],
+  "call_schedule": {
+    "title": "Let's plan your next product move.",
+    "subtitle": "Pick a convenient time, tell us your scope, and we will come prepared with a practical roadmap.",
+    "benefits": [
+      "30-minute strategy call",
+      "Tech + delivery suggestions",
+      "Transparent timeline and cost direction",
+      "NDA-friendly discussion"
+    ],
+    "meeting_mode": "Google Meet / Zoom",
+    "meeting_note": "We share the meeting link and agenda right after confirmation."
+  },
+  "testimonials": [
+    {
+      "name": "Mr. Patel",
+      "position": "Founder and CEO, Bharat InfoTech",
+      "rating": 5,
+      "description": "Amazing experience! The platform design and performance exceeded my expectations."
+    },
+    {
+      "name": "Mr. Patel",
+      "position": "Founder and CEO, Bharat InfoTech",
+      "rating": 5,
+      "description": "Great UI and thoughtful content. Really stands out from the competition!"
+    },
+    {
+      "name": "Mr. Patel",
+      "position": "tester",
+      "rating": 5,
+      "description": "They are just perfect — nothing more to say."
+    }
+  ],
+  "careers": {
+    "open_positions": [
+      {
+        "position": "Frontend Developer",
+        "experience": "2 years",
+        "vacancies": "3",
+        "qualification": "B.Tech in Computer Science or equivalent"
+      },
+      {
+        "position": "Backend Developer",
+        "experience": "Experienced",
+        "vacancies": "Open",
+        "qualification": "Relevant degree or experience"
+      }
+    ],
+    "how_to_apply": "Send your resume to vihil3010@gmail.com or apply via the Careers section at www.vihilinfotech.com"
+  },
+  "policies": {
+    "privacy_policy": [
+      {
+        "title": "Information We Collect",
+        "description": "We may collect personal information such as your name, email address, phone number, company details, and any information you voluntarily provide. We also collect technical information including IP address, browser type, device information, and usage data."
+      },
+      {
+        "title": "How We Use Information",
+        "description": "To provide, maintain, and improve our services; respond to inquiries; process requests; and send important updates where permitted by law."
+      },
+      {
+        "title": "Information Sharing",
+        "description": "We do not sell, rent, or trade your personal information. Data may be shared with trusted third-party providers under strict confidentiality agreements."
+      },
+      {
+        "title": "Data Security",
+        "description": "We implement appropriate technical and organizational measures to protect your data against unauthorized access, alteration, or destruction."
+      },
+      {
+        "title": "Your Rights",
+        "description": "You have the right to access, update, or request deletion of your personal data. Contact us at vihil3010@gmail.com to exercise your rights."
+      }
+    ],
+    "terms_of_service": [
+      {
+        "title": "Use of Services",
+        "description": "By using our services, you agree to comply with all applicable laws. You may not misuse the platform, attempt unauthorized access, or disrupt other users."
+      },
+      {
+        "title": "Intellectual Property",
+        "description": "All content, trademarks, and designs are owned by or licensed to Vihil InfoTech. Reproduction or distribution without written permission is prohibited."
+      },
+      {
+        "title": "Limitation of Liability",
+        "description": "We shall not be liable for indirect, incidental, or consequential damages. Total liability shall not exceed amounts paid by you for the services."
+      },
+      {
+        "title": "Governing Law",
+        "description": "These terms are governed by the laws of the applicable jurisdiction. Disputes are subject to the exclusive jurisdiction of the courts in that jurisdiction."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": 1,
+      "question": "What services does Vihil InfoTech offer?",
+      "answer": "Vihil InfoTech offers web development (React, Next.js, Node.js), mobile app development (React Native, iOS, Android), AI/ML integration (LLMs, RAG, generative AI workflows), cloud infrastructure (AWS, GCP, Azure), cybersecurity (audits, penetration testing), SEO & digital marketing, PWA development, desktop app development (Electron), chatbot development, and e-commerce solutions (Shopify). We provide end-to-end solutions from product discovery to launch and long-term support."
+    },
+    {
+      "id": 2,
+      "question": "What technologies does your team specialize in?",
+      "answer": "We specialize in React, Next.js, Node.js, Express.js, PHP, Python, FastAPI, LangChain, React Native, Android, iOS, TypeScript, JavaScript, Electron, Shopify, and cloud platforms (AWS, GCP, Azure). For AI/ML, we work with LangChain, RAG pipelines, LLM integrations, and generative AI workflows."
+    },
+    {
+      "id": 3,
+      "question": "How experienced is your team?",
+      "answer": "Our team has 5+ years of expertise, 100+ tech experts, and has served 50+ clients across 10+ countries, delivering 100+ projects. We maintain a 4.8/5 average CSAT score, 86% repeat engagement rate, and 94% on-time milestone delivery."
+    },
+    {
+      "id": 4,
+      "question": "Can you handle both small projects and large-scale enterprise solutions?",
+      "answer": "Yes. We work with startups building their first MVP as well as large enterprises undergoing digital transformation. Our flexible engagement models include fixed-scope sprints, dedicated product teams, and staff augmentation."
+    },
+    {
+      "id": 5,
+      "question": "What is your development process?",
+      "answer": "Our process follows 5 stages: Research → Plan → Implement → Test & Deliver → Optimize. We use agile Scrum and Kanban methodologies with full transparency, regular sprint reviews, and outcome-oriented delivery."
+    },
+    {
+      "id": 6,
+      "question": "Do you integrate AI and ML into products?",
+      "answer": "Yes. We integrate AI/ML through LLM assistants, RAG-based knowledge search, generative AI workflows, data intelligence layers, and intelligent automation using FastAPI, LangChain, Node.js, and cloud platforms."
+    },
+    {
+      "id": 7,
+      "question": "How do you ensure the security of the projects you undertake?",
+      "answer": "Security is a top priority. We conduct security audits, implement secure coding practices, perform penetration testing, review compliance requirements, and offer dedicated cybersecurity services including application hardening and secure architecture design."
+    },
+    {
+      "id": 8,
+      "question": "Do you provide ongoing support and maintenance?",
+      "answer": "Yes. We offer post-launch support, maintenance, and continuous optimization. Our team is available to address issues, implement updates, and help your product scale over time."
+    },
+    {
+      "id": 9,
+      "question": "How can I get a quote for my project?",
+      "answer": "You can reach us by emailing vihil3010@gmail.com, calling +91 70164 21339, or booking a strategy call via www.vihilinfotech.com. We reply within 2 hours. The call is 30 minutes, NDA-friendly, and includes tech suggestions and a transparent timeline and cost direction."
+    },
+    {
+      "id": 10,
+      "question": "Where is Vihil InfoTech located?",
+      "answer": "We are located at 207, Sky Tatva - I, Opposite Amba Ashram, College Road, Nadiad, Gujarat - 387001, India."
+    },
+    {
+      "id": 11,
+      "question": "What sets Vihil InfoTech apart from other IT service providers?",
+      "answer": "Our differentiators are: AI-first thinking built into every product, scalable modular architecture, reliable agile delivery with 94% on-time milestones, 86% client repeat rate, and a product-focused approach that merges business strategy with engineering execution."
+    },
+    {
+      "id": 12,
+      "question": "Can you provide references or case studies of previous projects?",
+      "answer": "Yes. Contact us at vihil3010@gmail.com and we'll share relevant case studies and references based on your industry and project type."
+    },
+    {
+      "id": 13,
+      "question": "What industries do you serve?",
+      "answer": "We serve Healthcare & Healthtech, Education & E-learning, FinTech & Banking, Retail & E-commerce, Logistics & Supply Chain, SaaS & B2B Platforms, Manufacturing & IoT, Real Estate, Sports & Fitness, and Finance."
+    },
+    {
+      "id": 14,
+      "question": "Do you build chatbots and AI assistants?",
+      "answer": "Yes. We build intelligent chatbots and AI assistants using LLMs, RAG pipelines, and LangChain. These can be used for customer support automation, lead qualification, internal knowledge assistants, and workflow automation."
+    },
+    {
+      "id": 15,
+      "question": "Do you develop Shopify and e-commerce solutions?",
+      "answer": "Yes. We handle Shopify builds and customization, custom storefront development, and payment and subscription flow integrations."
+    },
+    {
+      "id": 16,
+      "question": "What engagement models do you offer?",
+      "answer": "We offer startup MVP builds, enterprise digital transformation, dedicated product teams, staff augmentation, fixed-scope agile sprints, and ongoing support & scale engagements."
+    },
+    {
+      "id": 17,
+      "question": "How can I schedule a call?",
+      "answer": "You can book a 30-minute strategy call via www.vihilinfotech.com or email vihil3010@gmail.com. Calls are conducted on Google Meet or Zoom, with a meeting link and agenda shared right after confirmation. The call covers tech suggestions, a delivery plan, and a transparent cost direction — all NDA-friendly."
+    }
+  ]
 }
