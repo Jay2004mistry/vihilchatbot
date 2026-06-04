@@ -396,25 +396,74 @@ def preprocess_multilingual_query(query):
     # 1. Multi-lingual mappings (Hindi/Gujarati phonetics, Devanagari, and Gujarati script)
     translation_maps = {
         # Contact / Location concepts
-        "contact": ["संपर्क", "सम्पर्क", "સંપર્ક", "contact", "number", "phone", "email", "address", "location", "office", "headquarter", "nadiad", "gujarat", "india", "ફોન", "મોબાઈલ", "સરનામું", "ઈમેલ", "કહા", "कहा", "कहाँ", "પતા", "पता", "નંબર", "नंबर", "फ़ोन"],
+        "contact contacts phone email address location office number mobile": [
+            "संपर्क", "सम्पर्क", "સંપર્ક", "contact", "number", "phone", "email", "address", "location", 
+            "office", "headquarter", "nadiad", "gujarat", "india", "ફોન", "મોબાઈલ", "સરનામું", "ઈમેલ", 
+            "કહા", "कहा", "कहाँ", "પતા", "पता", "નંબર", "नंबर", "फ़ोन"
+        ],
         # Services / Work concepts
-        "service": ["सेवा", "સેવા", "काम", "કામ", "services", "offer", "do", "build", "develop", "make", "create", "બનાવો", "બનાવે", "बनाता", "બનાવતી"],
+        "service services work capability capabilities": [
+            "सेवा", "સેવા", "काम", "કામ", "services", "offer", "do", "build", "develop", "make", "create", 
+            "બનાવો", "બનાવે", "बनाता", "બનાવતી"
+        ],
         # Mobile app development
-        "mobile": ["मोबाइल", "મોબાઈલ", "app", "application", "android", "ios", "એપ", "ऐप", "phone app"],
+        "mobile app application android ios phone": [
+            "मोबाइल", "મોબાઈલ", "app", "application", "android", "ios", "એપ", "ऐप", "phone app"
+        ],
         # Web development
-        "web": ["वेबसाइट", "વેબસાઈટ", "वेब", "વેબ", "website", "site", "page", "nextjs", "react"],
+        "web website site page": [
+            "वेबसाइट", "વેબસાઈટ", "वेब", "વેબ", "website", "site", "page", "nextjs", "react"
+        ],
         # Team / Owner / CEO concepts
-        "team": ["टीम", "ટીમ", "ceo", "cto", "owner", "founder", "boss", "member", "staff", "employee", "માલિક", "ભરત", "भरत", "મનીષ", "मनीष", "જેય", "जय"],
+        "team member staff employee ceo cto owner founder boss bharat manish": [
+            "टीम", "ટીમ", "ceo", "cto", "owner", "founder", "boss", "member", "staff", "employee", 
+            "માલિક", "ભરત", "भरत", "મનીષ", "मनीष", "જેય", "जय"
+        ],
         # QA / Security
-        "security": ["सुरक्षा", "સુરક્ષા", "cyber", "protect", "safe", "secure"],
+        "security cyber safe protect defense compliance audit": [
+            "सुरक्षा", "સુરક્ષા", "cyber", "protect", "safe", "secure"
+        ],
         # Development Process
-        "process": ["काम करने का तरीका", "પદ્ધતિ", "चरण", "पद्धति", "process", "step", "method", "workflow"],
+        "process step methodology workflow stage cycle": [
+            "काम करने का तरीका", "પદ્ધતિ", "चरण", "पद्धति", "process", "step", "method", "workflow"
+        ],
         # AI / ML
-        "ai": ["ai", "ml", "artificial intelligence", "machine learning", "llm", "rag", "langchain", "copilot", "bot", "automation", "generative", "chatbot", "smart", "intelligent", "bots"],
+        "ai ml artificial intelligence machine learning llm rag langchain copilot bot automation chatbot": [
+            "ai", "ml", "artificial intelligence", "machine learning", "llm", "rag", "langchain", 
+            "copilot", "bot", "automation", "generative", "chatbot", "smart", "intelligent", "bots"
+        ],
         # Cloud & Infrastructure
-        "cloud": ["cloud", "devops", "aws", "gcp", "azure", "infrastructure", "server", "deployment", "hosting"],
+        "cloud devops aws gcp azure infrastructure server deployment hosting": [
+            "cloud", "devops", "aws", "gcp", "azure", "infrastructure", "server", "deployment", "hosting"
+        ],
         # LinkedIn / Social
-        "linkedin": ["linkedin", "social", "instagram", "facebook", "profile", "follow"],
+        "linkedin social instagram facebook profile follow": [
+            "linkedin", "social", "instagram", "facebook", "profile", "follow"
+        ],
+        # FAQ / Questions
+        "faq faqs question questions answer query support common": [
+            "faq", "faqs", "question", "questions", "answer", "support", "પ્રશ્ન", "સવાલ", "જવાબ", 
+            "प्रश्न", "सवाल", "जवाब"
+        ],
+        # Technology / Stack
+        "technology tech stack languages database frontend backend framework tools": [
+            "tech", "technology", "technologies", "stack", "ટેકનોલોજી", "ટેક", "तकनीक", "टेक्नोलॉजी", "टेक"
+        ],
+        # Careers / Job
+        "career careers job jobs vacancy vacancies hiring apply resume CV": [
+            "career", "careers", "job", "jobs", "vacancy", "vacancies", "hiring", "apply", "resume", 
+            "નોકરી", "ભરતી", "કારકિર્દી", "नौकरी", "भर्ती", "करियर"
+        ],
+        # Portfolio / Testimonial
+        "portfolio testimonial testimonials highlight highlights client clients rating review reviews": [
+            "portfolio", "testimonial", "testimonials", "highlight", "highlights", "client", "clients", 
+            "rating", "ratings", "review", "reviews", "પોર્ટફોલિયો", "ગ્રાહક", "રીવ્યુ", "पोर्टफोलियो", "ग्राहक", "रिव्यू"
+        ],
+        # About / Company
+        "about company vision mission history background": [
+            "about", "company", "vision", "mission", "history", "background", "વિશે", "કંપની", "ધ્યેય", 
+            "વિઝન", "बारे", "कंपनी", "लक्ष्य", "विजन"
+        ]
     }
     
     expanded_terms = []
@@ -426,16 +475,16 @@ def preprocess_multilingual_query(query):
                 
     # 2. English synonyms expansion for common questions
     synonyms = {
-        "location": ["where", "location", "address", "office", "city", "nadiad", "gujarat", "india", "place", "map", "situated", "located"],
-        "ceo": ["ceo", "cto", "owner", "founder", "head", "boss", "runs", "manage", "bharat", "manish", "desai", "shah"],
-        "team": ["who works", "member", "staff", "employees", "team", "people", "developers", "engineers"],
-        "contact": ["email", "phone", "call", "mobile", "number", "reach", "support", "talk to", "contact", "linkedin", "instagram", "facebook", "social", "book"],
-        "service": ["services", "capabilities", "what we do", "build", "develop", "create", "offering", "solutions"],
-        "quote": ["price", "cost", "charge", "quote", "payment", "budget", "how much"],
-        "process": ["process", "methodology", "workflow", "steps", "stages", "how do you build", "how you work"],
-        "faqs": ["faqs", "questions", "common", "support", "help", "security", "maintenance"],
-        "ai": ["ai", "ml", "machine learning", "artificial intelligence", "llm", "rag", "langchain", "automation", "generative", "copilot", "smart"],
-        "cloud": ["cloud", "devops", "aws", "azure", "gcp", "infrastructure", "server", "hosting", "deployment"],
+        "location address office nadiad gujarat india": ["where", "location", "address", "office", "city", "nadiad", "gujarat", "india", "place", "map", "situated", "located"],
+        "ceo cto owner founder bharat manish": ["ceo", "cto", "owner", "founder", "head", "boss", "runs", "manage", "bharat", "manish", "desai", "shah"],
+        "team member staff developers engineers": ["who works", "member", "staff", "employees", "team", "people", "developers", "engineers"],
+        "contact email phone call mobile number support social": ["email", "phone", "call", "mobile", "number", "reach", "support", "talk to", "contact", "linkedin", "instagram", "facebook", "social", "book"],
+        "service services capabilities workflow solutions": ["services", "capabilities", "what we do", "build", "develop", "create", "offering", "solutions"],
+        "quote price cost estimate": ["price", "cost", "charge", "quote", "payment", "budget", "how much"],
+        "process methodology workflow steps stages": ["process", "methodology", "workflow", "steps", "stages", "how do you build", "how you work"],
+        "faq faqs question questions answer support": ["faqs", "questions", "common", "support", "help", "security", "maintenance"],
+        "ai ml machine learning artificial intelligence llm rag langchain automation": ["ai", "ml", "machine learning", "artificial intelligence", "llm", "rag", "langchain", "automation", "generative", "copilot", "smart"],
+        "cloud devops aws azure gcp infrastructure": ["cloud", "devops", "aws", "azure", "gcp", "infrastructure", "server", "hosting", "deployment"],
     }
     
     for concept, keywords in synonyms.items():
@@ -443,8 +492,52 @@ def preprocess_multilingual_query(query):
             expanded_terms.append(concept)
             
     if expanded_terms:
-        return query + " " + " ".join(set(expanded_terms))
+        unique_terms = set()
+        for term in expanded_terms:
+            unique_terms.update(term.split())
+        return query + " " + " ".join(unique_terms)
     return query
+
+def contains_indic_scripts(text):
+    """
+    Checks if the text contains Gujarati or Hindi (Devanagari) characters.
+    """
+    if not text:
+        return False
+    return bool(re.search(r'[\u0A80-\u0AFF\u0900-\u097F]', text))
+
+def translate_to_target_lang(text, target_lang):
+    """
+    Translates English text to the target language (e.g. 'gu' or 'hi')
+    using Google Translate's free API endpoint.
+    If it fails, returns the original text.
+    """
+    if not target_lang or target_lang.lower() in ["en", "auto"]:
+        return text
+        
+    import urllib.request
+    import urllib.parse
+    import json
+    import ssl
+    
+    try:
+        url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl={target_lang}&dt=t&q={urllib.parse.quote(text)}"
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"}
+        )
+        
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        
+        with urllib.request.urlopen(req, timeout=5, context=ctx) as response:
+            data = json.loads(response.read().decode("utf-8"))
+            translated = "".join([sentence[0] for sentence in data[0] if sentence[0]])
+            return translated
+    except Exception as e:
+        print(f"Translation failed: {e}", file=sys.stderr)
+        return text
 
 def fallback_qa(query, kb, lang_pref=None):
     """
@@ -594,11 +687,22 @@ def fallback_qa(query, kb, lang_pref=None):
     # Preprocess and expand the query to support multiple languages and synonyms
     expanded_query = preprocess_multilingual_query(query)
     
-    # Tokenize the original query to check for core keywords
+    # Tokenize the original and expanded queries to check for core keywords
     original_tokens = clean_and_tokenize(query)
+    expanded_tokens = clean_and_tokenize(expanded_query)
     
     # Check if the query has at least some relevance to Vihil/Infotech or contains core business keywords
-    is_relevant_topic = any(w in core_business_keywords for w in original_tokens) or "vihil" in query_clean or "infotech" in query_clean
+    is_relevant_topic = (
+        any(w in core_business_keywords for w in expanded_tokens) 
+        or "vihil" in query_clean 
+        or "infotech" in query_clean 
+        or "વિહિલ" in query_clean 
+        or "ઇન્ફોટેક" in query_clean 
+        or "વિહિલઇન્ફોટેક" in query_clean
+        or "विहिल" in query_clean 
+        or "इन्फोटेक" in query_clean
+        or "विहिलइन्फोटेक" in query_clean
+    )
     
     if not is_relevant_topic and original_tokens:
         # If the question contains no company name and no business keywords, fail early to prevent wrong answers
@@ -903,6 +1007,9 @@ def answer_query(query, filepath="knowledge_base.json", lang_pref=None):
             print(f"Groq API Error: {e}", file=sys.stderr)
             
     ans = fallback_qa(query, kb, lang_pref=lang_pref)
+    if lang_pref and lang_pref.lower() not in ["en", "auto"]:
+        if not contains_indic_scripts(ans):
+            ans = translate_to_target_lang(ans, lang_pref)
     return ans, detect_language_simple(ans)
 
 def stream_answer_query(query, filepath="knowledge_base.json", lang_pref=None):
@@ -967,6 +1074,9 @@ def stream_answer_query(query, filepath="knowledge_base.json", lang_pref=None):
             print(f"Groq Stream Error: {e}", file=sys.stderr)
             
     ans = fallback_qa(query, kb, lang_pref=lang_pref)
+    if lang_pref and lang_pref.lower() not in ["en", "auto"]:
+        if not contains_indic_scripts(ans):
+            ans = translate_to_target_lang(ans, lang_pref)
     words = ans.split(" ")
     for i, word in enumerate(words):
         yield (word + " " if i < len(words) - 1 else word)
