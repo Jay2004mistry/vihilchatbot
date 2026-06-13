@@ -81,12 +81,20 @@ def prune_json(data):
         return data
 
 def clean_and_tokenize(text):
-    """Clean, lowercase, and tokenize text into a set of words, removing common stop words."""
+    """Clean, lowercase, and tokenize text into a set of words, removing common stop words. Supports Indic script diacritics."""
     if not text:
         return set()
+    import unicodedata
     text_lower = text.lower()
-    # Remove punctuation and special symbols
-    cleaned = re.sub(r'[^\w\s]', ' ', text_lower)
+    # Replace non-letter, non-mark, non-number, non-space characters with space (preserves Indic diacritics)
+    cleaned_chars = []
+    for c in text_lower:
+        cat = unicodedata.category(c)
+        if cat.startswith('L') or cat.startswith('M') or cat.startswith('N') or c.isspace():
+            cleaned_chars.append(c)
+        else:
+            cleaned_chars.append(' ')
+    cleaned = "".join(cleaned_chars)
     words = cleaned.split()
     
     stop_words = {
@@ -491,6 +499,22 @@ def preprocess_multilingual_query(query):
         if any(w in q_lower for w in keywords):
             expanded_terms.append(concept)
             
+    # 3. Spelling correction and expansion for team members' names to handle typos/variations (supports English, Gujarati, and Hindi)
+    team_names_map = [
+        (["hetvi", "shama", "sarma", "sharma", "હેત્વી", "હેતવી", "હતવી", "हेतवी", "हत्वी", "શર્મા", "શરમા", "शर्मा", "शमा"], "hetvi sharma"),
+        (["manish", "manis", "મનીષ", "મનીસ", "मनीष", "मनिष", "શાહ", "शाह"], "manish shah"),
+        (["janvi", "janavi", "જાનવી", "જાનવિ", "जानवी", "जानवि", "શાહ", "शाह"], "janvi shah"),
+        (["dhaval", "dhavel", "ધવલ", "ધવેલ", "धवल", "प्रजापति", "પ્રાજપતિ", "પ્રજાપતિ"], "dhaval prajapati"),
+        (["kinjal", "kinjel", "કિંજલ", "કિંજેલ", "किंजल", "પટેલ", "पटेल"], "kinjal patel"),
+        (["krupal", "krupel", "કૃપાલ", "કૃપેલ", "कृपाल", "વલાંદ", "વાલાંદ", "वलांद", "वोलंद"], "krupal valand"),
+        (["dhruvil", "dhruval", "ધ્રુવિલ", "ધ્રુવલ", "ध्रुविल", "मिस्त्री", "મિશ્ત્રી", "મિસ્તરી"], "dhruvil mistry"),
+        (["bharat", "ભરત", "भरત", "દેસાઈ", "દેસાઇ", "देसाई"], "bharat desai")
+    ]
+    for aliases, full_name in team_names_map:
+        # Avoid \b word boundary bug for Indic/Unicode scripts
+        if any(re.search(rf'(?:^|[^a-zA-Z0-9\u0A80-\u0AFF\u0900-\u097F]){re.escape(alias)}(?:$|[^a-zA-Z0-9\u0A80-\u0AFF\u0900-\u097F])', q_lower) for alias in aliases):
+            expanded_terms.append(full_name)
+            
     if expanded_terms:
         unique_terms = set()
         for term in expanded_terms:
@@ -675,6 +699,9 @@ def fallback_qa(query, kb, lang_pref=None):
         "service", "services", "web", "mobile", "app", "application", "desktop", "pwa", "chatbot",
         "development", "seo", "marketing", "security", "big data", "data", "cyber", "work",
         "team", "member", "ceo", "cto", "pm", "developer", "engineer", "designer", "bharat", "manish", "jay",
+        "hetvi", "shama", "sharma", "janvi", "dhaval", "prajapati", "kinjal", "krupal", "valand", "dhruvil", "mistry", "desai",
+        "કૃપાલ", "હેત્વી", "શર્મા", "મનીષ", "જાનવી", "ભરત", "ધવલ", "કિંજલ", "ધ્રુવિલ", "કૃપેલ", "વાલાંદ",
+        "કોણ", "છે", "કૌન", "હૈ",
         "process", "methodology", "workflow", "step", "planning", "research", "test", "testing", "optimize",
         "faq", "faqs", "question", "questions", "answer", "quote", "cost", "price", "portfolio", "carousel",
         "android", "ios", "react", "nextjs", "python", "fastapi", "node",
@@ -887,8 +914,18 @@ def query_groq_api(query, kb, api_key, stream=False, lang_pref=None):
         "- Instagram: https://www.instagram.com/vihilinfotech/\n"
         "- Facebook: https://www.facebook.com/vihilinfotech\n"
         "- Response time: Within 24 hours\n\n"
+        "- Core Team Members & Roles:\n"
+        "  * Bharat Desai: CEO & Founder (driving vision and growth)\n"
+        "  * Manish V. Shah: CTO (leading technology strategy)\n"
+        "  * Dhaval B. Prajapati: HR Manager, Networking & QA Manager\n"
+        "  * Janvi M Shah: Sr. Frontend Developer\n"
+        "  * Kinjal Patel: Jr. Frontend Developer\n"
+        "  * Hetvi Sharma: Jr. Frontend Developer (NOT an actress or founder)\n"
+        "  * Krupal Valand: Software Developer (NOT the founder or COO)\n"
+        "  * Dhruvil Mistry: FullStack Developer\n\n"
         "Guidelines:\n"
         "- Be professional, insightful, and warm.\n"
+        "- CRITICAL TEAM MEMBER RULE: Always refer to team members using their exact roles from the provided context. Specifically, Hetvi Sharma is a Junior Frontend Developer and Krupal Valand is a Software Developer. Under no circumstances should you claim they are founders, CEO, COO, or have any other roles. Hetvi Sharma is NOT an actress. If a query has spelling variations or typos of our team members' names (like 'Hetvi Shama' or 'Krupel'), match them to the corresponding team member in the context and answer about them as a Vihil InfoTech team member.\n"
         "- CRITICAL LANGUAGE RULE: You MUST reply in the exact same language the user writes in. If the user asks in English, reply in English. Do NOT default to Hindi just because the company is in India.\n"
         "- ALWAYS format responses clearly line-by-line with Markdown bullet points or numbered lists. NEVER combine multiple items into a single paragraph.\n"
         "- If the user asks for team members, services, or FAQs, YOU MUST list each one clearly with bullet points.\n"

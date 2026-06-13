@@ -17,11 +17,21 @@ except ImportError:
     sys.path.insert(0, os.getcwd())
     import qa_engine
 
+from fastapi.middleware.cors import CORSMiddleware
+
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 INDEX_FILE = STATIC_DIR / "index.html"
 
 app = FastAPI(title="Vihil InfoTech AI Assistant")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 _cached_voices = None
 
